@@ -1,0 +1,23 @@
+#N canvas 417 433 450 300 10;
+#X declare -path libs/oscx;
+#X obj 29 106 dumpOSC 9001;
+#X obj 29 128 OSCroute /outputs;
+#X floatatom 29 174 5 0 0 0 - - -, f 5;
+#X obj 29 150 OSCroute /angle1 /angle2 /hall1 /hall2 /rotations /id
+;
+#X floatatom 81 174 5 0 0 0 - - -, f 5;
+#X floatatom 134 174 5 0 0 0 - - -, f 5;
+#X floatatom 186 174 5 0 0 0 - - -, f 5;
+#X floatatom 239 174 5 0 0 0 - - -, f 5;
+#X floatatom 291 173 5 0 0 0 - - -, f 5;
+#N canvas 58 86 450 300 init 0;
+#X obj 54 42 declare -path libs/oscx;
+#X restore 33 24 pd init;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 3 0 2 0;
+#X connect 3 1 4 0;
+#X connect 3 2 5 0;
+#X connect 3 3 6 0;
+#X connect 3 4 7 0;
+#X connect 3 5 8 0;
