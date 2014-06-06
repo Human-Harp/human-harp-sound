@@ -1,0 +1,16 @@
+#N canvas 10 22 473 217 10;
+#X obj 90 155 throw~ LEFT;
+#X obj 90 127 *~;
+#X obj 213 127 *~;
+#X obj 213 155 throw~ RIGHT;
+#X obj 228 101 line~;
+#X obj 228 77 inlet;
+#X obj 90 19 catch~ track-\$1-LEFT-OUT;
+#X obj 213 42 catch~ track-\$1-RIGHT-OUT;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 4 0 2 1;
+#X connect 4 0 1 1;
+#X connect 5 0 4 0;
+#X connect 6 0 1 0;
+#X connect 7 0 2 0;
