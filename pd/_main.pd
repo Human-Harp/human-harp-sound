@@ -631,13 +631,13 @@ env1r 0 \, env1s 1 \, env1d 0 \, env1a 0 \,;
 #X obj 73 469 vsl 15 60 0 30 0 0 empty \$0-velocity empty 0 -9 0 10
 -261682 -1 -1 0 1;
 #X obj 73 529 vsl 15 60 -30 0 0 0 empty \$0-velocity empty 0 -9 0 10
--262130 -1 -1 5900 1;
+-262130 -1 -1 0 1;
 #X text 92 461 30;
 #X text 92 583 -30;
 #X text 92 522 0;
 #X text 58 442 Velocity;
 #X obj 148 469 vsl 15 120 0 70 0 0 empty \$0-rotations empty 0 -9 0
-10 -204786 -1 -1 2296 1;
+10 -204786 -1 -1 0 1;
 #X text 129 442 Rotations;
 #X obj 203 467 yank-out \$0 1 4;
 #X obj 203 487 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -680,7 +680,7 @@ env1r 0 \, env1s 1 \, env1d 0 \, env1a 0 \,;
 #X obj 610 311 sel 0;
 #X obj 637 355 s \$0-section-boundary;
 #X obj 402 466 nbx 3 30 -1e+37 1e+37 0 0 empty \$0-section empty 0
--8 0 20 -232576 -1 -1 1 256;
+-8 0 20 -232576 -1 -1 0 256;
 #X text 401 446 Section;
 #X obj 486 466 bng 45 250 50 0 empty \$0-section-boundary empty 17
 7 0 10 -262144 -1 -1;
@@ -696,72 +696,6 @@ env1r 0 \, env1s 1 \, env1d 0 \, env1a 0 \,;
 #X obj 770 521 section-display \$0 8;
 #X obj 816 521 section-display \$0 9;
 #X obj 862 521 section-display \$0 10;
-#N canvas 497 22 478 612 fakeHarp 0;
-#X obj 29 71 vsl 15 400 0 70 0 0 empty empty empty 0 -9 0 10 -232576
--159808 -1 7700 1;
-#X obj 29 502 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 13.5088 256;
-#N canvas 85 38 956 616 sendyStuff 0;
-#X obj 28 145 list prepend send /outputs/rotations;
-#X obj 28 168 list trim;
-#X obj 266 442 sendOSC 9001;
-#X msg 416 410 connect 127.0.0.1 9001;
-#X obj 70 48 inlet;
-#X obj 218 50 inlet;
-#X obj 160 221 list trim;
-#X obj 160 198 list prepend send /outputs/angle1;
-#X obj 339 162 list trim;
-#X obj 339 139 list prepend send /outputs/angle2;
-#X obj 356 48 inlet;
-#X obj 524 231 list trim;
-#X obj 524 208 list prepend send /outputs/hall1;
-#X obj 587 300 list trim;
-#X obj 639 267 list prepend send /outputs/hall2;
-#X obj 643 48 inlet;
-#X obj 746 69 inlet;
-#X connect 0 0 1 0;
-#X connect 1 0 2 0;
-#X connect 3 0 2 0;
-#X connect 4 0 0 0;
-#X connect 5 0 7 0;
-#X connect 6 0 2 0;
-#X connect 7 0 6 0;
-#X connect 8 0 2 0;
-#X connect 9 0 8 0;
-#X connect 10 0 9 0;
-#X connect 11 0 2 0;
-#X connect 12 0 11 0;
-#X connect 13 0 2 0;
-#X connect 14 0 13 0;
-#X connect 15 0 12 0;
-#X connect 16 0 14 0;
-#X restore 76 549 pd sendyStuff;
-#X obj 113 166 vsl 15 128 3 15 0 0 empty empty empty 0 -9 0 10 -204800
--1 -1 12700 1;
-#X obj 113 315 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 15 256;
-#X obj 203 166 vsl 15 128 3 15 0 0 empty empty empty 0 -9 0 10 -204800
--1 -1 12700 1;
-#X obj 203 315 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 15 256;
-#X text 15 43 Rotations;
-#X text 96 139 Angle 1;
-#X text 188 137 Angle 2;
-#X obj 280 342 tgl 50 0 empty empty empty 17 7 0 10 -204786 -1 -1 0
-1;
-#X obj 344 342 tgl 50 0 empty empty empty 17 7 0 10 -261682 -1 -1 0
-1;
-#X text 281 311 Hall 1;
-#X text 345 311 Hall 2;
-#X connect 0 0 1 0;
-#X connect 1 0 2 0;
-#X connect 3 0 4 0;
-#X connect 4 0 2 1;
-#X connect 5 0 6 0;
-#X connect 6 0 2 2;
-#X connect 10 0 2 3;
-#X connect 11 0 2 4;
-#X restore 987 103 pd fakeHarp;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 8 0;
