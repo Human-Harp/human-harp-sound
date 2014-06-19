@@ -1,0 +1,18 @@
+#N canvas 0 22 217 251 10;
+#X obj 60 137 change;
+#X obj 60 159 sel 1;
+#X obj 60 27 r \$1-velocity;
+#X obj 68 181 s \$1-yank-out-\$2;
+#X obj 60 203 outlet;
+#X obj 75 49 loadbang;
+#X obj 75 93 * -1;
+#X obj 75 71 \$3;
+#X obj 60 115 <;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 1 0 4 0;
+#X connect 2 0 8 0;
+#X connect 5 0 7 0;
+#X connect 6 0 8 1;
+#X connect 7 0 6 0;
+#X connect 8 0 0 0;
