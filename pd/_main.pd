@@ -1,4 +1,4 @@
-#N canvas 458 167 466 529 10;
+#N canvas 78 22 466 529 10;
 #X declare -path abs;
 #X declare -path audio;
 #X declare -path libs/oscx;
@@ -608,7 +608,7 @@ env1r 0 \, env1s 1 \, env1d 0 \, env1a 0 \,;
 #X connect 9 0 11 0;
 #X connect 10 0 9 0;
 #X restore 34 229 pd synths;
-#N canvas 251 59 1151 645 harp-data 1;
+#N canvas 39 22 1151 645 harp-data 1;
 #X obj 42 36 dumpOSC 9001;
 #X obj 42 58 OSCroute /outputs;
 #X obj 42 80 OSCroute /angle1 /angle2 /hall1 /hall2 /rotations /id
@@ -631,7 +631,7 @@ env1r 0 \, env1s 1 \, env1d 0 \, env1a 0 \,;
 #X obj 73 469 vsl 15 60 0 30 0 0 empty \$0-velocity empty 0 -9 0 10
 -261682 -1 -1 0 1;
 #X obj 73 529 vsl 15 60 -30 0 0 0 empty \$0-velocity empty 0 -9 0 10
--262130 -1 -1 5900 1;
+-262130 -1 -1 0 1;
 #X text 92 461 30;
 #X text 92 583 -30;
 #X text 92 522 0;
@@ -674,7 +674,7 @@ env1r 0 \, env1s 1 \, env1d 0 \, env1a 0 \,;
 #X msg 631 161 70;
 #X obj 631 183 /;
 #X obj 631 103 hradio 30 1 0 10 empty empty empty 0 -8 0 10 -262144
--1 -1 9;
+-1 -1 0;
 #X obj 610 289 r \$0-section;
 #X obj 637 333 change;
 #X obj 610 311 sel 0;
