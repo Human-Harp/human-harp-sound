@@ -1,8 +1,8 @@
 #N canvas 0 22 591 520 10;
-#X obj 100 100 tgl 45 0 empty empty empty 17 7 0 10 -232576 -1 -1 1
+#X obj 100 100 tgl 45 0 empty empty empty 17 7 0 10 -232576 -1 -1 0
 1;
-#X obj 100 56 r \$1-section;
 #X obj 100 78 == \$2;
-#X connect 1 0 2 0;
-#X connect 2 0 0 0;
+#X obj 100 56 r \$1-section;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
 #X coords 0 -1 1 1 45 45 2 100 100;
