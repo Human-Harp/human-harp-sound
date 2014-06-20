@@ -53,6 +53,7 @@ License along with this program. If not \, see <http://www.gnu.org/licenses/>.
 #X obj 500 509 pack f f;
 #X msg 500 532 \; \$2-samples \$1 \;;
 #X obj 254 458 v \$1-tableSize-v;
+#X obj 244 478 s \$1-tableSize;
 #X connect 1 0 6 0;
 #X connect 2 0 21 0;
 #X connect 2 0 32 0;
@@ -69,6 +70,7 @@ License along with this program. If not \, see <http://www.gnu.org/licenses/>.
 #X connect 14 0 10 0;
 #X connect 14 1 29 2;
 #X connect 14 1 37 0;
+#X connect 14 1 38 0;
 #X connect 16 0 6 0;
 #X connect 17 0 1 0;
 #X connect 18 0 2 0;

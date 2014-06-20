@@ -1,0 +1,264 @@
+#N canvas 45 38 722 654 10;
+#X obj 72 323 pow 2;
+#X obj 99 300 / 12;
+#X msg 72 300 2;
+#X obj 72 278 t b f;
+#X msg 72 257 \$1;
+#X obj 72 509 t b b;
+#X obj 99 530 random 12;
+#X obj 72 486 t b a;
+#X obj 72 124 change;
+#X msg 72 594 \; \$1-\$2-poke \$3 \$4 \$5 \$6 \$7 \;;
+#X obj 72 573 pack \$1 f f f f f f;
+#X obj 109 551 unpack f f f f f;
+#X obj 72 102 r \$1-3-section;
+#X obj 72 146 notes 7 0 0 2 3 5 7 9 10;
+#X obj 213 16 r \$1-root-note;
+#X msg 213 38 base-note \$1;
+#X msg 223 88 intervals \$1;
+#X obj 223 66 r \$1-intervals;
+#X obj 233 116 r \$1-note-count;
+#X msg 233 138 note-count \$1;
+#X obj 313 235 nbx 5 14 0 1e+37 0 0 empty empty empty 0 -8 0 10 -262144
+-1 -1 0 256;
+#X text 370 234 Attack;
+#X obj 313 252 nbx 5 14 0 1e+37 0 0 empty empty empty 0 -8 0 10 -262144
+-1 -1 0 256;
+#X obj 313 269 nbx 5 14 0 1e+37 0 0 empty empty empty 0 -8 0 10 -262144
+-1 -1 0 256;
+#X text 370 251 Hold;
+#X text 370 268 Release;
+#X obj 313 291 nbx 5 14 0 1e+37 0 0 empty empty empty 0 -8 0 10 -262144
+-1 -1 0 256;
+#X text 370 290 Gain;
+#X obj 72 435 pack f 100 50 200 0.2;
+#X msg 72 463 \$2 \$3 \$4 \$1 \$4;
+#X obj 313 205 nbx 5 14 -10 10 0 0 empty empty empty 0 -8 0 10 -262144
+-1 -1 0 256;
+#X text 370 204 Octave;
+#X obj 72 228 +;
+#X obj 87 206 * 12;
+#X obj 87 183 r \$0-octave;
+#X obj 102 344 r \$0-attack;
+#X obj 133 364 r \$0-hold;
+#X obj 164 384 r \$0-release;
+#X obj 195 404 r \$0-gain;
+#X obj 450 88 r \$0-gui;
+#X floatatom 207 432 5 0 0 0 - - -, f 5;
+#X obj 452 30 u_loader 4T-poke \$0;
+#X obj 340 130 s RJ_SCENE_SAVE;
+#X msg 340 104 save;
+#X obj 340 61 bng 32 250 50 0 empty empty empty 17 7 0 10 -4034 -1
+-1;
+#X obj 489 410 r RJ_SCENE;
+#X msg 489 513 4T-poke octave -1 \, 4T-poke release -7 \, 4T-poke hold
+7 \, 4T-poke attack -5 \, s_ejun-4083-TAG mod3d 0.00787402 \, s_ejun-4083-TAG
+mod3c 0.015748 \, s_ejun-4083-TAG mod3b 0.401575 \, s_ejun-4083-TAG
+mod3a 0.015748 \, s_ejun-4083-TAG mod2d 0.740157 \, s_ejun-4083-TAG
+mod2c 0.015748 \, s_ejun-4083-TAG mod2b 0.0314961 \, s_ejun-4083-TAG
+mod2a 0.0393701 \, s_ejun-4083-TAG mod1d 0 \, s_ejun-4083-TAG mod1c
+0.102362 \, s_ejun-4083-TAG mod1b 0.322835 \, s_ejun-4083-TAG mod1a
+0.496063 \, s_ejun-4083-TAG osc3d 0.023622 \, s_ejun-4083-TAG osc3c
+0.00787402 \, s_ejun-4083-TAG osc3b 0.015748 \, s_ejun-4083-TAG osc3a
+0.238189 \, s_ejun-4083-TAG osc2d 0 \, s_ejun-4083-TAG osc2c 0 \, s_ejun-4083-TAG
+osc2b 0.0866142 \, s_ejun-4083-TAG osc2a 0.747717 \, s_ejun-4083-TAG
+osc1d 0.574803 \, s_ejun-4083-TAG osc1c 0.181102 \, s_ejun-4083-TAG
+osc1b 0.80315 \, s_ejun-4083-TAG osc1a 0.913386 \, s_ejun-4083-TAG
+env3r 0.110236 \, s_ejun-4083-TAG env3s 0.0314961 \, s_ejun-4083-TAG
+env3d 0.606299 \, s_ejun-4083-TAG env3a 0.307087 \, s_ejun-4083-TAG
+env2r 0.322835 \, s_ejun-4083-TAG env2s 0.692913 \, s_ejun-4083-TAG
+env2d 0.278189 \, s_ejun-4083-TAG env2a 0.173228 \, s_ejun-4083-TAG
+env1r 0.0356693 \, s_ejun-4083-TAG env1s 0.472441 \, s_ejun-4083-TAG
+env1d 0.23622 \, s_ejun-4083-TAG env1a 0.133858 \, s_ejun-4083-TAG
+mod3d 0.00787402 \, s_ejun-4083-TAG mod3c 0.015748 \, s_ejun-4083-TAG
+mod3b 0.401575 \, s_ejun-4083-TAG mod3a 0.015748 \, s_ejun-4083-TAG
+mod2d 0.740157 \, s_ejun-4083-TAG mod2c 0.015748 \, s_ejun-4083-TAG
+mod2b 0.0314961 \, s_ejun-4083-TAG mod2a 0.0393701 \, s_ejun-4083-TAG
+mod1d 0 \, s_ejun-4083-TAG mod1c 0.102362 \, s_ejun-4083-TAG mod1b
+0.322835 \, s_ejun-4083-TAG mod1a 0.496063 \, s_ejun-4083-TAG osc3d
+0.023622 \, s_ejun-4083-TAG osc3c 0.00787402 \, s_ejun-4083-TAG osc3b
+0.015748 \, s_ejun-4083-TAG osc3a 0.238189 \, s_ejun-4083-TAG osc2d
+0 \, s_ejun-4083-TAG osc2c 0 \, s_ejun-4083-TAG osc2b 0.0866142 \,
+s_ejun-4083-TAG osc2a 0.747717 \, s_ejun-4083-TAG osc1d 0.574803 \,
+s_ejun-4083-TAG osc1c 0.181102 \, s_ejun-4083-TAG osc1b 0.80315 \,
+s_ejun-4083-TAG osc1a 0.913386 \, s_ejun-4083-TAG env3r 0.110236 \,
+s_ejun-4083-TAG env3s 0.0314961 \, s_ejun-4083-TAG env3d 0.606299 \,
+s_ejun-4083-TAG env3a 0.307087 \, s_ejun-4083-TAG env2r 0.322835 \,
+s_ejun-4083-TAG env2s 0.692913 \, s_ejun-4083-TAG env2d 0.278189 \,
+s_ejun-4083-TAG env2a 0.173228 \, s_ejun-4083-TAG env1r 0.0356693 \,
+s_ejun-4083-TAG env1s 0.472441 \, s_ejun-4083-TAG env1d 0.23622 \,
+s_ejun-4083-TAG env1a 0.133858 \, e_platereverb-\\\$1 dry 0.9 \, e_platereverb-\\\$1
+decay_diffusion2 0.84 \, e_platereverb-\\\$1 decay_diffusion1 0.889
+\, e_platereverb-\\\$1 input_diffusion2 0.779 \, e_platereverb-\\\$1
+excursion 0.53761 \, e_platereverb-\\\$1 input_diffusion1 0.685 \,
+e_platereverb-\\\$1 decay 0.99 \, e_platereverb-\\\$1 damping 4637
+\, e_platereverb-\\\$1 bandwidth 10000 \, e_platereverb-\\\$1 predelay
+10 \, e_platereverb-\\\$1 dry 0.9 \, e_platereverb-\\\$1 decay_diffusion2
+0.84 \, e_platereverb-\\\$1 decay_diffusion1 0.889 \, e_platereverb-\\\$1
+input_diffusion2 0.779 \, e_platereverb-\\\$1 excursion 0.53761 \,
+e_platereverb-\\\$1 input_diffusion1 0.685 \, e_platereverb-\\\$1 decay
+0.99 \, e_platereverb-\\\$1 damping 4637 \, e_platereverb-\\\$1 bandwidth
+10000 \, e_platereverb-\\\$1 predelay 10 \, s_ejun-\\\$1 mod3d 0.00787402
+\, s_ejun-\\\$1 mod3c 0.015748 \, s_ejun-\\\$1 mod3b 0.141732 \, s_ejun-\\\$1
+mod3a 0.0708661 \, s_ejun-\\\$1 mod2d 0.291339 \, s_ejun-\\\$1 mod2c
+0 \, s_ejun-\\\$1 mod2b 0.0708661 \, s_ejun-\\\$1 mod2a 0.511811 \,
+s_ejun-\\\$1 mod1d 0.0944882 \, s_ejun-\\\$1 mod1c 0.19685 \, s_ejun-\\\$1
+mod1b 0 \, s_ejun-\\\$1 mod1a 0.622047 \, s_ejun-\\\$1 osc3d 0.023622
+\, s_ejun-\\\$1 osc3c 0.00787402 \, s_ejun-\\\$1 osc3b 0.015748 \,
+s_ejun-\\\$1 osc3a 0.669291 \, s_ejun-\\\$1 osc2d 0.401575 \, s_ejun-\\\$1
+osc2c 0.244094 \, s_ejun-\\\$1 osc2b 0.330709 \, s_ejun-\\\$1 osc2a
+0.501102 \, s_ejun-\\\$1 osc1d 0.574803 \, s_ejun-\\\$1 osc1c 0.181102
+\, s_ejun-\\\$1 osc1b 0.393701 \, s_ejun-\\\$1 osc1a 1 \, s_ejun-\\\$1
+env3r 0.00787402 \, s_ejun-\\\$1 env3s 0.409449 \, s_ejun-\\\$1 env3d
+0.110236 \, s_ejun-\\\$1 env3a 0.000629921 \, s_ejun-\\\$1 env2r 0
+\, s_ejun-\\\$1 env2s 1 \, s_ejun-\\\$1 env2d 0 \, s_ejun-\\\$1 env2a
+0 \, s_ejun-\\\$1 env1r 0 \, s_ejun-\\\$1 env1s 1 \, s_ejun-\\\$1 env1d
+0 \, s_ejun-\\\$1 env1a 0 \, e_tremolo-\\\$1 phase 0 \, e_tremolo-\\\$1
+shape 0 \, e_tremolo-\\\$1 depth 1 \, e_tremolo-\\\$1 freq 5 \, s_osc-1923-square-2
+square 1 \, s_osc-1923-square-2 square 1 \, s_osc-1923-square-1 square
+1 \, s_osc-1840-square-2 square 1 \, s_osc-1840-square-2 square 1 \,
+s_osc-1840-square-1 square 1 \, 4T-poke gain 15 \, 4T-poke octave -8
+\, 4T-poke release 6 \, 4T-poke hold 3 \, 4T-poke attack -11 \, s_ejun-4083-TAG
+mod3d 0.00787402 \, s_ejun-4083-TAG mod3c 0.015748 \, s_ejun-4083-TAG
+mod3b 0.401575 \, s_ejun-4083-TAG mod3a 0.015748 \, s_ejun-4083-TAG
+mod2d 0.740157 \, s_ejun-4083-TAG mod2c 0.015748 \, s_ejun-4083-TAG
+mod2b 0.0314961 \, s_ejun-4083-TAG mod2a 0.0393701 \, s_ejun-4083-TAG
+mod1d 0 \, s_ejun-4083-TAG mod1c 0.102362 \, s_ejun-4083-TAG mod1b
+0.322835 \, s_ejun-4083-TAG mod1a 0.496063 \, s_ejun-4083-TAG osc3d
+0.023622 \, s_ejun-4083-TAG osc3c 0.00787402 \, s_ejun-4083-TAG osc3b
+0.015748 \, s_ejun-4083-TAG osc3a 0.238189 \, s_ejun-4083-TAG osc2d
+0 \, s_ejun-4083-TAG osc2c 0 \, s_ejun-4083-TAG osc2b 0.0866142 \,
+s_ejun-4083-TAG osc2a 0.747717 \, s_ejun-4083-TAG osc1d 0.574803 \,
+s_ejun-4083-TAG osc1c 0.181102 \, s_ejun-4083-TAG osc1b 0.80315 \,
+s_ejun-4083-TAG osc1a 0.913386 \, s_ejun-4083-TAG env3r 0.110236 \,
+s_ejun-4083-TAG env3s 0.0314961 \, s_ejun-4083-TAG env3d 0.606299 \,
+s_ejun-4083-TAG env3a 0.307087 \, s_ejun-4083-TAG env2r 0.322835 \,
+s_ejun-4083-TAG env2s 0.692913 \, s_ejun-4083-TAG env2d 0.278189 \,
+s_ejun-4083-TAG env2a 0.173228 \, s_ejun-4083-TAG env1r 0.0356693 \,
+s_ejun-4083-TAG env1s 0.472441 \, s_ejun-4083-TAG env1d 0.23622 \,
+s_ejun-4083-TAG env1a 0.133858 \, s_ejun-4083-TAG mod3d 0.00787402
+\, s_ejun-4083-TAG mod3c 0.015748 \, s_ejun-4083-TAG mod3b 0.401575
+\, s_ejun-4083-TAG mod3a 0.015748 \, s_ejun-4083-TAG mod2d 0.740157
+\, s_ejun-4083-TAG mod2c 0.015748 \, s_ejun-4083-TAG mod2b 0.0314961
+\, s_ejun-4083-TAG mod2a 0.0393701 \, s_ejun-4083-TAG mod1d 0 \, s_ejun-4083-TAG
+mod1c 0.102362 \, s_ejun-4083-TAG mod1b 0.322835 \, s_ejun-4083-TAG
+mod1a 0.496063 \, s_ejun-4083-TAG osc3d 0.023622 \, s_ejun-4083-TAG
+osc3c 0.00787402 \, s_ejun-4083-TAG osc3b 0.015748 \, s_ejun-4083-TAG
+osc3a 0.238189 \, s_ejun-4083-TAG osc2d 0 \, s_ejun-4083-TAG osc2c
+0 \, s_ejun-4083-TAG osc2b 0.0866142 \, s_ejun-4083-TAG osc2a 0.747717
+\, s_ejun-4083-TAG osc1d 0.574803 \, s_ejun-4083-TAG osc1c 0.181102
+\, s_ejun-4083-TAG osc1b 0.80315 \, s_ejun-4083-TAG osc1a 0.913386
+\, s_ejun-4083-TAG env3r 0.110236 \, s_ejun-4083-TAG env3s 0.0314961
+\, s_ejun-4083-TAG env3d 0.606299 \, s_ejun-4083-TAG env3a 0.307087
+\, s_ejun-4083-TAG env2r 0.322835 \, s_ejun-4083-TAG env2s 0.692913
+\, s_ejun-4083-TAG env2d 0.278189 \, s_ejun-4083-TAG env2a 0.173228
+\, s_ejun-4083-TAG env1r 0.0356693 \, s_ejun-4083-TAG env1s 0.472441
+\, s_ejun-4083-TAG env1d 0.23622 \, s_ejun-4083-TAG env1a 0.133858
+\, e_platereverb-\\\$1 dry 0.9 \, e_platereverb-\\\$1 decay_diffusion2
+0.84 \, e_platereverb-\\\$1 decay_diffusion1 0.889 \, e_platereverb-\\\$1
+input_diffusion2 0.779 \, e_platereverb-\\\$1 excursion 0.53761 \,
+e_platereverb-\\\$1 input_diffusion1 0.685 \, e_platereverb-\\\$1 decay
+0.99 \, e_platereverb-\\\$1 damping 4637 \, e_platereverb-\\\$1 bandwidth
+10000 \, e_platereverb-\\\$1 predelay 10 \, e_platereverb-\\\$1 dry
+0.9 \, e_platereverb-\\\$1 decay_diffusion2 0.84 \, e_platereverb-\\\$1
+decay_diffusion1 0.889 \, e_platereverb-\\\$1 input_diffusion2 0.779
+\, e_platereverb-\\\$1 excursion 0.53761 \, e_platereverb-\\\$1 input_diffusion1
+0.685 \, e_platereverb-\\\$1 decay 0.99 \, e_platereverb-\\\$1 damping
+4637 \, e_platereverb-\\\$1 bandwidth 10000 \, e_platereverb-\\\$1
+predelay 10 \, s_ejun-\\\$1 mod3d 0.00787402 \, s_ejun-\\\$1 mod3c
+0.015748 \, s_ejun-\\\$1 mod3b 0.141732 \, s_ejun-\\\$1 mod3a 0.0708661
+\, s_ejun-\\\$1 mod2d 0.291339 \, s_ejun-\\\$1 mod2c 0 \, s_ejun-\\\$1
+mod2b 0.0708661 \, s_ejun-\\\$1 mod2a 0.511811 \, s_ejun-\\\$1 mod1d
+0.0944882 \, s_ejun-\\\$1 mod1c 0.19685 \, s_ejun-\\\$1 mod1b 0 \,
+s_ejun-\\\$1 mod1a 0.622047 \, s_ejun-\\\$1 osc3d 0.023622 \, s_ejun-\\\$1
+osc3c 0.00787402 \, s_ejun-\\\$1 osc3b 0.015748 \, s_ejun-\\\$1 osc3a
+0.669291 \, s_ejun-\\\$1 osc2d 0.401575 \, s_ejun-\\\$1 osc2c 0.244094
+\, s_ejun-\\\$1 osc2b 0.330709 \, s_ejun-\\\$1 osc2a 0.501102 \, s_ejun-\\\$1
+osc1d 0.574803 \, s_ejun-\\\$1 osc1c 0.181102 \, s_ejun-\\\$1 osc1b
+0.393701 \, s_ejun-\\\$1 osc1a 1 \, s_ejun-\\\$1 env3r 0.00787402 \,
+s_ejun-\\\$1 env3s 0.409449 \, s_ejun-\\\$1 env3d 0.110236 \, s_ejun-\\\$1
+env3a 0.000629921 \, s_ejun-\\\$1 env2r 0 \, s_ejun-\\\$1 env2s 1 \,
+s_ejun-\\\$1 env2d 0 \, s_ejun-\\\$1 env2a 0 \, s_ejun-\\\$1 env1r
+0 \, s_ejun-\\\$1 env1s 1 \, s_ejun-\\\$1 env1d 0 \, s_ejun-\\\$1 env1a
+0 \, e_tremolo-\\\$1 phase 0 \, e_tremolo-\\\$1 shape 0 \, e_tremolo-\\\$1
+depth 1 \, e_tremolo-\\\$1 freq 5 \, s_osc-1923-square-2 square 1 \,
+s_osc-1923-square-2 square 1 \, s_osc-1923-square-1 square 1 \, s_osc-1840-square-2
+square 1 \, s_osc-1840-square-2 square 1 \, s_osc-1840-square-1 square
+1 \,;
+#X msg 573 440 clear;
+#X obj 489 537 s RJ_SCENE_LOAD;
+#X obj 489 440 u_cocollect;
+#X obj 512 66 r RJ_SCENE_LOAD;
+#X obj 512 88 route 4T-poke;
+#X obj 450 141 g_nbx attack;
+#X obj 450 171 g_nbx hold;
+#X obj 450 201 g_nbx release;
+#X obj 450 231 g_nbx gain;
+#X obj 450 110 g_nbx octave;
+#X obj 450 281 u_dispatch \$0 attack;
+#X obj 450 301 u_dispatch \$0 hold;
+#X obj 450 321 u_dispatch \$0 release;
+#X obj 450 261 u_dispatch \$0 octave;
+#X obj 450 341 u_dispatch \$0 gain;
+#X floatatom 126 212 5 0 0 0 - - -, f 5;
+#X floatatom 157 320 5 0 0 0 - - -, f 5;
+#X floatatom 185 343 5 0 0 0 - - -, f 5;
+#X floatatom 208 361 5 0 0 0 - - -, f 5;
+#X connect 0 0 28 0;
+#X connect 1 0 0 1;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;
+#X connect 3 1 1 0;
+#X connect 4 0 3 0;
+#X connect 5 0 10 0;
+#X connect 5 1 6 0;
+#X connect 6 0 10 1;
+#X connect 7 0 5 0;
+#X connect 7 1 11 0;
+#X connect 8 0 13 0;
+#X connect 10 0 9 0;
+#X connect 11 0 10 2;
+#X connect 11 1 10 3;
+#X connect 11 2 10 4;
+#X connect 11 3 10 5;
+#X connect 11 4 10 6;
+#X connect 12 0 8 0;
+#X connect 13 0 32 0;
+#X connect 14 0 15 0;
+#X connect 15 0 13 1;
+#X connect 16 0 13 1;
+#X connect 17 0 16 0;
+#X connect 18 0 19 0;
+#X connect 19 0 13 1;
+#X connect 28 0 29 0;
+#X connect 29 0 7 0;
+#X connect 32 0 4 0;
+#X connect 33 0 32 1;
+#X connect 34 0 33 0;
+#X connect 34 0 62 0;
+#X connect 35 0 28 1;
+#X connect 35 0 63 0;
+#X connect 36 0 28 2;
+#X connect 36 0 64 0;
+#X connect 37 0 28 3;
+#X connect 37 0 65 0;
+#X connect 38 0 28 4;
+#X connect 38 0 40 0;
+#X connect 39 0 56 0;
+#X connect 43 0 42 0;
+#X connect 44 0 43 0;
+#X connect 45 0 49 0;
+#X connect 46 0 48 0;
+#X connect 47 0 49 1;
+#X connect 49 0 46 0;
+#X connect 50 0 51 0;
+#X connect 51 0 56 0;
+#X connect 52 0 53 0;
+#X connect 53 0 54 0;
+#X connect 54 0 55 0;
+#X connect 55 0 60 0;
+#X connect 56 0 52 0;
+#X connect 57 0 58 0;
+#X connect 58 0 59 0;
+#X connect 59 0 61 0;
+#X connect 60 0 57 0;
