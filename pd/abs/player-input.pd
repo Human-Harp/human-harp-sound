@@ -1,4 +1,4 @@
-#N canvas 450 95 1044 677 10;
+#N canvas 460 137 1044 677 10;
 #X obj 42 58 OSCroute /outputs;
 #X obj 42 80 OSCroute /angle1 /angle2 /hall1 /hall2 /rotations /id
 ;
@@ -13,13 +13,13 @@
 #X obj 73 469 vsl 15 60 0 30 0 0 empty empty empty 0 -9 0 10 -261682
 -1 -1 0 1;
 #X obj 73 529 vsl 15 60 -30 0 0 0 empty empty empty 0 -9 0 10 -262130
--1 -1 0 1;
+-1 -1 5900 1;
 #X text 92 461 30;
 #X text 92 583 -30;
 #X text 92 522 0;
 #X text 58 442 Velocity;
 #X obj 148 469 vsl 15 120 0 70 0 0 empty empty empty 0 -9 0 10 -204786
--1 -1 0 1;
+-1 -1 9295 1;
 #X text 129 442 Rotations;
 #X obj 203 487 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
@@ -54,7 +54,7 @@
 #X obj 637 333 change;
 #X obj 610 311 sel 0;
 #X obj 402 466 nbx 3 30 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
--232576 -1 -1 0 256;
+-232576 -1 -1 5 256;
 #X text 401 446 Section;
 #X obj 486 466 bng 45 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
@@ -92,8 +92,10 @@
 #X obj 816 521 section-display \$1-\$2 9;
 #X obj 862 521 section-display \$1-\$2 10;
 #X obj 42 37 OSCroute /\$2;
+#X floatatom 58 106 5 0 0 0 - - -, f 5;
 #X connect 0 0 1 0;
 #X connect 1 0 52 0;
+#X connect 1 0 83 0;
 #X connect 1 1 2 0;
 #X connect 1 1 53 0;
 #X connect 1 2 3 0;
