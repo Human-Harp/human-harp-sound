@@ -1,8 +1,6 @@
-#N canvas 134 71 561 782 10;
-#X obj 29 172 vsl 15 400 0 70 0 0 empty empty empty 0 -9 0 10 -232576
--159808 -1 37541 1;
-#X obj 29 603 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 65.8614 256;
+#N canvas 414 160 463 442 10;
+#X obj 143 301 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 8.80503 256;
 #N canvas 339 145 956 616 sendyStuff 0;
 #X obj 28 168 list trim;
 #X obj 70 48 inlet;
@@ -35,24 +33,23 @@
 #X connect 12 0 4 0;
 #X connect 13 0 6 0;
 #X connect 14 0 7 0;
-#X restore 76 650 pd sendyStuff;
-#X obj 113 267 vsl 15 128 3 15 0 0 empty empty empty 0 -9 0 10 -204800
--1 -1 4702 1;
-#X obj 113 416 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 7.44283 256;
-#X obj 203 267 vsl 15 128 3 15 0 0 empty empty empty 0 -9 0 10 -204800
+#X restore 190 348 pd sendyStuff;
+#X obj 200 218 vsl 15 50 3 15 0 0 empty empty empty 0 -9 0 10 -204800
 -1 -1 0 1;
-#X obj 203 416 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#X obj 200 294 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 3 256;
+#X obj 253 218 vsl 15 50 3 15 0 0 empty empty empty 0 -9 0 10 -204800
+-1 -1 0 1;
+#X obj 253 294 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 -262144 -1 -1 0 256;
-#X text 15 144 Rotations;
-#X text 96 240 Angle 1;
-#X text 188 238 Angle 2;
-#X obj 280 443 tgl 50 0 empty empty empty 17 7 0 10 -204786 -1 -1 0
+#X text 200 165 Rotations;
+#X text 201 198 Angle 1;
+#X text 254 199 Angle 2;
+#X obj 330 200 tgl 35 0 empty empty empty 17 7 0 10 -204786 -1 -1 0
 1;
-#X obj 344 443 tgl 50 0 empty empty empty 17 7 0 10 -261682 -1 -1 0
+#X obj 330 236 tgl 35 0 empty empty empty 17 7 0 10 -261682 -1 -1 0
 1;
-#X text 281 412 Hall 1;
-#X text 345 412 Hall 2;
+#X text 288 214 Hall 1;
 #X obj 113 26 r \$2-touchOSC;
 #X obj 113 48 OSCroute /xy\$1;
 #X obj 113 70 unpack f f;
@@ -62,21 +59,31 @@
 #X obj 113 92 * 2;
 #X obj 113 114 - 1;
 #X obj 113 136 abs;
+#X obj 203 181 hsl 160 15 0 70 0 0 empty empty empty -2 -8 0 10 -232576
+-1 -1 2000 1;
+#X floatatom 258 167 5 0 0 0 - - -, f 5;
+#X floatatom 215 257 5 0 0 0 - - -, f 5;
+#X floatatom 268 257 5 0 0 0 - - -, f 5;
+#X text 288 240 Hall 2;
 #X connect 0 0 1 0;
-#X connect 1 0 2 0;
-#X connect 3 0 4 0;
-#X connect 4 0 2 1;
-#X connect 5 0 6 0;
-#X connect 6 0 2 2;
-#X connect 10 0 2 3;
-#X connect 11 0 2 4;
-#X connect 14 0 15 0;
-#X connect 15 0 16 0;
-#X connect 16 0 20 0;
-#X connect 16 1 17 0;
-#X connect 17 0 0 0;
+#X connect 2 0 3 0;
+#X connect 2 0 23 0;
+#X connect 3 0 1 1;
+#X connect 4 0 5 0;
+#X connect 4 0 24 0;
+#X connect 5 0 1 2;
+#X connect 9 0 1 3;
+#X connect 10 0 1 4;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 14 0 18 0;
+#X connect 14 1 15 0;
+#X connect 15 0 21 0;
+#X connect 16 0 17 0;
+#X connect 17 0 2 0;
 #X connect 18 0 19 0;
-#X connect 19 0 3 0;
-#X connect 20 0 21 0;
+#X connect 19 0 20 0;
+#X connect 20 0 16 0;
+#X connect 21 0 0 0;
 #X connect 21 0 22 0;
-#X connect 22 0 18 0;
+#X coords 0 -1 1 1 165 121 1 200 150;
