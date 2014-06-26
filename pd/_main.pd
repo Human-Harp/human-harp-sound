@@ -1,19 +1,19 @@
-#N canvas 261 143 1438 893 10;
+#N canvas 526 49 804 573 10;
 #X declare -path abs;
 #X declare -path audio;
 #X declare -path libs/oscx;
 #X declare -path rj;
 #X declare -path abs/4T-Granulator;
-#N canvas 0 22 450 300 io 0;
-#X obj 113 237 dac~;
-#X obj 113 192 *~;
-#X obj 213 192 *~;
-#X obj 228 168 lop~ 10;
-#X obj 228 148 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#N canvas 0 22 297 242 io 0;
+#X obj 58 191 dac~;
+#X obj 58 146 *~;
+#X obj 158 146 *~;
+#X obj 173 122 lop~ 10;
+#X obj 173 102 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 228 125 loadbang;
-#X obj 113 82 catch~ \$0-LEFT;
-#X obj 213 82 catch~ \$0-RIGHT;
+#X obj 173 79 loadbang;
+#X obj 58 36 catch~ \$0-LEFT;
+#X obj 158 36 catch~ \$0-RIGHT;
 #X connect 1 0 0 0;
 #X connect 2 0 0 1;
 #X connect 3 0 2 1;
@@ -22,1270 +22,45 @@
 #X connect 5 0 4 0;
 #X connect 6 0 1 0;
 #X connect 7 0 2 0;
-#X restore 33 38 pd io;
+#X restore 18 49 pd io;
 #N canvas 0 22 450 300 timebase 0;
 #X obj 106 52 loadbang;
 #X obj 106 75 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 106 97 metro 250;
 #X obj 106 119 f;
 #X obj 136 119 + 1;
 #X obj 106 141 s \$0-tick;
+#X obj 106 97 metro 50;
 #X connect 0 0 1 0;
-#X connect 1 0 2 0;
+#X connect 1 0 5 0;
 #X connect 2 0 3 0;
-#X connect 3 0 4 0;
-#X connect 3 0 5 0;
-#X connect 4 0 3 1;
-#X restore 33 58 pd timebase;
-#N canvas 0 22 450 300 init 0;
+#X connect 2 0 4 0;
+#X connect 3 0 2 1;
+#X connect 5 0 2 0;
+#X restore 18 69 pd timebase;
+#N canvas 0 22 336 172 init 0;
 #X obj 62 56 declare -path abs;
 #X obj 62 96 declare -path audio;
 #X obj 62 36 declare -path libs/oscx;
 #X obj 62 116 declare -path rj;
 #X obj 62 76 declare -path abs/4T-Granulator;
-#X restore 33 18 pd init;
-#N canvas 433 194 1033 596 synths 0;
-#X obj 38 61 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
-#X obj 63 20 r \$1-super-saw-vol;
-#N canvas 254 22 676 804 super-saw-vol 0;
-#X obj 39 770 dac~;
-#X obj 39 748 *~;
-#X obj 54 724 line~;
-#X obj 54 680 inlet;
-#X obj 39 573 pack f 127;
-#X obj 39 493 f;
-#X obj 39 515 +;
-#X obj 119 573 pack f 127;
-#X obj 119 545 + 11.8;
-#X obj 257 421 t b b;
-#X msg 215 398 0;
-#X msg 284 443 12;
-#X obj 257 399 del 26.78;
-#X obj 196 374 t b b b;
-#X obj 39 29 r \$1-bass-note;
-#X obj 196 340 spigot;
-#X obj 39 600 super-saw;
-#X obj 84 355 - 12;
-#X msg 39 405 \$1;
-#X obj 39 355 t a a;
-#X msg 84 401 \$1 1000;
-#X obj 84 331 spigot;
-#X obj 39 262 t f f b;
-#X obj 117 311 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 84 288 spigot;
-#X obj 117 230 random 2;
-#X obj 229 315 r \$1-super-saw-arp;
-#X obj 155 702 delwrite~ \$1-super-saw-del 1000;
-#X obj 109 712 *~ 0.4;
-#X obj 155 724 delread~ \$1-super-saw-del 428.571;
-#X obj 197 517 r generate-track-\$1;
-#X obj 197 539 random 4;
-#X obj 197 561 sel 0 1 2 3;
-#X msg 197 583 428.571;
-#X msg 213 603 214.286;
-#X obj 197 670 f;
-#X msg 227 623 160.714;
-#X msg 243 643 107.143;
-#X obj 373 580 /;
-#X msg 373 548 1;
-#X msg 373 603 freq \$1;
-#X msg 452 597 shape 0;
-#X obj 452 574 loadbang;
-#X msg 407 547 0.107143;
-#X msg 527 596 depth \$1;
-#X floatatom 530 569 5 0 0 0 - - -, f 5;
-#X obj 258 74 mod 64;
-#X obj 119 600 super-saw;
-#X obj 39 631 clip~ -1 1;
-#X obj 258 202 list prepend;
-#X obj 258 224 list trim;
-#X obj 258 246 route 0 1;
-#X obj 258 54 spigot;
-#X obj 39 101 spigot;
-#X obj 72 79 == 0;
-#X obj 72 56 r \$1-super-saw-note-source;
-#X obj 334 19 r \$1-super-saw-note-source;
-#X obj 334 42 == 1;
-#X obj 413 223 r generate-track-\$1;
-#X obj 413 245 random 2;
-#X obj 413 268 s \$1-super-saw-note-source;
-#X obj 339 158 r generate-track-\$1;
-#X obj 339 180 random 2;
-#X obj 258 96 sel 0 32;
-#X obj 84 379 pipe 1000;
-#X obj 39 457 line 64 20;
-#X obj 139 256 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 54 702 * 0.1;
-#X obj 429 206 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X restore 18 29 pd init;
+#X floatatom 294 142 5 0 0 0 - - -, f 5;
+#X obj 388 141 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 282 294 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 39 131 + 12;
-#X obj 374 100 r \$1-super-saw-octave;
-#X obj 258 182 pack f 220;
-#X obj 258 150 +;
-#X obj 39 181 +;
-#X obj 55 156 r \$1-super-saw-octave;
-#X obj 145 287 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 130 191 sel 0 1;
-#X msg 112 210 1;
-#X obj 316 625 e_tremolo2;
-#X msg 258 118 72;
-#X msg 292 118 60;
-#X obj 258 32 r \$0-tick;
-#X obj 196 287 r \$0-tick;
-#X connect 1 0 0 0;
-#X connect 1 0 0 1;
-#X connect 2 0 1 1;
-#X connect 3 0 67 0;
-#X connect 4 0 16 0;
-#X connect 5 0 6 0;
-#X connect 6 0 4 0;
-#X connect 6 0 8 0;
-#X connect 7 0 47 0;
-#X connect 8 0 7 0;
-#X connect 9 0 5 0;
-#X connect 9 1 11 0;
-#X connect 10 0 6 1;
-#X connect 11 0 6 1;
-#X connect 12 0 9 0;
-#X connect 13 0 5 0;
-#X connect 13 1 10 0;
-#X connect 13 2 12 0;
-#X connect 14 0 53 0;
-#X connect 15 0 13 0;
-#X connect 16 0 48 0;
-#X connect 17 0 64 0;
-#X connect 18 0 65 0;
-#X connect 19 0 18 0;
-#X connect 20 0 65 0;
-#X connect 21 0 17 0;
-#X connect 22 0 19 0;
-#X connect 22 1 24 0;
-#X connect 22 2 23 0;
-#X connect 23 0 21 1;
-#X connect 24 0 21 0;
-#X connect 25 0 66 0;
-#X connect 25 0 24 1;
-#X connect 26 0 15 1;
-#X connect 28 0 27 0;
-#X connect 28 0 1 0;
-#X connect 29 0 28 0;
-#X connect 30 0 31 0;
-#X connect 31 0 32 0;
-#X connect 32 0 33 0;
-#X connect 32 1 34 0;
-#X connect 32 2 36 0;
-#X connect 32 3 37 0;
-#X connect 33 0 35 0;
-#X connect 34 0 35 0;
-#X connect 35 0 29 0;
-#X connect 36 0 35 0;
-#X connect 37 0 35 0;
-#X connect 38 0 40 0;
-#X connect 39 0 38 0;
-#X connect 40 0 79 1;
-#X connect 41 0 79 1;
-#X connect 42 0 41 0;
-#X connect 43 0 38 1;
-#X connect 44 0 79 1;
-#X connect 45 0 44 0;
-#X connect 46 0 63 0;
-#X connect 47 0 48 0;
-#X connect 48 0 1 0;
-#X connect 48 0 27 0;
-#X connect 49 0 50 0;
-#X connect 50 0 51 0;
-#X connect 51 0 22 0;
-#X connect 51 1 65 0;
-#X connect 52 0 46 0;
-#X connect 53 0 70 0;
-#X connect 54 0 53 1;
-#X connect 54 0 24 1;
-#X connect 55 0 54 0;
-#X connect 55 0 77 0;
-#X connect 56 0 57 0;
-#X connect 57 0 52 1;
-#X connect 58 0 59 0;
-#X connect 59 0 60 0;
-#X connect 61 0 62 0;
-#X connect 62 0 49 1;
-#X connect 63 0 80 0;
-#X connect 63 1 81 0;
-#X connect 64 0 20 0;
-#X connect 65 0 5 0;
-#X connect 67 0 2 0;
-#X connect 68 0 59 0;
-#X connect 69 0 15 1;
-#X connect 70 0 74 0;
-#X connect 71 0 73 1;
-#X connect 72 0 49 0;
-#X connect 73 0 72 0;
-#X connect 74 0 22 0;
-#X connect 75 0 74 1;
-#X connect 76 0 24 1;
-#X connect 77 0 78 0;
-#X connect 77 1 25 0;
-#X connect 78 0 24 1;
-#X connect 78 0 66 0;
-#X connect 80 0 73 0;
-#X connect 81 0 73 0;
-#X connect 82 0 52 0;
-#X connect 83 0 15 0;
-#X restore 38 109 pd super-saw-vol;
-#X obj 37 160 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
-#X obj 37 136 r \$1-nuclear-lead-vol;
-#N canvas 568 43 627 805 nuclear-lead 0;
-#X obj 38 737 dac~;
-#X obj 38 696 *~;
-#X obj 53 672 line~;
-#X obj 53 648 inlet;
-#X obj 38 557 nuclear-sine;
-#X obj 38 588 smad;
-#X msg 124 640 amount \$1;
-#X msg 191 640 wet \$1;
-#X obj 130 494 loadbang;
-#X msg 399 513 Pitch-Bend \$1;
-#X obj 399 488 line;
-#X msg 484 459 0;
-#X msg 399 459 0 \, -1 400;
-#N canvas 0 22 622 365 zomboy-melody 0;
-#X obj 79 19 r \$1-tick;
-#X obj 79 93 sel 16 24 28 36 40 44 48 52 56;
-#X obj 271 93 sel 16 24 28 36 40 44 48 52 56;
-#X obj 271 70 - 64;
-#X obj 79 62 moses 64;
-#X obj 79 41 mod 128;
-#X obj 271 170 f;
-#X msg 79 145 0;
-#X msg 112 146 -1;
-#X msg 152 146 2;
-#X msg 271 145 0;
-#X msg 341 145 -1;
-#X msg 381 145 2;
-#X msg 303 145 -3;
-#X obj 39 266 f;
-#X connect 0 0 5 0;
-#X connect 1 0 7 0;
-#X connect 1 1 7 0;
-#X connect 1 2 7 0;
-#X connect 1 3 7 0;
-#X connect 1 4 7 0;
-#X connect 1 5 7 0;
-#X connect 1 6 8 0;
-#X connect 1 7 7 0;
-#X connect 1 8 9 0;
-#X connect 2 0 10 0;
-#X connect 2 1 10 0;
-#X connect 2 2 10 0;
-#X connect 2 3 10 0;
-#X connect 2 4 13 0;
-#X connect 2 5 11 0;
-#X connect 2 6 12 0;
-#X connect 2 7 11 0;
-#X connect 2 8 10 0;
-#X connect 3 0 2 0;
-#X connect 4 0 1 0;
-#X connect 4 1 3 0;
-#X connect 5 0 4 0;
-#X connect 6 0 14 0;
-#X connect 7 0 14 0;
-#X connect 8 0 14 0;
-#X connect 9 0 14 0;
-#X connect 10 0 6 0;
-#X connect 11 0 6 0;
-#X connect 12 0 6 0;
-#X connect 13 0 6 0;
-#X restore 447 44 pd zomboy-melody;
-#X obj 38 497 line;
-#X obj 38 475 pack f 0;
-#N canvas 1086 177 416 451 new-sequence 0;
-#X msg 37 18 2 0 0 0 0 1 0 0 1 2 0 0 0 0 0 0;
-#X msg 64 214 set \, adddollar \$1;
-#N canvas 0 22 450 300 new-list 0;
-#X msg 51 79 16;
-#X obj 51 101 until;
-#X msg 51 167 add2 \$1;
-#X msg 89 101 set;
-#X obj 51 58 t b b;
-#X obj 51 35 inlet;
-#X obj 51 192 outlet;
-#X obj 102 122 inlet var;
-#X obj 94 37 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 51 144 u_wrandom;
-#X connect 0 0 1 0;
-#X connect 1 0 9 0;
-#X connect 2 0 6 0;
-#X connect 3 0 6 0;
-#X connect 4 0 0 0;
-#X connect 4 1 3 0;
-#X connect 5 0 4 0;
-#X connect 7 0 9 1;
-#X connect 8 0 4 0;
-#X connect 9 0 2 0;
-#X restore 122 -7 pd new-list;
-#X obj 37 -41 inlet;
-#X obj 37 -18 t b f;
-#X obj 37 262 outlet;
-#X obj 122 -34 inlet;
-#X obj 185 -34 inlet var;
-#X obj 95 -32 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 64 49 mod 32;
-#X msg 37 237 \$15;
-#X obj 64 80 moses 16;
-#X obj 64 103 mod 8;
-#X obj 109 103 mod 8;
-#X obj 64 191 + 1;
-#X obj 109 126 + 8;
-#X obj 197 262 outlet;
-#X msg 197 238 \$16;
-#X obj 197 190 + 1;
-#X msg 197 213 set \, adddollar \$1 \,;
-#X text 235 238 Lookahead;
-#X connect 0 0 10 0;
-#X connect 1 0 10 0;
-#X connect 2 0 0 0;
-#X connect 3 0 4 0;
-#X connect 4 0 0 0;
-#X connect 4 1 9 0;
-#X connect 6 0 2 0;
-#X connect 7 0 2 1;
-#X connect 8 0 2 0;
-#X connect 9 0 11 0;
-#X connect 10 0 5 0;
-#X connect 11 0 12 0;
-#X connect 11 1 13 0;
-#X connect 12 0 14 0;
-#X connect 13 0 15 0;
-#X connect 14 0 1 0;
-#X connect 14 0 18 0;
-#X connect 15 0 14 0;
-#X connect 17 0 16 0;
-#X connect 18 0 19 0;
-#X connect 19 0 17 0;
-#X restore 38 174 pd new-sequence;
-#X msg 154 91 2;
-#X obj 38 54 int;
-#X obj 38 76 change;
-#X obj 38 204 sel 0 1 2;
-#X obj 146 234 spigot;
-#X obj 179 212 mod 2;
-#X obj 38 98 mod 32;
-#X obj 38 400 f;
-#X msg 38 319 bang;
-#X obj 38 530 pack f 127;
-#X msg 130 515 Attack 0 \, Release 20;
-#X msg 184 91 3 1 1;
-#X obj 38 120 moses 4;
-#X obj 134 584 loadbang;
-#X msg 190 605 1;
-#X floatatom 168 559 5 0 0 0 - - -, f 5;
-#X msg 134 606 0.95;
-#X obj 146 40 loadbang;
-#X obj 203 63 r generate-track-\$1;
-#X msg 310 285 base \$1;
-#X msg 373 313 mode \$1;
-#X obj 373 291 r \$1-scale-mode;
-#X obj 87 324 r \$1-bass-note-seq;
-#X obj 151 257 del 285.334;
-#X obj 158 280 del 285.334;
-#X msg 312 513 Vib-Depth \$1;
-#X floatatom 305 473 5 0 0 0 - - -, f 5;
-#X obj 38 444 + 12;
-#X obj 38 32 / 4;
-#X obj 61 249 del 107;
-#X obj 38 422 makenote 127 105;
-#X obj 38 10 r \$1-tick;
-#X obj 38 620 *~ 0.1;
-#X obj 310 239 r \$1-key-centre;
-#X obj 310 262 + 36;
-#X obj 87 366 m_minorscale;
-#X connect 1 0 0 0;
-#X connect 1 0 0 1;
-#X connect 2 0 1 1;
-#X connect 3 0 2 0;
-#X connect 4 0 5 0;
-#X connect 5 0 49 0;
-#X connect 6 0 5 1;
-#X connect 7 0 5 1;
-#X connect 8 0 27 0;
-#X connect 9 0 4 1;
-#X connect 10 0 9 0;
-#X connect 11 0 10 0;
-#X connect 12 0 10 0;
-#X connect 14 0 26 0;
-#X connect 15 0 14 0;
-#X connect 16 0 20 0;
-#X connect 17 0 16 1;
-#X connect 18 0 19 0;
-#X connect 19 0 23 0;
-#X connect 20 0 25 0;
-#X connect 20 1 25 0;
-#X connect 20 1 46 0;
-#X connect 20 2 46 0;
-#X connect 21 0 25 0;
-#X connect 21 0 40 0;
-#X connect 22 0 21 1;
-#X connect 23 0 22 0;
-#X connect 23 0 29 0;
-#X connect 24 0 47 0;
-#X connect 25 0 24 0;
-#X connect 26 0 4 0;
-#X connect 27 0 4 1;
-#X connect 28 0 16 2;
-#X connect 29 1 16 0;
-#X connect 30 0 33 0;
-#X connect 30 0 31 0;
-#X connect 31 0 7 0;
-#X connect 32 0 6 0;
-#X connect 33 0 6 0;
-#X connect 34 0 28 0;
-#X connect 34 0 16 1;
-#X connect 35 0 28 0;
-#X connect 35 0 16 1;
-#X connect 36 0 52 1;
-#X connect 37 0 52 1;
-#X connect 38 0 37 0;
-#X connect 39 0 52 0;
-#X connect 40 0 25 0;
-#X connect 40 0 41 0;
-#X connect 41 0 25 0;
-#X connect 42 0 4 1;
-#X connect 43 0 42 0;
-#X connect 44 0 15 0;
-#X connect 45 0 18 0;
-#X connect 46 0 25 0;
-#X connect 47 0 44 0;
-#X connect 47 1 26 1;
-#X connect 48 0 45 0;
-#X connect 49 0 1 0;
-#X connect 50 0 51 0;
-#X connect 51 0 36 0;
-#X connect 52 0 24 1;
-#X restore 37 208 pd nuclear-lead;
-#X obj 175 160 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
-#X obj 175 136 r \$1-juno-vol;
-#N canvas 255 28 338 531 juno-lead 0;
-#X obj 48 439 *~;
-#X obj 63 415 line~;
-#X obj 63 371 inlet;
-#X obj 48 253 pack f 127;
-#X obj 48 229 + 12;
-#X obj 48 280 s_ejun;
-#N canvas 0 22 586 434 preset 0;
-#X msg 93 99 mod3d 0.00787402 \, mod3c 0.015748 \, mod3b 0.141732 \,
-mod3a 0.0708661 \, mod2d 0.291339 \, mod2c 0 \, mod2b 0.0708661 \,
-mod2a 0.511811 \, mod1d 0.0944882 \, mod1c 0.19685 \, mod1b 0 \, mod1a
-0.622047 \, osc3d 0.023622 \, osc3c 0.00787402 \, osc3b 0.015748 \,
-osc3a 0.669291 \, osc2d 0.401575 \, osc2c 0.244094 \, osc2b 0.330709
-\, osc2a 0.501102 \, osc1d 0.574803 \, osc1c 0.181102 \, osc1b 0.393701
-\, osc1a 1 \, env3r 0.00787402 \, env3s 0.409449 \, env3d 0.110236
-\, env3a 0.000629921 \, env2r 0 \, env2s 1 \, env2d 0 \, env2a 0 \,
-env1r 0 \, env1s 1 \, env1d 0 \, env1a 0 \,;
-#X obj 93 225 outlet;
-#X obj 93 76 loadbang;
-#X connect 0 0 1 0;
-#X connect 2 0 0 0;
-#X restore 120 252 pd preset;
-#X obj 48 44 r \$1-tick;
-#X obj 48 66 mod 64;
-#X obj 48 162 sel 0;
-#X obj 48 207 makenote 127 50;
-#X msg 48 184 53;
-#X obj 48 140 mod 2;
-#X obj 48 108 moses 16;
-#X obj 140 180 line;
-#X obj 48 88 t f f;
-#X obj 140 136 sel 16 24;
-#X msg 170 158 13.4 2000;
-#X msg 140 158 12;
-#X obj 48 343 *~ 1;
-#X obj 63 393 * 1.5;
-#X obj 48 480 dac~;
-#X connect 0 0 21 0;
-#X connect 0 0 21 1;
-#X connect 1 0 0 1;
-#X connect 2 0 20 0;
-#X connect 3 0 5 0;
-#X connect 4 0 3 0;
-#X connect 5 0 19 0;
-#X connect 6 0 5 1;
-#X connect 7 0 8 0;
-#X connect 8 0 15 0;
-#X connect 9 0 11 0;
-#X connect 10 0 4 0;
-#X connect 10 1 3 1;
-#X connect 11 0 10 0;
-#X connect 12 0 9 0;
-#X connect 13 1 12 0;
-#X connect 14 0 4 1;
-#X connect 15 0 13 0;
-#X connect 15 1 16 0;
-#X connect 16 0 18 0;
-#X connect 16 1 17 0;
-#X connect 17 0 14 0;
-#X connect 18 0 14 0;
-#X connect 19 0 0 0;
-#X connect 20 0 1 0;
-#X restore 175 208 pd juno-lead;
-#X obj 77 271 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
-#X obj 77 248 r \$1-air-raid-bass-vol;
-#N canvas 1114 155 734 615 air-raid-bass 0;
-#X obj 51 346 osc~;
-#X obj 51 323 sig~;
-#X obj 51 251 mtof;
-#X msg 138 204 mode harmonic;
-#X obj 109 400 clip~ -1 1;
-#X obj 51 273 pack f 100;
-#X obj 51 295 line;
-#X obj 51 490 *~ 1;
-#X obj 138 181 loadbang;
-#X obj 51 229 m_minorscale 31;
-#X obj 51 430 *~ 1;
-#X obj 51 378 *~ 3;
-#X obj 109 377 *~ 1.8;
-#X obj 201 346 osc~;
-#X obj 259 400 clip~ -1 1;
-#X obj 201 430 *~ 1;
-#X obj 201 378 *~ 3;
-#X obj 259 377 *~ 1.8;
-#X obj 201 326 *~ 1.00001;
-#X obj 284 464 inlet;
-#X obj 201 520 *~;
-#X obj 51 520 *~;
-#X obj 284 508 line~;
-#X obj 284 486 pack f 10;
-#X obj 51 549 throw~ \$0-LEFT;
-#X obj 131 569 throw~ \$0-RIGHT;
-#X obj 51 68 r \$0-rotations;
-#X obj 72 127 notes 5 31 0 3 5 7 10;
-#X connect 0 0 11 0;
-#X connect 0 0 12 0;
-#X connect 1 0 0 0;
-#X connect 1 0 18 0;
-#X connect 2 0 5 0;
-#X connect 3 0 9 1;
-#X connect 4 0 10 0;
-#X connect 5 0 6 0;
-#X connect 6 0 1 0;
-#X connect 7 0 21 0;
-#X connect 8 0 3 0;
-#X connect 9 0 2 0;
-#X connect 10 0 7 0;
-#X connect 11 0 10 0;
-#X connect 12 0 4 0;
-#X connect 13 0 16 0;
-#X connect 13 0 17 0;
-#X connect 14 0 15 0;
-#X connect 15 0 20 0;
-#X connect 16 0 15 0;
-#X connect 17 0 14 0;
-#X connect 18 0 13 0;
-#X connect 19 0 23 0;
-#X connect 20 0 25 0;
-#X connect 21 0 24 0;
-#X connect 22 0 20 1;
-#X connect 22 0 21 1;
-#X connect 23 0 22 0;
-#X connect 26 0 27 0;
-#X connect 27 0 2 0;
-#X restore 77 319 pd air-raid-bass;
-#X connect 0 0 2 0;
-#X connect 1 0 0 0;
-#X connect 3 0 5 0;
-#X connect 4 0 3 0;
-#X connect 6 0 8 0;
-#X connect 7 0 6 0;
-#X connect 9 0 11 0;
-#X connect 10 0 9 0;
-#X restore 33 98 pd synths;
-#X obj 745 526 4T-Granulator \$0;
-#N canvas 150 176 757 776 effects 0;
-#X obj 79 638 dac~;
-#X obj 79 516 e_reslop \$1-4T-lop 20000;
-#X obj 109 537 e_reslop \$1-4T-lop 20000;
-#X msg 250 496 freq \$1;
-#X obj 309 475 loadbang;
-#X obj 250 290 - 3;
-#X obj 250 312 / 12;
-#X obj 250 417 * 19000;
-#X obj 250 439 + 500;
-#X obj 250 334 pow 3;
-#X obj 79 606 *~;
-#X obj 109 606 *~;
-#X obj 124 582 line~;
-#X obj 305 376 * -1;
-#X obj 305 420 * 2;
-#X obj 305 398 + 1;
-#X obj 305 442 + 1;
-#X msg 309 496 q 3;
-#X msg 259 475 20000;
-#X obj 79 33 catch~ 4T-grains-L-OUT;
-#X obj 146 53 catch~ 4T-grains-R-OUT;
-#X obj 353 382 r \$0-filter-freq;
-#X obj 353 404 max 0;
-#X obj 353 426 min 20000;
-#X obj 421 89 u_dispatch \$0 lop-filter-freq;
-#X obj 421 109 u_dispatch \$0 lop-gain-comp;
-#X obj 421 129 u_dispatch \$0 reverb-dry;
-#X obj 421 67 inlet;
-#X connect 1 0 10 0;
-#X connect 2 0 11 0;
-#X connect 3 0 1 1;
-#X connect 3 0 2 1;
-#X connect 4 0 17 0;
-#X connect 5 0 6 0;
-#X connect 6 0 9 0;
-#X connect 7 0 8 0;
-#X connect 8 0 3 0;
-#X connect 9 0 7 0;
-#X connect 9 0 13 0;
-#X connect 10 0 0 0;
-#X connect 11 0 0 1;
-#X connect 12 0 11 1;
-#X connect 12 0 10 1;
-#X connect 13 0 15 0;
-#X connect 14 0 16 0;
-#X connect 15 0 14 0;
-#X connect 16 0 12 0;
-#X connect 17 0 2 1;
-#X connect 17 0 1 1;
-#X connect 18 0 3 0;
-#X connect 21 0 22 0;
-#X connect 22 0 23 0;
-#X connect 23 0 3 0;
-#X connect 24 0 25 0;
-#X connect 25 0 26 0;
-#X connect 27 0 24 0;
-#X restore 523 699 pd effects;
-#X obj 825 303 change;
-#X floatatom 825 325 5 0 0 0 - - -, f 5;
-#X msg 835 473 poke-1-interval \$1;
-#X msg 845 493 poke-2-interval \$1;
-#X obj 873 337 change;
-#X floatatom 873 359 5 0 0 0 - - -, f 5;
-#X obj 873 315 r \$0-2-section;
-#X obj 922 386 change;
-#X floatatom 922 408 5 0 0 0 - - -, f 5;
-#X obj 922 364 r \$0-3-section;
-#N canvas 358 202 762 468 percussion 0;
-#X obj 147 219 s_playtable;
-#X obj 147 241 *~ 1;
-#X obj 147 263 dac~;
-#X obj 147 147 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 147 173 \$0;
-#X msg 147 196 \$1-4T-Source 1 1 100 50;
-#X obj 185 57 line;
-#X msg 182 22 0 \, 1 2500;
-#X obj 185 79 pow 2;
-#X connect 0 0 1 0;
-#X connect 1 0 2 0;
-#X connect 1 0 2 1;
-#X connect 3 0 4 0;
-#X connect 4 0 5 0;
-#X connect 5 0 0 0;
-#X connect 6 0 8 0;
-#X connect 7 0 6 0;
-#X restore 1242 243 pd percussion;
-#N canvas 915 148 803 737 wind-up-down 1;
-#X obj -68 680 *~;
-#X obj -34 680 *~;
-#X obj 95 520 line~;
-#X obj 22 430 t b b;
-#X obj -68 405 t a b;
-#X obj 267 385 metro 764.331;
-#X obj 342 142 line;
-#X obj 301 330 sel 1;
-#X msg 301 355 0;
-#X msg 282 109 1;
-#X obj 587 190 * 764.331;
-#X obj 587 139 sel 0 1 2;
-#X msg 587 165 0;
-#X msg 620 166 7;
-#X msg -23 237 0;
-#X msg 7 237 1;
-#X obj -68 263 spigot 1;
-#X obj -68 285 * 764.331;
-#X obj 587 115 random 2;
-#X obj -68 710 dac~;
-#X msg 22 453 0 10 \, 1 10 10;
-#X obj 186 57 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X msg 342 122 0 \, 1 1528.66;
-#X obj 342 330 * 500;
-#X obj 342 352 + 50;
-#X obj 342 237 pow 2;
-#X obj 108 22 metro 2500;
-#X obj 82 15 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
-;
-#X obj 275 435 s gk-stutter-retrigger-bang;
-#X obj 342 78 s gk-stutter-setting-change;
-#X obj 119 620 e_platereverb;
-#X obj 119 595 *~;
-#X obj 134 573 line~;
-#X obj 267 50 t b b b b b b b;
-#X obj 388 51 s \$1-wind-up-down-settings;
-#X obj 369 169 r \$1-wind-up-down-settings;
-#X obj 369 191 random 3;
-#X obj 369 213 + 1.5;
-#X obj 439 280 r \$1-wind-up-down-settings;
-#X obj 439 324 + 25;
-#X obj 439 302 random 50;
-#X obj 385 234 r \$1-wind-up-down-settings;
-#X obj 385 278 + 250;
-#X obj 385 256 random 250;
-#X obj 75 143 r \$1-wind-up-down-settings;
-#X obj 75 165 random 4;
-#X obj 75 187 sel 0 1 2 3;
-#X obj -50 360 pack f 50;
-#X obj 75 321 line;
-#X msg 75 209 50 \, 500 2500;
-#X msg 90 233 500 \, 50 2500;
-#X msg 106 259 50;
-#X msg 122 283 500;
-#X obj 244 484 r \$1-wind-up-down-settings;
-#X obj 244 506 random 4;
-#X obj 244 528 sel 0 1 2 3;
-#X obj 244 662 line;
-#X msg 244 550 50 \, 500 2500;
-#X msg 259 574 500 \, 50 2500;
-#X msg 275 600 50;
-#X msg 291 624 500;
-#X obj -68 338 \$0;
-#X obj -20 311 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X floatatom -23 335 5 0 0 0 - - -, f 5;
-#X obj -68 307 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 577 59 inlet;
-#X floatatom 561 26 5 0 0 0 - - -, f 5;
-#X floatatom 323 171 5 0 0 0 - - -, f 5;
-#X obj 493 352 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
-#X obj 513 352 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
-#X floatatom 144 528 5 0 0 0 - - -, f 5;
-#X obj 143 318 r \$0-3-rotations;
-#X obj 143 340 int;
-#X obj 82 417 change;
-#X obj -48 76 u_samplebank2 hit rh-hit-1.wav;
-#X obj -68 443 s_playtable2;
-#N canvas 0 22 473 173 preset 0;
-#X obj 58 18 loadbang;
-#X obj 54 115 outlet;
-#X msg 54 54 decay_diffusion2 0.84 \, decay_diffusion1 0.889 \, input_diffusion2
-0.779 \, excursion 0.53761 \, input_diffusion1 0.685 \, decay 0.79
-\, damping 4637 \, bandwidth 10000 \, predelay 10;
-#X connect 0 0 2 0;
-#X connect 2 0 1 0;
-#X restore 176 586 pd preset;
-#X msg 122 473 0 2000;
-#X obj 122 450 del 399;
-#X obj 140 662 delwrite~ hit-del 1000;
-#X obj 76 670 hip~ 1000;
-#X obj 76 692 *~ 0.7;
-#X obj 140 683 delread~ hit-del 200;
-#X obj -68 465 *~ 1;
-#X obj -17 103 r \$0-0-rotations;
-#X obj -47 155 change;
-#X obj -47 177 mod 2;
-#X obj -47 199 sel 0;
-#X obj -17 125 t f f;
-#X obj 10 163 m_scale 0 70 2 8;
-#X obj 10 185 int;
-#X obj -68 545 e_pitchshift;
-#X obj -68 567 *~ 1;
-#X msg 0 524 pitch \$1;
-#X obj 0 484 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
--1 0;
-#X obj 0 504 t b f;
-#X obj 35 346 r \$0-3-section;
-#X obj 35 368 change;
-#X obj 143 414 notes-old 8 0 0 2 4 6 7 9 10;
-#X floatatom 143 436 5 0 0 0 - - -, f 5;
-#X obj 73 390 m_scale 0 70 -6 6;
-#X msg -68 385 hit 1 1 0 1000;
-#X connect 0 0 19 0;
-#X connect 1 0 19 1;
-#X connect 2 0 1 1;
-#X connect 2 0 0 1;
-#X connect 3 0 20 0;
-#X connect 3 1 78 0;
-#X connect 4 0 75 0;
-#X connect 4 1 3 0;
-#X connect 5 0 28 0;
-#X connect 5 0 62 0;
-#X connect 6 0 25 0;
-#X connect 6 0 67 0;
-#X connect 6 0 68 0;
-#X connect 7 0 8 0;
-#X connect 7 0 15 0;
-#X connect 8 0 5 0;
-#X connect 9 0 5 0;
-#X connect 11 0 12 0;
-#X connect 11 1 13 0;
-#X connect 12 0 10 0;
-#X connect 13 0 10 0;
-#X connect 14 0 16 1;
-#X connect 15 0 16 1;
-#X connect 16 0 17 0;
-#X connect 17 0 64 0;
-#X connect 18 0 11 0;
-#X connect 20 0 2 0;
-#X connect 21 0 33 0;
-#X connect 22 0 6 0;
-#X connect 23 0 24 0;
-#X connect 24 0 5 1;
-#X connect 25 0 7 0;
-#X connect 25 0 23 0;
-#X connect 25 0 69 0;
-#X connect 26 0 21 0;
-#X connect 27 0 26 0;
-#X connect 30 0 19 0;
-#X connect 30 1 19 1;
-#X connect 31 0 30 0;
-#X connect 31 0 30 1;
-#X connect 32 0 31 1;
-#X connect 33 0 5 0;
-#X connect 33 1 9 0;
-#X connect 33 2 22 0;
-#X connect 33 3 18 0;
-#X connect 33 4 14 0;
-#X connect 33 5 29 0;
-#X connect 33 6 34 0;
-#X connect 35 0 36 0;
-#X connect 36 0 37 0;
-#X connect 37 0 25 1;
-#X connect 38 0 40 0;
-#X connect 39 0 24 1;
-#X connect 40 0 39 0;
-#X connect 41 0 43 0;
-#X connect 42 0 23 1;
-#X connect 43 0 42 0;
-#X connect 44 0 45 0;
-#X connect 45 0 46 0;
-#X connect 46 0 49 0;
-#X connect 46 1 50 0;
-#X connect 46 2 51 0;
-#X connect 46 3 52 0;
-#X connect 48 0 47 1;
-#X connect 49 0 48 0;
-#X connect 50 0 48 0;
-#X connect 51 0 48 0;
-#X connect 52 0 48 0;
-#X connect 53 0 54 0;
-#X connect 54 0 55 0;
-#X connect 55 0 57 0;
-#X connect 55 1 58 0;
-#X connect 55 2 59 0;
-#X connect 55 3 60 0;
-#X connect 57 0 56 0;
-#X connect 58 0 56 0;
-#X connect 59 0 56 0;
-#X connect 60 0 56 0;
-#X connect 61 0 101 0;
-#X connect 62 0 61 0;
-#X connect 64 0 61 0;
-#X connect 65 0 25 0;
-#X connect 66 0 25 0;
-#X connect 70 0 32 0;
-#X connect 71 0 72 0;
-#X connect 72 0 100 0;
-#X connect 73 0 95 0;
-#X connect 75 0 83 0;
-#X connect 75 1 83 0;
-#X connect 76 0 30 2;
-#X connect 77 0 2 0;
-#X connect 78 0 77 0;
-#X connect 80 0 81 0;
-#X connect 81 0 79 0;
-#X connect 81 0 19 0;
-#X connect 81 0 19 1;
-#X connect 82 0 80 0;
-#X connect 83 0 91 0;
-#X connect 85 0 86 0;
-#X connect 86 0 87 0;
-#X connect 87 0 101 0;
-#X connect 88 0 85 0;
-#X connect 88 1 89 0;
-#X connect 89 0 90 0;
-#X connect 90 0 86 1;
-#X connect 91 0 92 0;
-#X connect 92 0 0 0;
-#X connect 92 0 1 0;
-#X connect 92 0 31 0;
-#X connect 93 0 91 1;
-#X connect 94 0 95 0;
-#X connect 95 0 101 0;
-#X connect 95 1 93 0;
-#X connect 96 0 97 0;
-#X connect 98 0 95 0;
-#X connect 98 0 99 0;
-#X connect 100 0 73 0;
-#X connect 101 0 4 0;
-#X restore 1263 206 pd wind-up-down;
-#X obj 121 27 fakeHarp 0 \$0;
-#X obj 121 158 fakeHarp 1 \$0;
-#X obj 121 290 fakeHarp 2 \$0;
-#X obj 122 424 fakeHarp 3 \$0;
-#X obj 291 424 player-input \$0 3;
-#X obj 291 291 player-input \$0 2;
-#X obj 291 158 player-input \$0 1;
-#X obj 291 27 player-input \$0 0;
-#X text 598 26 SYNTAX;
-#X floatatom 600 113 5 0 0 0 - - -, f 5;
-#X obj 694 112 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X text 598 71 E.g.;
-#X obj 600 90 r \$0-0-section;
-#X obj 694 90 r \$0-1-bound;
-#X floatatom 600 159 5 0 0 0 - - -, f 5;
-#X obj 600 136 r \$0-2-dir;
-#X obj 694 136 r \$0-3-velocity;
-#X floatatom 694 159 5 0 0 0 - - -, f 5;
-#X obj 600 49 r \$0-[player-number]-[parameter];
-#X obj 745 485 scaleSelecta;
+#X text 292 100 E.g.;
+#X obj 294 119 r \$0-0-section;
+#X obj 388 119 r \$0-1-bound;
+#X floatatom 294 188 5 0 0 0 - - -, f 5;
+#X obj 294 165 r \$0-2-dir;
+#X obj 388 165 r \$0-3-velocity;
+#X floatatom 388 188 5 0 0 0 - - -, f 5;
+#X obj 294 78 r \$0-[player-number]-[parameter];
 #N canvas 40 223 1029 606 presets 0;
 #X obj 423 58 r RJ_SCENE;
 #X obj 423 125 u_cocollect;
 #X obj 423 147 list prepend;
 #X obj 423 169 list trim;
-#X msg 423 213 e_platereverb-\\\$1 decay_diffusion2 0.84 \, e_platereverb-\\\$1
-decay_diffusion1 0.889 \, e_platereverb-\\\$1 input_diffusion2 0.779
-\, e_platereverb-\\\$1 excursion 0.53761 \, e_platereverb-\\\$1 input_diffusion1
-0.685 \, e_platereverb-\\\$1 decay 0.79 \, e_platereverb-\\\$1 damping
-4637 \, e_platereverb-\\\$1 bandwidth 10000 \, e_platereverb-\\\$1
-predelay 10 \, e_reslop-\\\\\\\$1-4T-lop q 3 \, e_reslop-\\\\\\\$1-4T-lop
-freq 20000 \, e_reslop-\\\\\\\$1-4T-lop q 3 \, e_reslop-\\\\\\\$1-4T-lop
-freq 20000 \, e_platereverb-\\\$1 decay_diffusion2 0.84 \, e_platereverb-\\\$1
-decay_diffusion1 0.889 \, e_platereverb-\\\$1 input_diffusion2 0.779
-\, e_platereverb-\\\$1 excursion 0.53761 \, e_platereverb-\\\$1 input_diffusion1
-0.685 \, e_platereverb-\\\$1 decay 0.99 \, e_platereverb-\\\$1 damping
-4637 \, e_platereverb-\\\$1 bandwidth 10000 \, e_platereverb-\\\$1
-predelay 10 \, notes-8 note-count 8 \, notes-8 intervals 0 2 3 5 7
-9 10 12 \, e_platereverb-1003-4T dry 0.8 \, e_platereverb-1003-4T decay_diffusion2
-0.84 \, e_platereverb-1003-4T decay_diffusion1 0.889 \, e_platereverb-1003-4T
-input_diffusion2 0.779 \, e_platereverb-1003-4T excursion 0.53761 \,
-e_platereverb-1003-4T input_diffusion1 0.685 \, e_platereverb-1003-4T
-decay 0.99 \, e_platereverb-1003-4T damping 4637 \, e_platereverb-1003-4T
-bandwidth 10000 \, e_platereverb-1003-4T predelay 10 \, 4T-poke-1 gain
-0.2 \, 4T-poke-1 octave 2 \, 4T-poke-1 release 1000 \, 4T-poke-1 hold
-0 \, 4T-poke-1 attack 100 \, 4T-poke-2 mono 1 \, 4T-poke-2 gain 0.3
-\, 4T-poke-2 octave -3 \, 4T-poke-2 release 500 \, 4T-poke-2 hold 100
-\, 4T-poke-2 attack 250 \, 4T-poke-0 mono 1 \, 4T-poke-0 gain 0.57
-\, 4T-poke-0 octave -4 \, 4T-poke-0 release 1500 \, 4T-poke-0 hold
-50 \, 4T-poke-0 attack 700 \, 4T-Granulator intervals 0 2 3 5 7 9 10
-12 \, s_ejun-\\\$1 mod3d 0.00787402 \, s_ejun-\\\$1 mod3c 0.015748
-\, s_ejun-\\\$1 mod3b 0.141732 \, s_ejun-\\\$1 mod3a 0.0708661 \, s_ejun-\\\$1
-mod2d 0.291339 \, s_ejun-\\\$1 mod2c 0 \, s_ejun-\\\$1 mod2b 0.0708661
-\, s_ejun-\\\$1 mod2a 0.511811 \, s_ejun-\\\$1 mod1d 0.0944882 \, s_ejun-\\\$1
-mod1c 0.19685 \, s_ejun-\\\$1 mod1b 0 \, s_ejun-\\\$1 mod1a 0.622047
-\, s_ejun-\\\$1 osc3d 0.023622 \, s_ejun-\\\$1 osc3c 0.00787402 \,
-s_ejun-\\\$1 osc3b 0.015748 \, s_ejun-\\\$1 osc3a 0.669291 \, s_ejun-\\\$1
-osc2d 0.401575 \, s_ejun-\\\$1 osc2c 0.244094 \, s_ejun-\\\$1 osc2b
-0.330709 \, s_ejun-\\\$1 osc2a 0.501102 \, s_ejun-\\\$1 osc1d 0.574803
-\, s_ejun-\\\$1 osc1c 0.181102 \, s_ejun-\\\$1 osc1b 0.393701 \, s_ejun-\\\$1
-osc1a 1 \, s_ejun-\\\$1 env3r 0.00787402 \, s_ejun-\\\$1 env3s 0.409449
-\, s_ejun-\\\$1 env3d 0.110236 \, s_ejun-\\\$1 env3a 0.000629921 \,
-s_ejun-\\\$1 env2r 0 \, s_ejun-\\\$1 env2s 1 \, s_ejun-\\\$1 env2d
-0 \, s_ejun-\\\$1 env2a 0 \, s_ejun-\\\$1 env1r 0 \, s_ejun-\\\$1 env1s
-1 \, s_ejun-\\\$1 env1d 0 \, s_ejun-\\\$1 env1a 0 \, e_tremolo-\\\$1
-phase 0 \, e_tremolo-\\\$1 shape 0 \, e_tremolo-\\\$1 depth 1 \, e_tremolo-\\\$1
-freq 5 \, s_osc-1087-square-2 square 1 \, s_osc-1087-square-2 square
-1 \, s_osc-1087-square-1 square 1 \, s_osc-1004-square-2 square 1 \,
-s_osc-1004-square-2 square 1 \, s_osc-1004-square-1 square 1 \, e_platereverb-1003-platereverb
-decay_diffusion2 0.5 \, e_platereverb-1003-platereverb decay_diffusion1
-0.7 \, e_platereverb-1003-platereverb input_diffusion2 0.625 \, e_platereverb-1003-platereverb
-excursion 0.53761 \, e_platereverb-1003-platereverb input_diffusion1
-0.75 \, e_platereverb-1003-platereverb decay 0.5 \, e_platereverb-1003-platereverb
-damping 22050 \, e_platereverb-1003-platereverb bandwidth 22050 \,
-e_platereverb-1003-platereverb predelay 0 \, e_reverb-\\\$1 damp 60
-\, e_reverb-\\\$1 freq 6000 \, e_reverb-\\\$1 hall 80 \, e_reverb-\\\$1
-amp 90 \, e_platereverb-\\\$1 decay_diffusion2 0.5 \, e_platereverb-\\\$1
-decay_diffusion1 0.7 \, e_platereverb-\\\$1 input_diffusion2 0.625
-\, e_platereverb-\\\$1 excursion 0.53761 \, e_platereverb-\\\$1 input_diffusion1
-0.75 \, e_platereverb-\\\$1 decay 0.5 \, e_platereverb-\\\$1 damping
-22050 \, e_platereverb-\\\$1 bandwidth 22050 \, e_platereverb-\\\$1
-predelay 0 \, e_platereverb-somename dry 0.33 \, e_platereverb-somename
-decay_diffusion2 0.5 \, e_platereverb-somename decay_diffusion1 0.7
-\, e_platereverb-somename input_diffusion2 0.625 \, e_platereverb-somename
-excursion 0.53761 \, e_platereverb-somename input_diffusion1 0.75 \,
-e_platereverb-somename decay 0.5 \, e_platereverb-somename damping
-22050 \, e_platereverb-somename bandwidth 22050 \, e_platereverb-somename
-predelay 0 \, e_platereverb-\\\$1 decay_diffusion2 0.84 \, e_platereverb-\\\$1
-decay_diffusion1 0.889 \, e_platereverb-\\\$1 input_diffusion2 0.779
-\, e_platereverb-\\\$1 excursion 0.53761 \, e_platereverb-\\\$1 input_diffusion1
-0.685 \, e_platereverb-\\\$1 decay 0.79 \, e_platereverb-\\\$1 damping
-4637 \, e_platereverb-\\\$1 bandwidth 10000 \, e_platereverb-\\\$1
-predelay 10 \, e_reslop-\\\\\\\$1-4T-lop q 3 \, e_reslop-\\\\\\\$1-4T-lop
-freq 20000 \, e_reslop-\\\\\\\$1-4T-lop q 3 \, e_reslop-\\\\\\\$1-4T-lop
-freq 20000 \, notes-8 note-count 8 \, e_platereverb-1003-4T dry 0.8
-\, e_platereverb-1003-4T decay_diffusion2 0.84 \, e_platereverb-1003-4T
-decay_diffusion1 0.889 \, e_platereverb-1003-4T input_diffusion2 0.779
-\, e_platereverb-1003-4T excursion 0.53761 \, e_platereverb-1003-4T
-input_diffusion1 0.685 \, e_platereverb-1003-4T decay 0.99 \, e_platereverb-1003-4T
-damping 4637 \, e_platereverb-1003-4T bandwidth 10000 \, e_platereverb-1003-4T
-predelay 10 \, 4T-poke-1 gain 0.2 \, 4T-poke-1 octave 2 \, 4T-poke-1
-release 1000 \, 4T-poke-1 hold 0 \, 4T-poke-1 attack 100 \, 4T-poke-2
-mono 1 \, 4T-poke-2 gain 0.3 \, 4T-poke-2 octave -3 \, 4T-poke-2 release
-500 \, 4T-poke-2 hold 100 \, 4T-poke-2 attack 250 \, 4T-poke-0 mono
-1 \, 4T-poke-0 gain 0.57 \, 4T-poke-0 octave -4 \, 4T-poke-0 release
-1500 \, 4T-poke-0 hold 50 \, 4T-poke-0 attack 700 \, s_ejun-\\\$1 mod3d
-0.00787402 \, s_ejun-\\\$1 mod3c 0.015748 \, s_ejun-\\\$1 mod3b 0.141732
-\, s_ejun-\\\$1 mod3a 0.0708661 \, s_ejun-\\\$1 mod2d 0.291339 \, s_ejun-\\\$1
-mod2c 0 \, s_ejun-\\\$1 mod2b 0.0708661 \, s_ejun-\\\$1 mod2a 0.511811
-\, s_ejun-\\\$1 mod1d 0.0944882 \, s_ejun-\\\$1 mod1c 0.19685 \, s_ejun-\\\$1
-mod1b 0 \, s_ejun-\\\$1 mod1a 0.622047 \, s_ejun-\\\$1 osc3d 0.023622
-\, s_ejun-\\\$1 osc3c 0.00787402 \, s_ejun-\\\$1 osc3b 0.015748 \,
-s_ejun-\\\$1 osc3a 0.669291 \, s_ejun-\\\$1 osc2d 0.401575 \, s_ejun-\\\$1
-osc2c 0.244094 \, s_ejun-\\\$1 osc2b 0.330709 \, s_ejun-\\\$1 osc2a
-0.501102 \, s_ejun-\\\$1 osc1d 0.574803 \, s_ejun-\\\$1 osc1c 0.181102
-\, s_ejun-\\\$1 osc1b 0.393701 \, s_ejun-\\\$1 osc1a 1 \, s_ejun-\\\$1
-env3r 0.00787402 \, s_ejun-\\\$1 env3s 0.409449 \, s_ejun-\\\$1 env3d
-0.110236 \, s_ejun-\\\$1 env3a 0.000629921 \, s_ejun-\\\$1 env2r 0
-\, s_ejun-\\\$1 env2s 1 \, s_ejun-\\\$1 env2d 0 \, s_ejun-\\\$1 env2a
-0 \, s_ejun-\\\$1 env1r 0 \, s_ejun-\\\$1 env1s 1 \, s_ejun-\\\$1 env1d
-0 \, s_ejun-\\\$1 env1a 0 \, e_tremolo-\\\$1 phase 0 \, e_tremolo-\\\$1
-shape 0 \, e_tremolo-\\\$1 depth 1 \, e_tremolo-\\\$1 freq 5 \, s_osc-1087-square-2
-square 1 \, s_osc-1087-square-2 square 1 \, s_osc-1087-square-1 square
-1 \, s_osc-1004-square-2 square 1 \, s_osc-1004-square-2 square 1 \,
-s_osc-1004-square-1 square 1 \, e_platereverb-1957-platereverb dry
-0.220472 \, e_platereverb-1957-platereverb decay_diffusion2 0.84 \,
-e_platereverb-1957-platereverb decay_diffusion1 0.889 \, e_platereverb-1957-platereverb
-input_diffusion2 0.779 \, e_platereverb-1957-platereverb excursion
-0.53761 \, e_platereverb-1957-platereverb input_diffusion1 0.685 \,
-e_platereverb-1957-platereverb decay 0.212598 \, e_platereverb-1957-platereverb
-damping 8818.9 \, e_platereverb-1957-platereverb bandwidth 10000 \,
-e_platereverb-1957-platereverb predelay 10 \, e_platereverb-\\\$1 decay_diffusion2
-0.84 \, e_platereverb-\\\$1 decay_diffusion1 0.889 \, e_platereverb-\\\$1
-input_diffusion2 0.779 \, e_platereverb-\\\$1 excursion 0.53761 \,
-e_platereverb-\\\$1 input_diffusion1 0.685 \, e_platereverb-\\\$1 decay
-0.79 \, e_platereverb-\\\$1 damping 4637 \, e_platereverb-\\\$1 bandwidth
-10000 \, e_platereverb-\\\$1 predelay 10 \, e_reslop-\\\\\\\$1-4T-lop
-q 3 \, e_reslop-\\\\\\\$1-4T-lop q 3 \, notes-8 note-count 8 \, notes-8
-intervals 0 2 3 5 7 9 10 12 \, e_platereverb-1957-4T dry 0.8 \, e_platereverb-1957-4T
-decay_diffusion2 0.84 \, e_platereverb-1957-4T decay_diffusion1 0.889
-\, e_platereverb-1957-4T input_diffusion2 0.779 \, e_platereverb-1957-4T
-excursion 0.53761 \, e_platereverb-1957-4T input_diffusion1 0.685 \,
-e_platereverb-1957-4T decay 0.99 \, e_platereverb-1957-4T damping 4637
-\, e_platereverb-1957-4T bandwidth 10000 \, e_platereverb-1957-4T predelay
-10 \, 4T-poke-1 gain 0.2 \, 4T-poke-1 octave 2 \, 4T-poke-1 release
-1000 \, 4T-poke-1 hold 0 \, 4T-poke-1 attack 100 \, 4T-poke-2 mono
-1 \, 4T-poke-2 gain 0.3 \, 4T-poke-2 octave -3 \, 4T-poke-2 release
-500 \, 4T-poke-2 hold 100 \, 4T-poke-2 attack 250 \, 4T-poke-0 mono
-1 \, 4T-poke-0 gain 0.57 \, 4T-poke-0 octave -4 \, 4T-poke-0 release
-1500 \, 4T-poke-0 hold 50 \, 4T-poke-0 attack 700 \, 4T-Granulator
-intervals 0 2 3 5 7 9 10 12 \, s_ejun-\\\$1 mod3d 0.00787402 \, s_ejun-\\\$1
-mod3c 0.015748 \, s_ejun-\\\$1 mod3b 0.141732 \, s_ejun-\\\$1 mod3a
-0.0708661 \, s_ejun-\\\$1 mod2d 0.291339 \, s_ejun-\\\$1 mod2c 0 \,
-s_ejun-\\\$1 mod2b 0.0708661 \, s_ejun-\\\$1 mod2a 0.511811 \, s_ejun-\\\$1
-mod1d 0.0944882 \, s_ejun-\\\$1 mod1c 0.19685 \, s_ejun-\\\$1 mod1b
-0 \, s_ejun-\\\$1 mod1a 0.622047 \, s_ejun-\\\$1 osc3d 0.023622 \,
-s_ejun-\\\$1 osc3c 0.00787402 \, s_ejun-\\\$1 osc3b 0.015748 \, s_ejun-\\\$1
-osc3a 0.669291 \, s_ejun-\\\$1 osc2d 0.401575 \, s_ejun-\\\$1 osc2c
-0.244094 \, s_ejun-\\\$1 osc2b 0.330709 \, s_ejun-\\\$1 osc2a 0.501102
-\, s_ejun-\\\$1 osc1d 0.574803 \, s_ejun-\\\$1 osc1c 0.181102 \, s_ejun-\\\$1
-osc1b 0.393701 \, s_ejun-\\\$1 osc1a 1 \, s_ejun-\\\$1 env3r 0.00787402
-\, s_ejun-\\\$1 env3s 0.409449 \, s_ejun-\\\$1 env3d 0.110236 \, s_ejun-\\\$1
-env3a 0.000629921 \, s_ejun-\\\$1 env2r 0 \, s_ejun-\\\$1 env2s 1 \,
-s_ejun-\\\$1 env2d 0 \, s_ejun-\\\$1 env2a 0 \, s_ejun-\\\$1 env1r
-0 \, s_ejun-\\\$1 env1s 1 \, s_ejun-\\\$1 env1d 0 \, s_ejun-\\\$1 env1a
-0 \, e_tremolo-\\\$1 phase 0 \, e_tremolo-\\\$1 shape 0 \, e_tremolo-\\\$1
-depth 1 \, e_tremolo-\\\$1 freq 5 \, s_osc-2041-square-2 square 1 \,
-s_osc-2041-square-2 square 1 \, s_osc-2041-square-1 square 1 \, s_osc-1958-square-2
-square 1 \, s_osc-1958-square-2 square 1 \, s_osc-1958-square-1 square
-1 \, e_platereverb-1957-platereverb dry 0.11811 \, e_platereverb-1957-platereverb
-decay_diffusion2 0.84 \, e_platereverb-1957-platereverb decay_diffusion1
-0.889 \, e_platereverb-1957-platereverb input_diffusion2 0.779 \, e_platereverb-1957-platereverb
-excursion 0.133858 \, e_platereverb-1957-platereverb input_diffusion1
-0.685 \, e_platereverb-1957-platereverb decay 0.11811 \, e_platereverb-1957-platereverb
-damping 1732.28 \, e_platereverb-1957-platereverb bandwidth 10000 \,
-e_platereverb-1957-platereverb predelay 10 \, e_platereverb-\\\$1 decay_diffusion2
-0.84 \, e_platereverb-\\\$1 decay_diffusion1 0.889 \, e_platereverb-\\\$1
-input_diffusion2 0.779 \, e_platereverb-\\\$1 excursion 0.53761 \,
-e_platereverb-\\\$1 input_diffusion1 0.685 \, e_platereverb-\\\$1 decay
-0.79 \, e_platereverb-\\\$1 damping 4637 \, e_platereverb-\\\$1 bandwidth
-10000 \, e_platereverb-\\\$1 predelay 10 \, e_reslop-\\\\\\\$1-4T-lop
-q 3 \, e_reslop-\\\\\\\$1-4T-lop q 3 \, notes-8 note-count 8 \, notes-8
-intervals 0 2 3 5 7 9 10 12 \, e_platereverb-1957-4T dry 0.8 \, e_platereverb-1957-4T
-decay_diffusion2 0.84 \, e_platereverb-1957-4T decay_diffusion1 0.889
-\, e_platereverb-1957-4T input_diffusion2 0.779 \, e_platereverb-1957-4T
-excursion 0.53761 \, e_platereverb-1957-4T input_diffusion1 0.685 \,
-e_platereverb-1957-4T decay 0.99 \, e_platereverb-1957-4T damping 4637
-\, e_platereverb-1957-4T bandwidth 10000 \, e_platereverb-1957-4T predelay
-10 \, 4T-poke-1 gain 0.2 \, 4T-poke-1 octave 2 \, 4T-poke-1 release
-1000 \, 4T-poke-1 hold 0 \, 4T-poke-1 attack 100 \, 4T-poke-2 mono
-1 \, 4T-poke-2 gain 0.3 \, 4T-poke-2 octave -3 \, 4T-poke-2 release
-500 \, 4T-poke-2 hold 100 \, 4T-poke-2 attack 250 \, 4T-poke-0 mono
-1 \, 4T-poke-0 gain 0.57 \, 4T-poke-0 octave -4 \, 4T-poke-0 release
-1500 \, 4T-poke-0 hold 50 \, 4T-poke-0 attack 700 \, 4T-Granulator
-intervals 0 2 3 5 7 9 10 12 \, s_ejun-\\\$1 mod3d 0.00787402 \, s_ejun-\\\$1
-mod3c 0.015748 \, s_ejun-\\\$1 mod3b 0.141732 \, s_ejun-\\\$1 mod3a
-0.0708661 \, s_ejun-\\\$1 mod2d 0.291339 \, s_ejun-\\\$1 mod2c 0 \,
-s_ejun-\\\$1 mod2b 0.0708661 \, s_ejun-\\\$1 mod2a 0.511811 \, s_ejun-\\\$1
-mod1d 0.0944882 \, s_ejun-\\\$1 mod1c 0.19685 \, s_ejun-\\\$1 mod1b
-0 \, s_ejun-\\\$1 mod1a 0.622047 \, s_ejun-\\\$1 osc3d 0.023622 \,
-s_ejun-\\\$1 osc3c 0.00787402 \, s_ejun-\\\$1 osc3b 0.015748 \, s_ejun-\\\$1
-osc3a 0.669291 \, s_ejun-\\\$1 osc2d 0.401575 \, s_ejun-\\\$1 osc2c
-0.244094 \, s_ejun-\\\$1 osc2b 0.330709 \, s_ejun-\\\$1 osc2a 0.501102
-\, s_ejun-\\\$1 osc1d 0.574803 \, s_ejun-\\\$1 osc1c 0.181102 \, s_ejun-\\\$1
-osc1b 0.393701 \, s_ejun-\\\$1 osc1a 1 \, s_ejun-\\\$1 env3r 0.00787402
-\, s_ejun-\\\$1 env3s 0.409449 \, s_ejun-\\\$1 env3d 0.110236 \, s_ejun-\\\$1
-env3a 0.000629921 \, s_ejun-\\\$1 env2r 0 \, s_ejun-\\\$1 env2s 1 \,
-s_ejun-\\\$1 env2d 0 \, s_ejun-\\\$1 env2a 0 \, s_ejun-\\\$1 env1r
-0 \, s_ejun-\\\$1 env1s 1 \, s_ejun-\\\$1 env1d 0 \, s_ejun-\\\$1 env1a
-0 \, e_tremolo-\\\$1 phase 0 \, e_tremolo-\\\$1 shape 0 \, e_tremolo-\\\$1
-depth 1 \, e_tremolo-\\\$1 freq 5 \, s_osc-2041-square-2 square 1 \,
-s_osc-2041-square-2 square 1 \, s_osc-2041-square-1 square 1 \, s_osc-1958-square-2
-square 1 \, s_osc-1958-square-2 square 1 \, s_osc-1958-square-1 square
-1 \, e_platereverb-1957-platereverb dry 0.181102 \, e_platereverb-1957-platereverb
-decay_diffusion2 0.84 \, e_platereverb-1957-platereverb decay_diffusion1
-0.889 \, e_platereverb-1957-platereverb input_diffusion2 0.779 \, e_platereverb-1957-platereverb
-excursion 0.19685 \, e_platereverb-1957-platereverb input_diffusion1
-0.685 \, e_platereverb-1957-platereverb decay 0.322835 \, e_platereverb-1957-platereverb
-damping 5511.81 \, e_platereverb-1957-platereverb bandwidth 10000 \,
-e_platereverb-1957-platereverb predelay 10 \, e_platereverb-\\\$1 decay_diffusion2
-0.84 \, e_platereverb-\\\$1 decay_diffusion1 0.889 \, e_platereverb-\\\$1
-input_diffusion2 0.779 \, e_platereverb-\\\$1 excursion 0.53761 \,
-e_platereverb-\\\$1 input_diffusion1 0.685 \, e_platereverb-\\\$1 decay
-0.79 \, e_platereverb-\\\$1 damping 4637 \, e_platereverb-\\\$1 bandwidth
-10000 \, e_platereverb-\\\$1 predelay 10 \, e_reslop-\\\\\\\$1-4T-lop
-q 3 \, e_reslop-\\\\\\\$1-4T-lop q 3 \, notes-8 note-count 8 \, notes-8
-intervals 0 2 3 5 7 9 10 12 \, e_platereverb-1957-4T dry 0.8 \, e_platereverb-1957-4T
-decay_diffusion2 0.84 \, e_platereverb-1957-4T decay_diffusion1 0.889
-\, e_platereverb-1957-4T input_diffusion2 0.779 \, e_platereverb-1957-4T
-excursion 0.53761 \, e_platereverb-1957-4T input_diffusion1 0.685 \,
-e_platereverb-1957-4T decay 0.99 \, e_platereverb-1957-4T damping 4637
-\, e_platereverb-1957-4T bandwidth 10000 \, e_platereverb-1957-4T predelay
-10 \, 4T-poke-1 gain 0.2 \, 4T-poke-1 octave 2 \, 4T-poke-1 release
-1000 \, 4T-poke-1 hold 0 \, 4T-poke-1 attack 100 \, 4T-poke-2 mono
-1 \, 4T-poke-2 gain 0.3 \, 4T-poke-2 octave -3 \, 4T-poke-2 release
-500 \, 4T-poke-2 hold 100 \, 4T-poke-2 attack 250 \, 4T-poke-0 mono
-1 \, 4T-poke-0 gain 0.57 \, 4T-poke-0 octave -4 \, 4T-poke-0 release
-1500 \, 4T-poke-0 hold 50 \, 4T-poke-0 attack 700 \, 4T-Granulator
-intervals 0 2 3 5 7 9 10 12 \, s_ejun-\\\$1 mod3d 0.00787402 \, s_ejun-\\\$1
-mod3c 0.015748 \, s_ejun-\\\$1 mod3b 0.141732 \, s_ejun-\\\$1 mod3a
-0.0708661 \, s_ejun-\\\$1 mod2d 0.291339 \, s_ejun-\\\$1 mod2c 0 \,
-s_ejun-\\\$1 mod2b 0.0708661 \, s_ejun-\\\$1 mod2a 0.511811 \, s_ejun-\\\$1
-mod1d 0.0944882 \, s_ejun-\\\$1 mod1c 0.19685 \, s_ejun-\\\$1 mod1b
-0 \, s_ejun-\\\$1 mod1a 0.622047 \, s_ejun-\\\$1 osc3d 0.023622 \,
-s_ejun-\\\$1 osc3c 0.00787402 \, s_ejun-\\\$1 osc3b 0.015748 \, s_ejun-\\\$1
-osc3a 0.669291 \, s_ejun-\\\$1 osc2d 0.401575 \, s_ejun-\\\$1 osc2c
-0.244094 \, s_ejun-\\\$1 osc2b 0.330709 \, s_ejun-\\\$1 osc2a 0.501102
-\, s_ejun-\\\$1 osc1d 0.574803 \, s_ejun-\\\$1 osc1c 0.181102 \, s_ejun-\\\$1
-osc1b 0.393701 \, s_ejun-\\\$1 osc1a 1 \, s_ejun-\\\$1 env3r 0.00787402
-\, s_ejun-\\\$1 env3s 0.409449 \, s_ejun-\\\$1 env3d 0.110236 \, s_ejun-\\\$1
-env3a 0.000629921 \, s_ejun-\\\$1 env2r 0 \, s_ejun-\\\$1 env2s 1 \,
-s_ejun-\\\$1 env2d 0 \, s_ejun-\\\$1 env2a 0 \, s_ejun-\\\$1 env1r
-0 \, s_ejun-\\\$1 env1s 1 \, s_ejun-\\\$1 env1d 0 \, s_ejun-\\\$1 env1a
-0 \, e_tremolo-\\\$1 phase 0 \, e_tremolo-\\\$1 shape 0 \, e_tremolo-\\\$1
-depth 1 \, e_tremolo-\\\$1 freq 5 \, s_osc-2041-square-2 square 1 \,
-s_osc-2041-square-2 square 1 \, s_osc-2041-square-1 square 1 \, s_osc-1958-square-2
-square 1 \, s_osc-1958-square-2 square 1 \, s_osc-1958-square-1 square
-1 \, reverb size 0 \, reverb damping 944.882 \, reverb decay 0.133858
-\, reverb dry 0.0314961 \, e_platereverb-1957-platereverb dry 0.181102
-\, e_platereverb-1957-platereverb decay_diffusion2 0.84 \, e_platereverb-1957-platereverb
-decay_diffusion1 0.889 \, e_platereverb-1957-platereverb input_diffusion2
-0.779 \, e_platereverb-1957-platereverb excursion 0.19685 \, e_platereverb-1957-platereverb
-input_diffusion1 0.685 \, e_platereverb-1957-platereverb decay 0.322835
-\, e_platereverb-1957-platereverb damping 5511.81 \, e_platereverb-1957-platereverb
-bandwidth 10000 \, e_platereverb-1957-platereverb predelay 10 \, e_platereverb-\\\$1
-decay_diffusion2 0.84 \, e_platereverb-\\\$1 decay_diffusion1 0.889
-\, e_platereverb-\\\$1 input_diffusion2 0.779 \, e_platereverb-\\\$1
-excursion 0.53761 \, e_platereverb-\\\$1 input_diffusion1 0.685 \,
-e_platereverb-\\\$1 decay 0.79 \, e_platereverb-\\\$1 damping 4637
-\, e_platereverb-\\\$1 bandwidth 10000 \, e_platereverb-\\\$1 predelay
-10 \, e_reslop-\\\\\\\$1-4T-lop q 3 \, e_reslop-\\\\\\\$1-4T-lop q
-3 \, notes-8 note-count 8 \, notes-8 intervals 0 2 3 5 7 9 10 12 \,
-e_platereverb-1957-4T dry 0.8 \, e_platereverb-1957-4T decay_diffusion2
-0.84 \, e_platereverb-1957-4T decay_diffusion1 0.889 \, e_platereverb-1957-4T
-input_diffusion2 0.779 \, e_platereverb-1957-4T excursion 0.53761 \,
-e_platereverb-1957-4T input_diffusion1 0.685 \, e_platereverb-1957-4T
-decay 0.99 \, e_platereverb-1957-4T damping 4637 \, e_platereverb-1957-4T
-bandwidth 10000 \, e_platereverb-1957-4T predelay 10 \, 4T-poke-1 gain
-0.2 \, 4T-poke-1 octave 2 \, 4T-poke-1 release 1000 \, 4T-poke-1 hold
-0 \, 4T-poke-1 attack 100 \, 4T-poke-2 mono 1 \, 4T-poke-2 gain 0.3
-\, 4T-poke-2 octave -3 \, 4T-poke-2 release 500 \, 4T-poke-2 hold 100
-\, 4T-poke-2 attack 250 \, 4T-poke-0 mono 1 \, 4T-poke-0 gain 0.57
-\, 4T-poke-0 octave -4 \, 4T-poke-0 release 1500 \, 4T-poke-0 hold
-50 \, 4T-poke-0 attack 700 \, 4T-Granulator intervals 0 2 3 5 7 9 10
-12 \, s_ejun-\\\$1 mod3d 0.00787402 \, s_ejun-\\\$1 mod3c 0.015748
-\, s_ejun-\\\$1 mod3b 0.141732 \, s_ejun-\\\$1 mod3a 0.0708661 \, s_ejun-\\\$1
-mod2d 0.291339 \, s_ejun-\\\$1 mod2c 0 \, s_ejun-\\\$1 mod2b 0.0708661
-\, s_ejun-\\\$1 mod2a 0.511811 \, s_ejun-\\\$1 mod1d 0.0944882 \, s_ejun-\\\$1
-mod1c 0.19685 \, s_ejun-\\\$1 mod1b 0 \, s_ejun-\\\$1 mod1a 0.622047
-\, s_ejun-\\\$1 osc3d 0.023622 \, s_ejun-\\\$1 osc3c 0.00787402 \,
-s_ejun-\\\$1 osc3b 0.015748 \, s_ejun-\\\$1 osc3a 0.669291 \, s_ejun-\\\$1
-osc2d 0.401575 \, s_ejun-\\\$1 osc2c 0.244094 \, s_ejun-\\\$1 osc2b
-0.330709 \, s_ejun-\\\$1 osc2a 0.501102 \, s_ejun-\\\$1 osc1d 0.574803
-\, s_ejun-\\\$1 osc1c 0.181102 \, s_ejun-\\\$1 osc1b 0.393701 \, s_ejun-\\\$1
-osc1a 1 \, s_ejun-\\\$1 env3r 0.00787402 \, s_ejun-\\\$1 env3s 0.409449
-\, s_ejun-\\\$1 env3d 0.110236 \, s_ejun-\\\$1 env3a 0.000629921 \,
-s_ejun-\\\$1 env2r 0 \, s_ejun-\\\$1 env2s 1 \, s_ejun-\\\$1 env2d
-0 \, s_ejun-\\\$1 env2a 0 \, s_ejun-\\\$1 env1r 0 \, s_ejun-\\\$1 env1s
-1 \, s_ejun-\\\$1 env1d 0 \, s_ejun-\\\$1 env1a 0 \, e_tremolo-\\\$1
-phase 0 \, e_tremolo-\\\$1 shape 0 \, e_tremolo-\\\$1 depth 1 \, e_tremolo-\\\$1
-freq 5 \, s_osc-2041-square-2 square 1 \, s_osc-2041-square-2 square
-1 \, s_osc-2041-square-1 square 1 \, s_osc-1958-square-2 square 1 \,
-s_osc-1958-square-2 square 1 \, s_osc-1958-square-1 square 1 \, 1957-reverb
-size 0 \, 1957-reverb damping 944.882 \, 1957-reverb decay 0.133858
-\, 1957-reverb dry 0.0314961 \, e_platereverb-1957-platereverb dry
-0.181102 \, e_platereverb-1957-platereverb decay_diffusion2 0.84 \,
-e_platereverb-1957-platereverb decay_diffusion1 0.889 \, e_platereverb-1957-platereverb
-input_diffusion2 0.779 \, e_platereverb-1957-platereverb excursion
-0.19685 \, e_platereverb-1957-platereverb input_diffusion1 0.685 \,
-e_platereverb-1957-platereverb decay 0.322835 \, e_platereverb-1957-platereverb
-damping 5511.81 \, e_platereverb-1957-platereverb bandwidth 10000 \,
-e_platereverb-1957-platereverb predelay 10 \, e_platereverb-\\\$1 decay_diffusion2
-0.84 \, e_platereverb-\\\$1 decay_diffusion1 0.889 \, e_platereverb-\\\$1
-input_diffusion2 0.779 \, e_platereverb-\\\$1 excursion 0.53761 \,
-e_platereverb-\\\$1 input_diffusion1 0.685 \, e_platereverb-\\\$1 decay
-0.79 \, e_platereverb-\\\$1 damping 4637 \, e_platereverb-\\\$1 bandwidth
-10000 \, e_platereverb-\\\$1 predelay 10 \, e_reslop-\\\\\\\$1-4T-lop
-q 3 \, e_reslop-\\\\\\\$1-4T-lop q 3 \, notes-8 note-count 8 \, notes-8
-intervals 0 2 3 5 7 9 10 12 \, e_platereverb-1957-4T dry 0.8 \, e_platereverb-1957-4T
-decay_diffusion2 0.84 \, e_platereverb-1957-4T decay_diffusion1 0.889
-\, e_platereverb-1957-4T input_diffusion2 0.779 \, e_platereverb-1957-4T
-excursion 0.53761 \, e_platereverb-1957-4T input_diffusion1 0.685 \,
-e_platereverb-1957-4T decay 0.99 \, e_platereverb-1957-4T damping 4637
-\, e_platereverb-1957-4T bandwidth 10000 \, e_platereverb-1957-4T predelay
-10 \, 4T-poke-1 gain 0.2 \, 4T-poke-1 octave 2 \, 4T-poke-1 release
-1000 \, 4T-poke-1 hold 0 \, 4T-poke-1 attack 100 \, 4T-poke-2 mono
-1 \, 4T-poke-2 gain 0.3 \, 4T-poke-2 octave -3 \, 4T-poke-2 release
-500 \, 4T-poke-2 hold 100 \, 4T-poke-2 attack 250 \, 4T-poke-0 mono
-1 \, 4T-poke-0 gain 0.57 \, 4T-poke-0 octave -4 \, 4T-poke-0 release
-1500 \, 4T-poke-0 hold 50 \, 4T-poke-0 attack 700 \, 4T-Granulator
-intervals 0 2 3 5 7 9 10 12 \, s_ejun-\\\$1 mod3d 0.00787402 \, s_ejun-\\\$1
-mod3c 0.015748 \, s_ejun-\\\$1 mod3b 0.141732 \, s_ejun-\\\$1 mod3a
-0.0708661 \, s_ejun-\\\$1 mod2d 0.291339 \, s_ejun-\\\$1 mod2c 0 \,
-s_ejun-\\\$1 mod2b 0.0708661 \, s_ejun-\\\$1 mod2a 0.511811 \, s_ejun-\\\$1
-mod1d 0.0944882 \, s_ejun-\\\$1 mod1c 0.19685 \, s_ejun-\\\$1 mod1b
-0 \, s_ejun-\\\$1 mod1a 0.622047 \, s_ejun-\\\$1 osc3d 0.023622 \,
-s_ejun-\\\$1 osc3c 0.00787402 \, s_ejun-\\\$1 osc3b 0.015748 \, s_ejun-\\\$1
-osc3a 0.669291 \, s_ejun-\\\$1 osc2d 0.401575 \, s_ejun-\\\$1 osc2c
-0.244094 \, s_ejun-\\\$1 osc2b 0.330709 \, s_ejun-\\\$1 osc2a 0.501102
-\, s_ejun-\\\$1 osc1d 0.574803 \, s_ejun-\\\$1 osc1c 0.181102 \, s_ejun-\\\$1
-osc1b 0.393701 \, s_ejun-\\\$1 osc1a 1 \, s_ejun-\\\$1 env3r 0.00787402
-\, s_ejun-\\\$1 env3s 0.409449 \, s_ejun-\\\$1 env3d 0.110236 \, s_ejun-\\\$1
-env3a 0.000629921 \, s_ejun-\\\$1 env2r 0 \, s_ejun-\\\$1 env2s 1 \,
-s_ejun-\\\$1 env2d 0 \, s_ejun-\\\$1 env2a 0 \, s_ejun-\\\$1 env1r
-0 \, s_ejun-\\\$1 env1s 1 \, s_ejun-\\\$1 env1d 0 \, s_ejun-\\\$1 env1a
-0 \, e_tremolo-\\\$1 phase 0 \, e_tremolo-\\\$1 shape 0 \, e_tremolo-\\\$1
-depth 1 \, e_tremolo-\\\$1 freq 5 \, s_osc-2041-square-2 square 1 \,
-s_osc-2041-square-2 square 1 \, s_osc-2041-square-1 square 1 \, s_osc-1958-square-2
-square 1 \, s_osc-1958-square-2 square 1 \, s_osc-1958-square-1 square
-1 \,;
 #X msg 443 233;
 #X msg 463 253;
 #X msg 483 273;
@@ -1328,124 +103,563 @@ square 1 \, s_osc-1958-square-2 square 1 \, s_osc-1958-square-1 square
 #X msg 59 489 1;
 #X obj 109 467 t b f;
 #X msg 109 489 0;
+#X msg 423 220 e_reslop-drum-lop q 2 \, e_reslop-drum-lop freq 1800
+\, notes-8 note-count 8 \, notes-8 intervals 1 4 6 7 8 8 11 11 \, 4T-poke-0
+note-count 8 \, 4T-poke-0 intervals 0 2 3 6 8 9 11 12 \, 4T-poke-0
+mono 1 \, 4T-poke-0 gain 0.57 \, 4T-poke-0 octave -4 \, 4T-poke-0 release
+1500 \, 4T-poke-0 hold 50 \, 4T-poke-0 attack 700 \, notes-8 note-count
+8 \, notes-8 intervals 1 4 6 7 8 8 11 11 \, 4T-poke-1 note-count 8
+\, 4T-poke-1 intervals 1 4 6 7 8 8 11 11 \, 4T-poke-1 gain 0.5 \, 4T-poke-1
+octave 2 \, 4T-poke-1 release 1000 \, 4T-poke-1 hold 0 \, 4T-poke-1
+attack 100 \, notes-8 note-count 8 \, notes-8 intervals 1 4 6 7 8 8
+11 11 \, 4T-poke-2 note-count 8 \, 4T-poke-2 intervals 1 4 6 7 8 8
+11 11 \, 4T-poke-2 mono 1 \, 4T-poke-2 gain 0.64 \, 4T-poke-2 octave
+-2 \, 4T-poke-2 release 500 \, 4T-poke-2 hold 100 \, 4T-poke-2 attack
+250 \, notes-8 note-count 8 \, notes-8 intervals 1 4 6 7 8 8 11 11
+\, 4T-Granulator poke-3-interval 0 \, 4T-Granulator poke-2-interval
+0 \, 4T-Granulator poke-1-interval 4 \, 4T-Granulator gain 0.4 \, 4T-Granulator
+sound-bed-interval 0 \, 4T-Granulator intervals 1 4 6 7 8 8 11 11 \,
+e_tremolo-trem-right phase 0 \, e_tremolo-trem-right shape 0.5 \, e_tremolo-trem-right
+depth 0 \, e_tremolo-trem-right freq 1.25 \, e_tremolo-trem-left phase
+0 \, e_tremolo-trem-left shape 0.5 \, e_tremolo-trem-left depth 0 \,
+e_tremolo-trem-left freq 1.25 \, e_platereverb-soundscape-reverb dry
+0 \, e_platereverb-soundscape-reverb decay_diffusion2 0.84 \, e_platereverb-soundscape-reverb
+decay_diffusion1 0.889 \, e_platereverb-soundscape-reverb input_diffusion2
+0.779 \, e_platereverb-soundscape-reverb excursion 0.53761 \, e_platereverb-soundscape-reverb
+input_diffusion1 0.685 \, e_platereverb-soundscape-reverb decay 0.99
+\, e_platereverb-soundscape-reverb damping 4637 \, e_platereverb-soundscape-reverb
+bandwidth 10000 \, e_platereverb-soundscape-reverb predelay 10 \,;
+#X obj 665 54 loadbang;
+#X obj 665 76 del 100;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
-#X connect 3 0 17 0;
-#X connect 4 0 14 0;
-#X connect 5 0 14 0;
-#X connect 6 0 14 0;
-#X connect 7 0 14 0;
-#X connect 8 0 14 0;
-#X connect 9 0 14 0;
-#X connect 10 0 14 0;
-#X connect 11 0 14 0;
-#X connect 12 0 14 0;
-#X connect 13 0 14 0;
-#X connect 15 0 2 1;
-#X connect 15 0 32 0;
-#X connect 16 0 1 1;
-#X connect 17 0 4 0;
-#X connect 17 1 5 0;
-#X connect 17 2 6 0;
-#X connect 17 3 7 0;
-#X connect 17 4 8 0;
-#X connect 17 5 9 0;
-#X connect 17 6 10 0;
-#X connect 17 7 11 0;
-#X connect 17 8 12 0;
-#X connect 17 9 13 0;
-#X connect 18 0 4 0;
-#X connect 18 1 5 0;
-#X connect 18 2 6 0;
-#X connect 18 3 7 0;
-#X connect 18 4 8 0;
-#X connect 18 5 9 0;
-#X connect 18 6 10 0;
-#X connect 18 7 11 0;
-#X connect 18 8 12 0;
-#X connect 18 9 13 0;
+#X connect 3 0 16 0;
+#X connect 4 0 13 0;
+#X connect 5 0 13 0;
+#X connect 6 0 13 0;
+#X connect 7 0 13 0;
+#X connect 8 0 13 0;
+#X connect 9 0 13 0;
+#X connect 10 0 13 0;
+#X connect 11 0 13 0;
+#X connect 12 0 13 0;
+#X connect 14 0 2 1;
+#X connect 14 0 31 0;
+#X connect 15 0 1 1;
+#X connect 16 0 41 0;
+#X connect 16 1 4 0;
+#X connect 16 2 5 0;
+#X connect 16 3 6 0;
+#X connect 16 4 7 0;
+#X connect 16 5 8 0;
+#X connect 16 6 9 0;
+#X connect 16 7 10 0;
+#X connect 16 8 11 0;
+#X connect 16 9 12 0;
+#X connect 17 0 41 0;
+#X connect 17 1 4 0;
+#X connect 17 2 5 0;
+#X connect 17 3 6 0;
+#X connect 17 4 7 0;
+#X connect 17 5 8 0;
+#X connect 17 6 9 0;
+#X connect 17 7 10 0;
+#X connect 17 8 11 0;
+#X connect 17 9 12 0;
+#X connect 19 0 18 0;
 #X connect 20 0 19 0;
-#X connect 21 0 20 0;
-#X connect 23 0 20 0;
-#X connect 23 1 22 0;
-#X connect 23 2 24 0;
-#X connect 27 0 33 0;
-#X connect 27 1 26 0;
-#X connect 27 2 28 0;
-#X connect 29 0 18 0;
-#X connect 30 0 23 0;
-#X connect 31 0 27 0;
-#X connect 34 0 16 0;
-#X connect 35 0 38 0;
-#X connect 36 0 40 0;
-#X connect 38 0 39 0;
-#X connect 38 1 37 1;
-#X connect 39 0 37 0;
-#X connect 40 0 41 0;
-#X connect 40 1 37 1;
-#X connect 41 0 37 0;
-#X restore 33 118 pd presets;
-#X obj 842 64 preset-toggle \$0 0;
-#X obj 887 64 preset-toggle \$0 3;
-#X obj 857 64 preset-toggle \$0 1;
-#X obj 872 64 preset-toggle \$0 2;
-#X obj 902 64 preset-toggle \$0 4;
-#X obj 917 64 preset-toggle \$0 5;
-#X obj 932 64 preset-toggle \$0 6;
-#X obj 947 64 preset-toggle \$0 7;
-#X obj 962 64 preset-toggle \$0 8;
-#X obj 977 64 preset-toggle \$0 9;
-#N canvas 0 22 223 322 osc 0;
-#X obj 36 181 r fakeHarpSend;
-#X obj 36 267 sendOSC 9001;
-#X msg 43 244 connect 127.0.0.1 9001;
-#X obj 43 114 dumpOSC 9001;
-#X obj 43 136 s \$0-player-osc;
-#X obj 46 34 dumpOSC 5000;
-#X obj 46 56 OSCroute /1;
-#X obj 46 78 s \$0-touchOSC;
-#X obj 43 201 loadbang;
-#X obj 43 223 del 1000;
-#X connect 0 0 1 0;
-#X connect 2 0 1 0;
+#X connect 22 0 19 0;
+#X connect 22 1 21 0;
+#X connect 22 2 23 0;
+#X connect 26 0 32 0;
+#X connect 26 1 25 0;
+#X connect 26 2 27 0;
+#X connect 28 0 17 0;
+#X connect 29 0 22 0;
+#X connect 30 0 26 0;
+#X connect 33 0 15 0;
+#X connect 34 0 37 0;
+#X connect 35 0 39 0;
+#X connect 37 0 38 0;
+#X connect 37 1 36 1;
+#X connect 38 0 36 0;
+#X connect 39 0 40 0;
+#X connect 39 1 36 1;
+#X connect 40 0 36 0;
+#X connect 41 0 13 0;
+#X connect 42 0 43 0;
+#X connect 43 0 41 0;
+#X restore 17 529 pd presets;
+#X obj 17 472 preset-toggle \$0 0;
+#X obj 62 472 preset-toggle \$0 3;
+#X obj 32 472 preset-toggle \$0 1;
+#X obj 47 472 preset-toggle \$0 2;
+#X obj 77 472 preset-toggle \$0 4;
+#X obj 92 472 preset-toggle \$0 5;
+#X obj 107 472 preset-toggle \$0 6;
+#X obj 122 472 preset-toggle \$0 7;
+#X obj 137 472 preset-toggle \$0 8;
+#X obj 152 472 preset-toggle \$0 9;
+#N canvas 533 432 419 286 osc 0;
+#X obj 43 105 dumpOSC 9001;
+#X obj 43 219 s \$0-player-osc;
+#X obj 43 24 dumpOSC 5000;
+#X obj 43 46 OSCroute /1;
+#X obj 43 68 s \$0-touchOSC;
+#X obj 130 153 inlet;
+#X msg 130 175 /\$1;
+#X text 125 24 From TouchOSC iPad interface;
+#X text 125 106 From debug_xosc Processing sketch;
+#X obj 43 197 list prepend /0;
+#X obj 52 129 dumpOSC 9002;
+#X text 135 126 From FakePlayers sub-patch Processing sketch;
+#X connect 0 0 9 0;
+#X connect 2 0 3 0;
 #X connect 3 0 4 0;
 #X connect 5 0 6 0;
-#X connect 6 0 7 0;
-#X connect 8 0 9 0;
-#X connect 9 0 2 0;
-#X restore 33 78 pd osc;
-#X text 842 44 Presets;
-#X text 999 62 Save;
-#X text 999 87 Recall;
-#X text 999 103 Clear;
-#X msg 805 423 poke-0-interval \$1;
-#X msg 825 453 interval \$1;
-#X obj 825 281 r \$0-0-section;
-#X obj 680 330 - 3;
-#X obj 680 352 / 12;
-#X msg 680 372 dry \$1;
-#X obj 735 374 / 2;
-#X obj 735 396 + 0.5;
-#X obj 680 308 r \$0-0-angle1;
-#X connect 6 0 7 0;
-#X connect 6 0 55 0;
-#X connect 8 0 4 0;
-#X connect 9 0 4 0;
-#X connect 10 0 11 0;
-#X connect 10 0 8 0;
-#X connect 12 0 10 0;
-#X connect 13 0 14 0;
+#X connect 6 0 9 1;
+#X connect 9 0 1 0;
+#X connect 10 0 1 0;
+#X restore 18 333 pd osc;
+#X text 174 470 Save;
+#X text 174 495 Recall;
+#X text 174 511 Clear;
+#N canvas 1390 364 412 324 reverb 0;
+#X msg 231 122 dry \$1;
+#X obj 48 220 *~;
+#X obj 139 220 *~;
+#X obj 207 196 line~;
+#X obj 231 38 r \$0-0-angle1;
+#X obj 231 70 m_scale 3 15 0 1;
+#X text 244 197 Gain compensation;
+#N canvas 0 22 473 173 preset-info 0;
+#X obj 54 31 loadbang;
+#X obj 54 115 outlet;
+#X msg 54 54 decay_diffusion2 0.84 \, decay_diffusion1 0.889 \, input_diffusion2
+0.779 \, excursion 0.53761 \, input_diffusion1 0.685 \, decay 0.99
+\, damping 4637 \, bandwidth 10000 \, predelay 10;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 241 150 pd preset-info;
+#X obj 48 250 outlet~;
+#X obj 139 270 outlet~;
+#X obj 48 120 inlet~;
+#X obj 139 140 inlet~;
+#X obj 241 93 m_scale 0 1 0.35 1;
+#X obj 48 173 e_platereverb soundscape-reverb;
+#X obj 201 14 loadbang;
+#X msg 201 36 15;
+#X connect 0 0 13 2;
+#X connect 1 0 8 0;
+#X connect 2 0 9 0;
+#X connect 3 0 2 1;
+#X connect 3 0 1 1;
+#X connect 5 0 0 0;
+#X connect 5 0 12 0;
+#X connect 7 0 13 2;
+#X connect 10 0 13 0;
+#X connect 11 0 13 1;
+#X connect 12 0 3 0;
+#X connect 13 0 1 0;
+#X connect 13 1 2 0;
+#X connect 14 0 15 0;
+#X connect 15 0 5 0;
+#X restore 565 127 pd reverb;
+#N canvas 788 336 443 388 lowpass-filter 0;
+#X obj 47 120 e_reslop \$1-4T-lop 20000;
+#X obj 84 141 e_reslop \$1-4T-lop 20000;
+#X msg 225 100 freq \$1;
+#X obj 284 79 loadbang;
+#X msg 284 100 q 3;
+#X obj 47 273 outlet~;
+#X obj 84 293 outlet~;
+#X obj 47 33 inlet~;
+#X obj 84 53 inlet~;
+#X obj 225 34 r \$0-1-angle1;
+#X obj 225 60 m_scale 15 3 500 19000 3;
+#X obj 84 253 *~;
+#X obj 47 233 *~;
+#X obj 99 206 line~;
+#X text 136 207 Gain compensation;
+#X obj 99 183 m_scale 500 19000 3 1;
+#X obj 338 12 loadbang;
+#X msg 338 34 3;
+#X connect 0 0 12 0;
+#X connect 1 0 11 0;
+#X connect 2 0 0 1;
+#X connect 2 0 1 1;
+#X connect 3 0 4 0;
+#X connect 4 0 1 1;
+#X connect 4 0 0 1;
+#X connect 7 0 0 0;
+#X connect 8 0 1 0;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 10 0 15 0;
+#X connect 11 0 6 0;
+#X connect 12 0 5 0;
+#X connect 13 0 11 1;
+#X connect 13 0 12 1;
 #X connect 15 0 13 0;
-#X connect 30 0 27 0;
-#X connect 31 0 28 0;
-#X connect 33 0 32 0;
-#X connect 34 0 35 0;
-#X connect 37 0 4 0;
-#X connect 55 0 4 0;
-#X connect 56 0 6 0;
-#X connect 57 0 58 0;
-#X connect 58 0 59 0;
-#X connect 58 0 60 0;
-#X connect 60 0 61 0;
-#X connect 62 0 57 0;
+#X connect 16 0 17 0;
+#X connect 17 0 10 0;
+#X restore 565 169 pd lowpass-filter;
+#N canvas 675 263 579 426 tremolo 0;
+#X msg 164 283 freq \$1;
+#X obj 47 373 outlet~;
+#X obj 84 393 outlet~;
+#X obj 47 33 inlet~;
+#X obj 84 53 inlet~;
+#X msg 377 124 shape \$1;
+#X obj 377 53 m_scale 15 3 0.1 1;
+#X msg 254 309 depth \$1;
+#X obj 141 77 sel 0;
+#X obj 254 185 spigot;
+#X obj 141 108 t b b;
+#X msg 287 162 0;
+#X obj 254 287 line;
+#X msg 316 162 1;
+#X msg 141 159 0;
+#X obj 179 109 t f b b;
+#X obj 141 53 m_scale 0 70 0 25;
+#X msg 254 265 \$1 100;
+#X obj 254 53 m_scale 15 3 1 0.3;
+#X obj 47 310 e_tremolo2 trem-left;
+#X obj 84 331 e_tremolo2 trem-right;
+#X obj 141 27 r \$0-1-rotations;
+#X obj 254 27 r \$0-1-angle1;
+#X obj 377 27 r \$0-1-angle2;
+#X obj 468 6 loadbang;
+#X msg 468 28 3;
+#X obj 254 237 f 0.3;
+#X connect 0 0 19 1;
+#X connect 0 0 20 1;
+#X connect 3 0 19 0;
+#X connect 4 0 20 0;
+#X connect 5 0 19 1;
+#X connect 5 0 20 1;
+#X connect 6 0 5 0;
+#X connect 7 0 19 1;
+#X connect 7 0 20 1;
+#X connect 8 0 10 0;
+#X connect 8 1 15 0;
+#X connect 9 0 26 0;
+#X connect 10 0 14 0;
+#X connect 10 1 11 0;
+#X connect 11 0 9 1;
+#X connect 12 0 7 0;
+#X connect 13 0 9 1;
+#X connect 14 0 17 0;
+#X connect 15 0 0 0;
+#X connect 15 1 13 0;
+#X connect 15 2 26 0;
+#X connect 16 0 8 0;
+#X connect 17 0 12 0;
+#X connect 18 0 9 0;
+#X connect 19 0 1 0;
+#X connect 20 0 2 0;
+#X connect 21 0 16 0;
+#X connect 24 0 25 0;
+#X connect 25 0 6 0;
+#X connect 25 0 18 0;
+#X connect 26 0 17 0;
+#X restore 565 209 pd tremolo;
+#X obj 565 263 throw~ \$0-LEFT;
+#X obj 665 263 throw~ \$0-RIGHT;
+#N canvas 499 470 656 442 granular 0;
+#X obj 31 94 4T-Granulator \$0;
+#X obj 394 39 r \$0-3-section;
+#X obj 31 53 scaleSelecta;
+#X obj 111 39 r \$0-0-section;
+#X floatatom 130 20 5 0 0 0 - - -, f 5;
+#X msg 111 61 sound-bed-interval \$1;
+#X obj 526 39 loadbang;
+#X text 37 329 ^ Sound-bed OUT LEFT;
+#X text 216 329 ^ Sound-bed OUT RIGHT;
+#X text 396 329 ^ Pokes OUT MONO;
+#X obj 31 359 outlet~;
+#X obj 84 359 outlet~;
+#X obj 390 361 outlet~;
+#X msg 265 62 poke-2-interval \$1;
+#X msg 394 61 poke-3-interval \$1;
+#X obj 265 39 r \$0-2-section;
+#X msg 408 195 sound-bed-interval \$1;
+#X msg 408 235 poke-2-interval \$1;
+#X msg 408 215 poke-1-interval \$1;
+#X msg 408 255 poke-3-interval \$1;
+#X msg 408 275 gain \$1;
+#X text 406 175 Granulator parameters;
+#X msg 526 61 gain 0.4;
+#X connect 0 0 10 0;
+#X connect 0 1 11 0;
+#X connect 0 2 12 0;
+#X connect 1 0 14 0;
+#X connect 2 0 0 0;
+#X connect 3 0 5 0;
+#X connect 3 0 4 0;
+#X connect 5 0 0 0;
+#X connect 6 0 22 0;
+#X connect 13 0 0 0;
+#X connect 14 0 0 0;
+#X connect 15 0 13 0;
+#X connect 22 0 0 0;
+#X restore 565 52 pd granular;
+#N canvas 1390 364 412 324 reverb 0;
+#X obj 48 173 e_platereverb;
+#N canvas 0 22 473 173 preset-info 0;
+#X obj 58 18 loadbang;
+#X obj 54 115 outlet;
+#X msg 54 54 decay_diffusion2 0.84 \, decay_diffusion1 0.889 \, input_diffusion2
+0.779 \, excursion 0.53761 \, input_diffusion1 0.685 \, decay 0.99
+\, damping 4637 \, bandwidth 10000 \, predelay 10 \, dry 0.72;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X restore 153 150 pd preset-info;
+#X obj 48 250 outlet~;
+#X obj 85 270 outlet~;
+#X obj 48 120 inlet~;
+#X obj 85 140 inlet~;
+#X obj 85 220 *~ 1;
+#X obj 48 220 *~ 1;
+#X connect 0 0 7 0;
+#X connect 0 1 6 0;
+#X connect 1 0 0 2;
+#X connect 4 0 0 0;
+#X connect 5 0 0 1;
+#X connect 6 0 3 0;
+#X connect 7 0 2 0;
+#X restore 692 168 pd reverb;
+#X obj 692 142 *~ 0.25;
+#N canvas 0 22 867 605 Players 0;
+#X floatatom 278 546 5 0 0 0 - - -, f 5;
+#X obj 278 565 s rotations-multiplier;
+#X obj 310 145 player-input \$0 5;
+#X text 607 15 Player parameters;
+#X text 606 45 -rotations (0 - ~70);
+#X text 607 65 -angle1 (3 - 15);
+#X text 607 85 -angle2 (3 - 15);
+#X text 607 105 -velocity-out (0 - 30);
+#X text 607 125 -velocity-in (0 - -30);
+#X text 607 145 -section (0 - 7);
+#X text 607 165 -boundary (bang);
+#X text 607 185 -dir (-1 \, 0 \, 1);
+#X text 607 205 -hall1 (bang);
+#X text 607 225 -hall2 (bang);
+#X obj 309 14 player-input \$0 4;
+#X obj 311 278 player-input \$0 6;
+#X obj 16 14 player-input \$0 0;
+#X obj 16 278 player-input \$0 2;
+#X obj 16 411 player-input \$0 3;
+#X obj 16 145 player-input \$0 1;
+#X obj 311 411 player-input \$0 7;
+#X connect 0 0 1 0;
+#X restore 18 354 pd Players;
+#N canvas 1406 48 410 664 Fake-Players 0;
+#X obj 22 18 fakePlayer 0 \$0;
+#X obj 22 149 fakePlayer 1 \$0;
+#X obj 22 281 fakePlayer 2 \$0;
+#X obj 23 415 fakePlayer 3 \$0;
+#X obj 203 415 fakePlayer 7 \$0;
+#X obj 202 281 fakePlayer 6 \$0;
+#X obj 202 149 fakePlayer 5 \$0;
+#X obj 202 18 fakePlayer 4 \$0;
+#X obj 92 546 r fakeHarpSend;
+#X obj 99 566 loadbang;
+#X obj 99 588 del 1000;
+#X text 184 547 From FakePlayers sub-patch;
+#X obj 92 632 sendOSC 9002;
+#X msg 99 609 connect 127.0.0.1 9002;
+#X connect 8 0 12 0;
+#X connect 9 0 10 0;
+#X connect 10 0 13 0;
+#X connect 13 0 12 0;
+#X restore 18 404 pd Fake-Players;
+#N canvas 520 575 452 362 velocity 0;
+#X obj 48 88 t f f;
+#X obj 48 235 *~;
+#X obj 48 162 sig~;
+#X obj 48 184 osc~;
+#X obj 48 110 abs;
+#X obj 189 131 noise~;
+#X obj 189 153 lop~ 1000;
+#X obj 189 175 *~ 0.04;
+#X obj 282 141 abs;
+#X obj 282 185 lop~ 10;
+#X obj 48 289 outlet~;
+#X obj 48 140 m_scale -30 15 12 100;
+#X obj 48 206 *~ 1;
+#X obj 282 162 m_scale 0 15 0 1 1;
+#X obj 48 267 *~ 2;
+#X obj 48 26 r \$0-4-velocity-in;
+#X floatatom 48 48 5 0 0 0 - - -, f 5;
+#X connect 0 0 4 0;
+#X connect 0 1 8 0;
+#X connect 1 0 14 0;
+#X connect 2 0 3 0;
+#X connect 3 0 12 0;
+#X connect 4 0 11 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 1 0;
+#X connect 8 0 13 0;
+#X connect 9 0 1 1;
+#X connect 11 0 2 0;
+#X connect 12 0 1 0;
+#X connect 13 0 9 0;
+#X connect 14 0 10 0;
+#X connect 15 0 0 0;
+#X connect 15 0 16 0;
+#X restore 565 316 pd velocity;
+#N canvas 0 22 333 181 delay 0;
+#X obj 82 81 delwrite~ \$0-velocity 1000;
+#X obj 82 103 delread~ \$0-velocity 350;
+#X obj 22 56 inlet~;
+#X obj 22 141 outlet~;
+#X obj 143 25 r \$0-4-angle1;
+#X obj 143 47 m_scale 3 15 100 1000;
+#X obj 38 89 *~ 0.6;
+#X connect 1 0 6 0;
+#X connect 2 0 0 0;
+#X connect 2 0 3 0;
+#X connect 4 0 5 0;
+#X connect 5 0 1 0;
+#X connect 6 0 0 0;
+#X connect 6 0 3 0;
+#X restore 565 343 pd delay;
+#X obj 565 375 throw~ \$0-LEFT;
+#X obj 665 375 throw~ \$0-RIGHT;
+#N canvas 0 22 230 261 pitch-detect 0;
+#X obj 41 128 + 0.499;
+#X obj 41 149 int;
+#X obj 41 90 line;
+#X floatatom 41 111 5 0 0 0 - - -, f 5;
+#X obj 41 69 pack 0 20;
+#X obj 41 48 fiddle~ 2048 1 20 3;
+#X obj 41 170 change;
+#X floatatom 41 192 5 0 0 0 - - -, f 5;
+#X connect 0 0 1 0;
+#X connect 1 0 6 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 0;
+#X connect 4 0 2 0;
+#X connect 5 0 4 0;
+#X connect 6 0 7 0;
+#X restore 18 119 pd pitch-detect;
+#X obj 294 279 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 294 239 Quick movements;
+#X obj 294 329 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 0 22 333 181 delay 0;
+#X obj 38 89 *~ 0.4;
+#X obj 22 56 inlet~;
+#X obj 22 141 outlet~;
+#X obj 82 81 delwrite~ \$0-drums 1000;
+#X obj 82 103 delread~ \$0-drums 100;
+#X connect 0 0 2 0;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X connect 1 0 3 0;
+#X connect 4 0 0 0;
+#X restore 565 484 pd delay;
+#X obj 565 511 throw~ \$0-LEFT;
+#X obj 665 511 throw~ \$0-RIGHT;
+#X obj 294 259 yank-out \$0-5 1;
+#N canvas 592 265 412 324 volume 1;
+#X obj 48 220 *~;
+#X obj 139 220 *~;
+#X obj 48 250 outlet~;
+#X obj 139 270 outlet~;
+#X obj 48 120 inlet~;
+#X obj 139 140 inlet~;
+#X obj 199 137 r \$0-0-rotations;
+#X obj 199 159 > 2;
+#X obj 199 181 lop~ 1;
+#X connect 0 0 2 0;
+#X connect 1 0 3 0;
+#X connect 4 0 0 0;
+#X connect 5 0 1 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 1 1;
+#X connect 8 0 0 1;
+#X restore 565 87 pd volume;
+#X obj 18 208 vradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X text 36 207 0 - Granular soundbed note;
+#X text 36 238 2 - Granular poke note high;
+#X text 36 254 3 - Granular poke note low;
+#X text 36 269 4 - Velocity;
+#X text 36 285 5 - Quick movements;
+#X text 36 300 6 - ???;
+#X text 36 316 7 - ???;
+#X obj 294 309 yank-in \$0-5 2;
+#X obj 18 140 overview;
+#X text 87 355 Processing Player data;
+#X text 115 404 For debug;
+#X text 293 30 USING THE PLAYER DATA;
+#X text 292 55 Syntax;
+#X text 17 8 ADMIN;
+#X text 17 99 TOOLS;
+#X text 16 187 PLAYER DEMOS;
+#X text 62 334 Receive Player data;
+#X text 17 452 PRESET SAVING (experimental);
+#X text 563 26 DEMOS;
+#X text 36 223 1 - Granular soundbed tremolo;
+#N canvas 332 135 451 351 quick-movements 0;
+#X obj 96 201 s_drumelectro;
+#X obj 96 223 e_reslop drum-lop;
+#X msg 209 197 q 2;
+#X msg 195 177 freq 1800;
+#X msg 96 173 hh;
+#X msg 126 173 cp;
+#X obj 195 153 loadbang;
+#X obj 96 245 outlet~;
+#X obj 126 124 yank-in \$0-5 2;
+#X obj 136 144 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 106 104 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 96 84 yank-out \$0-5 1;
+#X connect 0 0 1 0;
+#X connect 1 0 7 0;
+#X connect 2 0 1 1;
+#X connect 3 0 1 1;
+#X connect 4 0 0 0;
+#X connect 5 0 0 0;
+#X connect 6 0 3 0;
+#X connect 6 0 2 0;
+#X connect 8 0 9 0;
+#X connect 8 0 5 0;
+#X connect 11 0 4 0;
+#X connect 11 0 10 0;
+#X restore 565 454 pd quick-movements;
+#X connect 6 0 3 0;
+#X connect 7 0 4 0;
+#X connect 9 0 8 0;
+#X connect 10 0 11 0;
+#X connect 28 0 29 0;
+#X connect 28 1 29 1;
+#X connect 29 0 30 0;
+#X connect 29 1 30 1;
+#X connect 30 0 31 0;
+#X connect 30 1 32 0;
+#X connect 33 0 50 0;
+#X connect 33 1 50 1;
+#X connect 33 2 35 0;
+#X connect 34 0 31 0;
+#X connect 34 1 32 0;
+#X connect 35 0 34 0;
+#X connect 35 0 34 1;
+#X connect 38 0 39 0;
+#X connect 39 0 40 0;
+#X connect 39 0 41 0;
+#X connect 46 0 48 0;
+#X connect 46 0 47 0;
+#X connect 49 0 43 0;
+#X connect 50 0 28 0;
+#X connect 50 1 28 1;
+#X connect 51 0 24 0;
+#X connect 59 0 45 0;
+#X connect 72 0 46 0;
