@@ -71,17 +71,17 @@
 #X obj 435 501 section-display \$1-\$2 9;
 #X obj 461 501 section-display \$1-\$2 10;
 #X obj 204 483 hsl 280 15 0 70 0 0 empty empty empty -2 -8 0 10 -232576
--1 -1 399 1;
+-1 -1 797 1;
 #X floatatom 361 466 5 0 0 0 - - -, f 5;
 #X obj 258 556 hsl 50 15 0 30 0 0 empty empty empty -2 -8 0 10 -261682
 -1 -1 0 1;
 #X obj 204 556 hsl 50 15 -30 0 0 0 empty empty empty -2 -8 0 10 -262130
 -1 -1 4900 1;
 #X obj 423 466 hsl 60 15 0 15 0 0 empty empty empty -2 -8 0 10 -204800
--1 -1 0 1;
+-1 -1 5507 1;
 #X obj 420 335 r \$1-\$2-angle1;
 #X obj 206 457 nbx 2 20 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
--99865 -262144 -262144 5 256;
+-99865 -262144 -262144 1 256;
 #X obj 206 381 loadbang;
 #X obj 206 403 \$2;
 #X text 294 465 -rotations;
@@ -114,7 +114,9 @@
 #X obj 712 513 s \$1-\$2-velocity-in;
 #X connect 0 0 1 0;
 #X connect 1 0 44 0;
+#X connect 1 0 33 0;
 #X connect 1 1 2 0;
+#X connect 1 1 34 0;
 #X connect 1 2 3 0;
 #X connect 1 2 35 0;
 #X connect 1 3 4 0;
