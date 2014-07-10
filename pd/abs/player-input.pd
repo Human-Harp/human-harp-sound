@@ -1,4 +1,4 @@
-#N canvas 777 64 1078 788 10;
+#N canvas 570 132 1078 788 10;
 #X obj 42 -2 OSCroute /outputs;
 #X obj 42 20 OSCroute /angle1 /angle2 /hall1 /hall2 /rotations /id
 ;
@@ -55,7 +55,7 @@
 -262144 -1 -1 0 256;
 #X obj 201 501 section-display \$0 0;
 #X obj 332 546 nbx 2 25 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
--232576 -1 -1 0 256;
+-232576 -1 -1 4 256;
 #X obj 394 546 bng 25 250 50 0 empty empty empty 17 7 0 10 -232576
 -1 -1;
 #X obj 201 431 r \$1-\$2-rotations;
@@ -71,17 +71,17 @@
 #X obj 435 501 section-display \$1-\$2 9;
 #X obj 461 501 section-display \$1-\$2 10;
 #X obj 204 483 hsl 280 15 0 70 0 0 empty empty empty -2 -8 0 10 -232576
--1 -1 797 1;
+-1 -1 19477 1;
 #X floatatom 361 466 5 0 0 0 - - -, f 5;
 #X obj 258 556 hsl 50 15 0 30 0 0 empty empty empty -2 -8 0 10 -261682
 -1 -1 0 1;
 #X obj 204 556 hsl 50 15 -30 0 0 0 empty empty empty -2 -8 0 10 -262130
 -1 -1 4900 1;
 #X obj 423 466 hsl 60 15 0 15 0 0 empty empty empty -2 -8 0 10 -204800
--1 -1 5507 1;
+-1 -1 0 1;
 #X obj 420 335 r \$1-\$2-angle1;
 #X obj 206 457 nbx 2 20 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
--99865 -262144 -262144 1 256;
+-99865 -262144 -262144 4 256;
 #X obj 206 381 loadbang;
 #X obj 206 403 \$2;
 #X text 294 465 -rotations;
@@ -112,6 +112,8 @@
 #X obj 712 469 pack f 125;
 #X obj 712 491 line;
 #X obj 712 513 s \$1-\$2-velocity-in;
+#X floatatom 265 362 5 0 0 0 - - -, f 5;
+#X floatatom 204 335 5 0 0 0 - - -, f 5;
 #X connect 0 0 1 0;
 #X connect 1 0 44 0;
 #X connect 1 0 33 0;
@@ -176,7 +178,9 @@
 #X connect 91 0 7 0;
 #X connect 91 0 95 0;
 #X connect 93 0 68 0;
+#X connect 93 0 103 0;
 #X connect 94 0 67 0;
+#X connect 94 0 102 0;
 #X connect 95 0 96 0;
 #X connect 95 1 98 0;
 #X connect 96 0 97 0;
