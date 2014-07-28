@@ -1,4 +1,4 @@
-#N canvas 800 255 801 886 10;
+#N canvas 494 23 801 804 10;
 #X obj 70 578 s_playtable2;
 #X obj 31 92 mod 32;
 #X obj 31 71 spigot;
@@ -12,9 +12,9 @@
 #X obj 248 617 *~;
 #X obj 301 594 vline~;
 #X obj 248 573 s_osc hit-drone tri;
-#X obj 293 502 t f b;
-#X obj 293 480 + 62;
-#X obj 293 457 + 4;
+#X obj 248 506 t f b;
+#X obj 248 484 + 62;
+#X obj 248 461 + 4;
 #X obj 31 137 int;
 #X obj 31 159 change;
 #X obj 31 253 f;
@@ -61,8 +61,8 @@
 #X obj 591 152 u_dispatch \$0 arp-vol;
 #X obj 591 196 u_dispatch \$0 arp-delay-fb;
 #X obj 70 360 notes 4 0 0 4 7 11;
-#X msg 234 320 notes 0 4 7 11;
-#X msg 243 340 notes 0 3 7 10;
+#X msg 352 301 notes 0 4 7 11;
+#X msg 361 324 notes 0 3 7 10;
 #X obj 486 546 r \$0-arp-delay-fb;
 #X obj 486 569 min 1;
 #X obj 592 574 r \$0-arp-delay-time;
@@ -75,6 +75,13 @@
 #X obj 64 46 r \$0-arp-on;
 #X obj 31 22 r \$1-tick;
 #X obj 527 677 r \$0-arp-vol;
+#X obj 352 186 r \$1-4-rotations;
+#X obj 352 228 / 17.5;
+#X obj 352 250 int;
+#X floatatom 402 238 5 0 0 0 - - -, f 5;
+#X floatatom 449 263 5 0 0 0 - - -, f 5;
+#X msg 371 344 notes 0 3 6 10;
+#X obj 352 272 sel 0 1 2 3;
 #X connect 0 0 32 0;
 #X connect 0 1 32 0;
 #X connect 1 0 22 0;
@@ -87,7 +94,7 @@
 #X connect 7 0 24 0;
 #X connect 8 0 12 0;
 #X connect 9 0 8 0;
-#X connect 10 0 36 0;
+#X connect 10 0 32 0;
 #X connect 11 0 10 1;
 #X connect 12 0 46 0;
 #X connect 13 0 9 0;
@@ -160,3 +167,13 @@
 #X connect 73 0 2 1;
 #X connect 74 0 2 0;
 #X connect 75 0 50 0;
+#X connect 76 0 79 0;
+#X connect 76 0 77 0;
+#X connect 77 0 78 0;
+#X connect 78 0 80 0;
+#X connect 78 0 82 0;
+#X connect 81 0 61 1;
+#X connect 82 0 62 0;
+#X connect 82 1 62 0;
+#X connect 82 2 63 0;
+#X connect 82 3 81 0;

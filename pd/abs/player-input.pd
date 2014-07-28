@@ -1,4 +1,4 @@
-#N canvas 1058 422 1027 654 10;
+#N canvas 465 224 1027 654 10;
 #X obj 431 88 < 0;
 #X obj 431 110 change;
 #X obj 431 132 sel 1;
@@ -18,39 +18,38 @@
 #X text 690 23 Section divisions;
 #X obj 42 -44 r \$1-player-osc;
 #X obj 670 259 s \$1-\$2-section;
-#X obj 200 450 cnv 15 326 121 empty empty empty 20 12 0 14 -228856
+#X obj 200 450 cnv 15 346 141 empty empty empty 20 12 0 14 -228856
 -66577 0;
-#X text 304 540 30;
-#X text 200 540 -30;
-#X text 252 540 0;
-#X obj 436 546 nbx 2 25 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
+#X text 304 558 30;
+#X text 200 558 -30;
+#X text 252 558 0;
+#X obj 436 564 nbx 2 25 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
 -262144 -1 -1 0 256;
-#X obj 332 546 nbx 2 25 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
--232576 -1 -1 6 256;
-#X obj 394 546 bng 25 250 50 0 empty empty empty 17 7 0 10 -232576
+#X obj 332 564 nbx 2 25 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
+-232576 -1 -1 0 256;
+#X obj 394 564 bng 25 250 50 0 empty empty empty 17 7 0 10 -232576
 -1 -1;
 #X obj 332 371 r \$1-\$2-section;
-#X obj 227 501 section-display \$1-\$2 1;
-#X obj 204 483 hsl 280 15 0 40000 0 0 empty empty empty -2 -8 0 10
--232576 -1 -1 18986 1;
-#X floatatom 321 466 8 0 0 0 - - -, f 8;
-#X obj 204 556 hsl 115 15 -70000 70000 0 0 empty empty empty -2 -8
-0 10 -262130 -1 -1 5700 1;
-#X obj 423 466 hsl 60 15 -180 180 0 0 empty empty empty -2 -8 0 10
--204800 -1 -1 2949 1;
-#X obj 420 335 r \$1-\$2-angle1;
+#X obj 227 519 section-display \$1-\$2 1;
+#X obj 204 501 hsl 280 15 0 40000 0 0 empty empty empty -2 -8 0 10
+-232576 -1 -1 0 1;
+#X floatatom 321 484 8 0 0 0 - - -, f 8;
+#X obj 204 574 hsl 115 15 -70000 70000 0 0 empty empty empty -2 -8
+0 10 -262130 -1 -1 0 1;
+#X obj 423 465 hsl 60 15 -180 180 0 0 empty empty empty -2 -8 0 10
+-204800 -1 -1 0 1;
 #X obj 206 457 nbx 2 20 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
--99865 -262144 -262144 0 256;
+-99865 -262144 -262144 2 256;
 #X obj 206 381 loadbang;
 #X obj 206 403 \$2;
-#X text 419 450 -angle1;
-#X text 329 531 -section;
-#X text 200 527 -velocity;
+#X text 419 449 -angle1;
+#X text 329 549 -section;
+#X text 200 545 -velocity;
 #X obj 431 198 s \$1-\$2-dir;
-#X text 434 531 -dir;
+#X text 434 549 -dir;
 #X obj 436 413 r \$1-\$2-dir;
 #X obj 394 392 r \$1-\$2-bound;
-#X text 387 531 -bound;
+#X text 387 549 -bound;
 #X obj 670 189 change;
 #X obj 223 278 max 0;
 #X obj 223 254 * 1;
@@ -63,24 +62,21 @@
 #X obj 102 124 / 100;
 #X obj 163 211 s \$1-\$2-angularRate;
 #X obj 163 191 / 100;
-#X obj 489 484 vsl 15 60 -180 180 0 0 empty empty empty 0 -9 0 10 -204800
--1 -1 2950 1;
-#X obj 489 355 r \$1-\$2-angle2;
-#X obj 42 104 s \$1-\$2-angle2;
-#X obj 102 167 s \$1-\$2-angle1;
+#X obj 489 502 vsl 15 60 -180 180 0 0 empty empty empty 0 -9 0 10 -204800
+-1 -1 0 1;
 #X obj 42 83 * -1;
 #X obj 102 146 * -1;
 #X msg 691 101 40000;
-#X obj 253 501 section-display \$1-\$2 2;
-#X obj 279 501 section-display \$1-\$2 3;
-#X obj 305 501 section-display \$1-\$2 4;
-#X obj 331 501 section-display \$1-\$2 5;
-#X obj 357 501 section-display \$1-\$2 6;
-#X obj 383 501 section-display \$1-\$2 7;
-#X obj 409 501 section-display \$1-\$2 8;
-#X obj 435 501 section-display \$1-\$2 9;
-#X obj 461 501 section-display \$1-\$2 10;
-#X obj 201 501 section-display \$1-\$2 0;
+#X obj 253 519 section-display \$1-\$2 2;
+#X obj 279 519 section-display \$1-\$2 3;
+#X obj 305 519 section-display \$1-\$2 4;
+#X obj 331 519 section-display \$1-\$2 5;
+#X obj 357 519 section-display \$1-\$2 6;
+#X obj 383 519 section-display \$1-\$2 7;
+#X obj 409 519 section-display \$1-\$2 8;
+#X obj 435 519 section-display \$1-\$2 9;
+#X obj 461 519 section-display \$1-\$2 10;
+#X obj 201 519 section-display \$1-\$2 0;
 #X obj 42 20 OSCroute /azimuth /elevation /angularRate /distance /velocity
 ;
 #X obj 201 329 r \$1-\$2-velocity;
@@ -97,73 +93,99 @@
 #X obj 238 233 r distance-multiplier;
 #X obj 223 305 s \$1-\$2-distance;
 #X obj 201 431 r \$1-\$2-distance;
-#X text 257 465 -distance;
+#X text 257 483 -distance;
 #X obj 321 430 int;
-#X obj 509 484 vsl 15 60 -3000 3000 0 0 empty empty empty 0 -9 0 10
--204800 -1 -1 2951 1;
-#X obj 509 375 r \$1-\$2-angularRate;
+#X obj 529 502 vsl 15 60 -3000 3000 0 0 empty empty empty 0 -9 0 10
+-204800 -1 -1 0 1;
+#X obj 529 375 r \$1-\$2-angularRate;
 #X obj 670 1 r \$1-\$2-distance;
 #X obj 162 -10 print;
+#X obj 42 104 s \$1-\$2-angle2;
+#X obj 102 167 s \$1-\$2-angle1;
+#X obj 420 285 r \$1-\$2-angle1;
+#X obj 489 305 r \$1-\$2-angle2;
+#X obj 654 319 displacement \$1-\$2 angle1;
+#X obj 654 373 displacement \$1-\$2 angle2;
+#X floatatom 654 395 5 0 0 0 - - -, f 5;
+#X obj 423 483 hsl 60 15 -180 180 0 0 empty empty empty -2 -8 0 10
+-204800 -1 -1 2950 1;
+#X text 499 435 -angle1;
+#X obj 440 325 r \$1-\$2-displacement-angle1;
+#X obj 509 345 r \$1-\$2-displacement-angle2;
+#X obj 509 502 vsl 15 60 -180 180 0 0 empty empty empty 0 -9 0 10 -204800
+-1 -1 2950 1;
+#X obj 81 262 change;
+#X obj 81 284 sel 1;
+#X obj 81 240 > 1500;
+#X obj 81 306 debounce 1000;
+#X obj 81 328 s \$1-\$2-pluck;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
-#X connect 2 0 79 0;
-#X connect 3 0 38 0;
+#X connect 2 0 75 0;
+#X connect 3 0 37 0;
 #X connect 4 0 5 0;
-#X connect 5 0 80 0;
+#X connect 5 0 76 0;
 #X connect 6 0 4 0;
 #X connect 7 0 8 0;
 #X connect 8 0 10 0;
 #X connect 9 0 7 0;
 #X connect 10 0 3 0;
-#X connect 11 0 43 0;
-#X connect 12 0 61 0;
+#X connect 11 0 42 0;
+#X connect 12 0 57 0;
 #X connect 12 1 13 1;
-#X connect 13 0 81 1;
+#X connect 13 0 77 1;
 #X connect 14 0 12 0;
-#X connect 16 0 50 0;
+#X connect 16 0 49 0;
 #X connect 25 0 23 0;
-#X connect 31 0 30 0;
-#X connect 33 0 34 0;
-#X connect 34 0 32 0;
-#X connect 40 0 22 0;
-#X connect 41 0 24 0;
-#X connect 43 0 17 0;
-#X connect 43 0 82 0;
-#X connect 44 0 85 0;
-#X connect 45 0 44 0;
-#X connect 47 0 49 0;
-#X connect 48 0 49 1;
-#X connect 49 0 9 0;
-#X connect 50 0 72 0;
-#X connect 51 0 59 0;
-#X connect 52 0 60 0;
-#X connect 54 0 53 0;
-#X connect 56 0 55 0;
-#X connect 59 0 57 0;
-#X connect 60 0 58 0;
-#X connect 61 0 13 0;
-#X connect 72 0 51 0;
-#X connect 72 1 52 0;
-#X connect 72 2 54 0;
-#X connect 72 3 45 0;
-#X connect 72 4 75 0;
-#X connect 73 0 29 0;
-#X connect 73 0 46 0;
-#X connect 75 1 76 0;
-#X connect 76 0 74 0;
-#X connect 77 0 0 0;
-#X connect 77 0 78 0;
-#X connect 77 0 6 0;
-#X connect 78 0 47 0;
-#X connect 78 1 48 0;
-#X connect 79 0 3 0;
-#X connect 80 0 3 0;
-#X connect 81 0 11 0;
-#X connect 82 0 83 0;
-#X connect 84 0 45 1;
-#X connect 86 0 27 0;
-#X connect 86 0 88 0;
-#X connect 88 0 28 0;
-#X connect 90 0 89 0;
-#X connect 91 0 81 0;
-#X coords 0 -1 1 1 326 121 1 200 450;
+#X connect 32 0 33 0;
+#X connect 33 0 31 0;
+#X connect 39 0 22 0;
+#X connect 40 0 24 0;
+#X connect 42 0 17 0;
+#X connect 42 0 78 0;
+#X connect 43 0 81 0;
+#X connect 44 0 43 0;
+#X connect 46 0 48 0;
+#X connect 47 0 48 1;
+#X connect 48 0 9 0;
+#X connect 49 0 68 0;
+#X connect 50 0 55 0;
+#X connect 51 0 56 0;
+#X connect 53 0 52 0;
+#X connect 53 0 103 0;
+#X connect 55 0 89 0;
+#X connect 56 0 90 0;
+#X connect 57 0 13 0;
+#X connect 68 0 50 0;
+#X connect 68 1 51 0;
+#X connect 68 2 53 0;
+#X connect 68 3 44 0;
+#X connect 68 4 71 0;
+#X connect 69 0 29 0;
+#X connect 69 0 45 0;
+#X connect 71 1 72 0;
+#X connect 72 0 70 0;
+#X connect 73 0 0 0;
+#X connect 73 0 74 0;
+#X connect 73 0 6 0;
+#X connect 74 0 46 0;
+#X connect 74 1 47 0;
+#X connect 75 0 3 0;
+#X connect 76 0 3 0;
+#X connect 77 0 11 0;
+#X connect 78 0 79 0;
+#X connect 80 0 44 1;
+#X connect 82 0 27 0;
+#X connect 82 0 84 0;
+#X connect 84 0 28 0;
+#X connect 86 0 85 0;
+#X connect 87 0 77 0;
+#X connect 91 0 30 0;
+#X connect 92 0 54 0;
+#X connect 98 0 96 0;
+#X connect 99 0 100 0;
+#X connect 101 0 102 0;
+#X connect 102 0 104 0;
+#X connect 103 0 101 0;
+#X connect 104 0 105 0;
+#X coords 0 -1 1 1 346 141 1 200 450;
