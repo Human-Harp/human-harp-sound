@@ -1,12 +1,10 @@
 #N canvas 0 22 248 199 10;
-#X obj 60 102 change;
-#X obj 60 124 sel 1;
-#X obj 60 148 outlet;
-#X obj 60 80 > \$2;
-#X obj 60 27 r \$1-velocity-out;
-#X obj 60 49 * -1;
+#X obj 60 92 change;
+#X obj 60 114 sel 1;
+#X obj 60 138 outlet;
+#X obj 60 70 > \$2;
+#X obj 60 27 r \$1-velocity;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 3 0 0 0;
-#X connect 4 0 5 0;
-#X connect 5 0 3 0;
+#X connect 4 0 3 0;

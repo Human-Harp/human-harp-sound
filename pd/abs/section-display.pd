@@ -1,4 +1,4 @@
-#N canvas 0 22 591 520 10;
+#N canvas 723 302 591 520 10;
 #X obj 100 100 tgl 25 0 empty empty empty 17 7 0 10 -232576 -1 -1 0
 1;
 #X obj 100 78 == \$2;
