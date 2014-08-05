@@ -1,4 +1,4 @@
-#N canvas 35 555 281 471 10;
+#N canvas 190 199 281 471 10;
 #X declare -path abs;
 #X declare -path audio;
 #X declare -path libs/oscx;
@@ -101,7 +101,7 @@
 #X msg 317 75 \; pd dsp 1 \;;
 #X connect 5 0 6 0;
 #X restore 18 29 pd init;
-#N canvas 1951 76 916 681 Players 1;
+#N canvas 515 76 916 681 Players 1;
 #X floatatom 278 626 5 0 0 0 - - -, f 5;
 #X obj 278 645 s rotations-multiplier;
 #X text 747 15 Player parameters;
@@ -202,7 +202,7 @@
 #X connect 15 0 11 0;
 #X connect 16 0 8 0;
 #X restore 18 313 pd osc;
-#N canvas 224 53 1768 840 hit-play 1;
+#N canvas 0 53 1436 840 hit-play 0;
 #X obj 1133 75 - 78;
 #X obj 45 453 hh_drone;
 #X obj 45 580 e_scompress;
@@ -616,7 +616,7 @@
 #X obj 18 187 vradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
 -1 0;
 #X obj 75 274 s fake-players-on;
-#X obj 75 253 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 75 253 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #N canvas 146 330 450 300 global-effects 0;
 #X obj 88 125 e_platereverb;

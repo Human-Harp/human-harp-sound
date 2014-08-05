@@ -1,4 +1,4 @@
-#N canvas 465 224 1027 654 10;
+#N canvas 115 293 1027 654 10;
 #X obj 431 88 < 0;
 #X obj 431 110 change;
 #X obj 431 132 sel 1;
@@ -32,14 +32,14 @@
 #X obj 332 371 r \$1-\$2-section;
 #X obj 227 519 section-display \$1-\$2 1;
 #X obj 204 501 hsl 280 15 0 40000 0 0 empty empty empty -2 -8 0 10
--232576 -1 -1 0 1;
-#X floatatom 321 484 8 0 0 0 - - -, f 8;
+-232576 -1 -1 1053 1;
+#X floatatom 321 484 8 0 0 0 - - -;
 #X obj 204 574 hsl 115 15 -70000 70000 0 0 empty empty empty -2 -8
 0 10 -262130 -1 -1 0 1;
 #X obj 423 465 hsl 60 15 -180 180 0 0 empty empty empty -2 -8 0 10
--204800 -1 -1 0 1;
+-204800 -1 -1 722 1;
 #X obj 206 457 nbx 2 20 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
--99865 -262144 -262144 2 256;
+-99865 -262144 -262144 0 256;
 #X obj 206 381 loadbang;
 #X obj 206 403 \$2;
 #X text 419 449 -angle1;
@@ -53,7 +53,7 @@
 #X obj 670 189 change;
 #X obj 223 278 max 0;
 #X obj 223 254 * 1;
-#X floatatom 204 355 5 0 0 0 - - -, f 5;
+#X floatatom 204 355 5 0 0 0 - - -;
 #X obj 481 41 int;
 #X obj 507 41 int;
 #X obj 481 63 +;
@@ -63,7 +63,7 @@
 #X obj 163 211 s \$1-\$2-angularRate;
 #X obj 163 191 / 100;
 #X obj 489 502 vsl 15 60 -180 180 0 0 empty empty empty 0 -9 0 10 -204800
--1 -1 0 1;
+-1 -1 3147 1;
 #X obj 42 83 * -1;
 #X obj 102 146 * -1;
 #X msg 691 101 40000;
@@ -99,26 +99,38 @@
 -204800 -1 -1 0 1;
 #X obj 529 375 r \$1-\$2-angularRate;
 #X obj 670 1 r \$1-\$2-distance;
-#X obj 162 -10 print;
 #X obj 42 104 s \$1-\$2-angle2;
 #X obj 102 167 s \$1-\$2-angle1;
 #X obj 420 285 r \$1-\$2-angle1;
 #X obj 489 305 r \$1-\$2-angle2;
-#X obj 654 319 displacement \$1-\$2 angle1;
-#X obj 654 373 displacement \$1-\$2 angle2;
-#X floatatom 654 395 5 0 0 0 - - -, f 5;
+#X obj 684 319 displacement \$1-\$2 angle1;
+#X obj 684 340 displacement \$1-\$2 angle2;
 #X obj 423 483 hsl 60 15 -180 180 0 0 empty empty empty -2 -8 0 10
--204800 -1 -1 2950 1;
+-204800 -1 -1 0 1;
 #X text 499 435 -angle1;
 #X obj 440 325 r \$1-\$2-displacement-angle1;
 #X obj 509 345 r \$1-\$2-displacement-angle2;
 #X obj 509 502 vsl 15 60 -180 180 0 0 empty empty empty 0 -9 0 10 -204800
--1 -1 2950 1;
+-1 -1 5900 1;
 #X obj 81 262 change;
 #X obj 81 284 sel 1;
 #X obj 81 240 > 1500;
 #X obj 81 306 debounce 1000;
 #X obj 81 328 s \$1-\$2-pluck;
+#N canvas 848 37 369 365 forwardPlayerData 0;
+#X obj 53 60 forwardData \$1-\$2 \$2 angle2;
+#X obj 53 40 forwardData \$1-\$2 \$2 angle1;
+#X obj 53 80 forwardData \$1-\$2 \$2 pluck;
+#X obj 53 100 forwardData \$1-\$2 \$2 distance;
+#X obj 53 120 forwardData \$1-\$2 \$2 velocity;
+#X obj 53 140 forwardData \$1-\$2 \$2 angularRate;
+#X obj 53 160 forwardData \$1-\$2 \$2 dir;
+#X obj 53 180 forwardData \$1-\$2 \$2 displacement-angle1;
+#X obj 53 200 forwardData \$1-\$2 \$2 displacement-angle2;
+#X obj 53 220 forwardData \$1-\$2 \$2 section;
+#X obj 52 240 forwardData \$1-\$2 \$2 bound;
+#X restore 642 448 pd forwardPlayerData;
+#X floatatom 83 81 5 0 0 0 - - -;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 75 0;
@@ -152,9 +164,9 @@
 #X connect 50 0 55 0;
 #X connect 51 0 56 0;
 #X connect 53 0 52 0;
-#X connect 53 0 103 0;
-#X connect 55 0 89 0;
-#X connect 56 0 90 0;
+#X connect 53 0 101 0;
+#X connect 55 0 88 0;
+#X connect 56 0 89 0;
 #X connect 57 0 13 0;
 #X connect 68 0 50 0;
 #X connect 68 1 51 0;
@@ -180,12 +192,13 @@
 #X connect 84 0 28 0;
 #X connect 86 0 85 0;
 #X connect 87 0 77 0;
-#X connect 91 0 30 0;
-#X connect 92 0 54 0;
-#X connect 98 0 96 0;
+#X connect 90 0 30 0;
+#X connect 91 0 54 0;
+#X connect 96 0 94 0;
+#X connect 97 0 98 0;
 #X connect 99 0 100 0;
-#X connect 101 0 102 0;
-#X connect 102 0 104 0;
-#X connect 103 0 101 0;
-#X connect 104 0 105 0;
+#X connect 100 0 102 0;
+#X connect 101 0 99 0;
+#X connect 102 0 103 0;
+#X connect 105 0 88 0;
 #X coords 0 -1 1 1 346 141 1 200 450;
