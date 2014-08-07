@@ -27,6 +27,8 @@ void ofApp::setup(){
     receiver8012.setup(8012);
 
 	current_msg_string = 0;
+    
+    sendMessages = 1; // start by broadcasting messages
 
 	ofBackground(130, 30, 130);
 
@@ -34,122 +36,126 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
-	// check for waiting messages
     
-    //----8001----
-    while(receiver8001.hasWaitingMessages()){
-        // get the next message
-        ofxOscMessage mess;
-        receiver8001.getNextMessage(&mess);
+    if( sendMessages )
+    {
+        // check for waiting messages
         
-        handleMessage(mess);
-    }
-    
-    //----8002----
-    while(receiver8002.hasWaitingMessages()){
-        // get the next message
-        ofxOscMessage mess;
-        receiver8002.getNextMessage(&mess);
+        //----8001----
+        while(receiver8001.hasWaitingMessages()){
+            // get the next message
+            ofxOscMessage mess;
+            receiver8001.getNextMessage(&mess);
+            
+            handleMessage(mess);
+        }
         
-        handleMessage(mess);
-    }
-    
-    //----8003----
-    while(receiver8003.hasWaitingMessages()){
-        // get the next message
-        ofxOscMessage mess;
-        receiver8003.getNextMessage(&mess);
+        //----8002----
+        while(receiver8002.hasWaitingMessages()){
+            // get the next message
+            ofxOscMessage mess;
+            receiver8002.getNextMessage(&mess);
+            
+            handleMessage(mess);
+        }
         
-        handleMessage(mess);
-    }
-    
-    //----8004----
-    while(receiver8004.hasWaitingMessages()){
-        // get the next message
-        ofxOscMessage mess;
-        receiver8004.getNextMessage(&mess);
+        //----8003----
+        while(receiver8003.hasWaitingMessages()){
+            // get the next message
+            ofxOscMessage mess;
+            receiver8003.getNextMessage(&mess);
+            
+            handleMessage(mess);
+        }
         
-        handleMessage(mess);
-    }
-    
-    //----8005----
-    while(receiver8005.hasWaitingMessages()){
-        // get the next message
-        ofxOscMessage mess;
-        receiver8005.getNextMessage(&mess);
+        //----8004----
+        while(receiver8004.hasWaitingMessages()){
+            // get the next message
+            ofxOscMessage mess;
+            receiver8004.getNextMessage(&mess);
+            
+            handleMessage(mess);
+        }
         
-        handleMessage(mess);
-    }
-    
-    //----8006----
-    while(receiver8006.hasWaitingMessages()){
-        // get the next message
-        ofxOscMessage mess;
-        receiver8006.getNextMessage(&mess);
+        //----8005----
+        while(receiver8005.hasWaitingMessages()){
+            // get the next message
+            ofxOscMessage mess;
+            receiver8005.getNextMessage(&mess);
+            
+            handleMessage(mess);
+        }
         
-        handleMessage(mess);
-    }
-    
-    //----8007----
-    while(receiver8007.hasWaitingMessages()){
-        // get the next message
-        ofxOscMessage mess;
-        receiver8007.getNextMessage(&mess);
+        //----8006----
+        while(receiver8006.hasWaitingMessages()){
+            // get the next message
+            ofxOscMessage mess;
+            receiver8006.getNextMessage(&mess);
+            
+            handleMessage(mess);
+        }
         
-        handleMessage(mess);
-    }
-    
-    //----8008----
-    while(receiver8008.hasWaitingMessages()){
-        // get the next message
-        ofxOscMessage mess;
-        receiver8008.getNextMessage(&mess);
+        //----8007----
+        while(receiver8007.hasWaitingMessages()){
+            // get the next message
+            ofxOscMessage mess;
+            receiver8007.getNextMessage(&mess);
+            
+            handleMessage(mess);
+        }
         
-        handleMessage(mess);
-    }
-    
-    //----8009----
-    while(receiver8009.hasWaitingMessages()){
-        // get the next message
-        ofxOscMessage mess;
-        receiver8009.getNextMessage(&mess);
+        //----8008----
+        while(receiver8008.hasWaitingMessages()){
+            // get the next message
+            ofxOscMessage mess;
+            receiver8008.getNextMessage(&mess);
+            
+            handleMessage(mess);
+        }
         
-        handleMessage(mess);
-    }
-    
-    //----8010----
-    while(receiver8010.hasWaitingMessages()){
-        // get the next message
-        ofxOscMessage mess;
-        receiver8010.getNextMessage(&mess);
+        //----8009----
+        while(receiver8009.hasWaitingMessages()){
+            // get the next message
+            ofxOscMessage mess;
+            receiver8009.getNextMessage(&mess);
+            
+            handleMessage(mess);
+        }
         
-        handleMessage(mess);
-    }
-    
-    //----8011----
-    while(receiver8011.hasWaitingMessages()){
-        // get the next message
-        ofxOscMessage mess;
-        receiver8011.getNextMessage(&mess);
+        //----8010----
+        while(receiver8010.hasWaitingMessages()){
+            // get the next message
+            ofxOscMessage mess;
+            receiver8010.getNextMessage(&mess);
+            
+            handleMessage(mess);
+        }
         
-        handleMessage(mess);
-    }
-    
-    //----8012----
-    while(receiver8012.hasWaitingMessages()){
-        // get the next message
-        ofxOscMessage mess;
-        receiver8012.getNextMessage(&mess);
+        //----8011----
+        while(receiver8011.hasWaitingMessages()){
+            // get the next message
+            ofxOscMessage mess;
+            receiver8011.getNextMessage(&mess);
+            
+            handleMessage(mess);
+        }
         
-        handleMessage(mess);
+        //----8012----
+        while(receiver8012.hasWaitingMessages()){
+            // get the next message
+            ofxOscMessage mess;
+            receiver8012.getNextMessage(&mess);
+            
+            handleMessage(mess);
+        }
     }
 }
 
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+    // display messages being sent
+    ofSetColor(255, 255, 255);
 	string buf;
 	buf = "Sending the following OSC messages";
 	ofDrawBitmapString(buf, 20, 20);
@@ -157,6 +163,22 @@ void ofApp::draw(){
 	for(int i = 0; i < NUM_MSG_STRINGS; i++){
 		ofDrawBitmapString(msg_strings[i], 60, 60 + 15 * i);
 	}
+    
+    if( sendMessages) {
+        // pause button
+        ofSetColor(255, 255, 255);
+        ofRect(200, 505, 130, 30);
+        ofSetColor(50, 50, 50);
+        buf = "Click to Pause";
+        ofDrawBitmapString(buf, 209, 525);
+    } else {
+        // pause button
+        ofSetColor(10, 10, 10);
+        ofRect(200, 505, 130, 30);
+        ofSetColor(255, 255, 255);
+        buf = "Click to Resume";
+        ofDrawBitmapString(buf, 205, 525);
+    }
 }
 
 //--------------------------------------------------------------
@@ -181,6 +203,9 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
+    if( x < 330 && x > 200 && y < 535 && y > 500) {
+        sendMessages = !sendMessages;
+    }
 }
 
 //--------------------------------------------------------------

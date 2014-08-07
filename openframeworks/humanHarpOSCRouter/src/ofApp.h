@@ -32,10 +32,9 @@ class ofApp : public ofBaseApp {
         void sendAzimuth(string ip, int value);
         void sendElevation(string ip, int value);
         void sendAngularRate(string ip, float value);
-    
-        vector<int> ports;
 
 		ofTrueTypeFont font;
+        int sendMessages;
     
         ofxOscReceiver receiver8001;
         ofxOscReceiver receiver8002;
