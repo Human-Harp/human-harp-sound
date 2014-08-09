@@ -70,7 +70,7 @@
 #X obj 827 27 r \$0-interval;
 #X obj 228 61 r \$0-mix;
 #X obj 493 387 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 78 1;
 #X obj 513 387 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 533 387 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -78,7 +78,7 @@
 #X obj 553 387 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 473 387 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3 1;
+-1 -1 858 1;
 #X obj 228 85 f;
 #X obj 95 46 change;
 #X obj 95 68 pack f 800;

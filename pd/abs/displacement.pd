@@ -11,7 +11,7 @@
 #X text 137 238 Displacement (same unit as length of string);
 #N canvas 0 22 1150 295 test-gui 0;
 #X obj 49 86 hsl 1024 60 -30000 30000 0 0 empty empty empty -2 -8 0
-10 -262144 -1 -1 51964 1;
+10 -262144 -1 -1 0 1;
 #X text 556 68 0;
 #X text 287 68 -15000;
 #X text 27 68 -30000;
@@ -30,7 +30,7 @@
 #X text 881 68 |;
 #X text 1007 68 |;
 #X obj 49 136 hsl 1024 60 -180 180 0 0 empty empty empty -2 -8 0 10
--262144 -1 -1 52304 1;
+-262144 -1 -1 0 1;
 #X text 556 198 0;
 #X text 107 198 |;
 #X text 237 198 |;

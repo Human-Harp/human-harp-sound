@@ -39,7 +39,7 @@
 #X obj 423 465 hsl 60 15 -180 180 0 0 empty empty empty -2 -8 0 10
 -204800 -1 -1 0 1;
 #X obj 206 457 nbx 3 20 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
--99865 -262144 -262144 110 256;
+-99865 -262144 -262144 102 256;
 #X obj 246 361 loadbang;
 #X obj 246 383 \$2;
 #X text 419 449 -angle1;
@@ -115,7 +115,7 @@
 #X obj 81 284 sel 1;
 #X obj 81 306 debounce 1000;
 #X obj 81 328 s \$1-\$2-pluck;
-#N canvas 848 37 369 365 forwardPlayerData 0;
+#N canvas 848 37 369 365 forwardPlayerData 1;
 #X obj 53 40 forwardData \$1-\$2 \$2 angle1;
 #X obj 53 60 forwardData \$1-\$2 \$2 angle2;
 #X obj 53 80 forwardData \$1-\$2 \$2 pluck;
