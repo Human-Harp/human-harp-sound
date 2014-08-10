@@ -1,4 +1,4 @@
-#N canvas 266 99 1036 798 10;
+#N canvas 735 107 1036 798 10;
 #X obj 431 88 < 0;
 #X obj 431 110 change;
 #X obj 431 132 sel 1;
@@ -25,18 +25,18 @@
 #X obj 428 564 nbx 2 25 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
 -262144 -1 -1 0 256;
 #X obj 332 564 nbx 2 25 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
--232576 -1 -1 0 256;
+-232576 -1 -1 6 256;
 #X obj 394 564 bng 25 250 50 0 empty empty empty 17 7 0 10 -232576
 -1 -1;
 #X obj 332 371 r \$1-\$2-section;
 #X obj 227 519 section-display \$1-\$2 1;
 #X obj 204 501 hsl 280 15 0 40000 0 0 empty empty empty -2 -8 0 10
--232576 -1 -1 78 1;
+-232576 -1 -1 19828 1;
 #X floatatom 321 484 8 0 0 0 - - -, f 8;
 #X obj 204 574 hsl 115 15 -70000 70000 0 0 empty empty empty -2 -8
-0 10 -262130 -1 -1 5700 1;
+0 10 -262130 -1 -1 0 1;
 #X obj 423 465 hsl 60 15 -180 180 0 0 empty empty empty -2 -8 0 10
--204800 -1 -1 2925 1;
+-204800 -1 -1 0 1;
 #X obj 206 457 nbx 3 20 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 20
 -99865 -262144 -262144 101 256;
 #X obj 246 361 loadbang;
@@ -61,7 +61,7 @@
 #X obj 163 211 s \$1-\$2-angularRate;
 #X obj 163 191 / 100;
 #X obj 489 467 vsl 15 60 -180 180 0 0 empty empty empty 0 -9 0 10 -204800
--1 -1 2935 1;
+-1 -1 0 1;
 #X obj 42 83 * -1;
 #X obj 102 146 * -1;
 #X msg 691 101 40000;
@@ -92,7 +92,7 @@
 #X text 257 483 -distance;
 #X obj 321 430 int;
 #X obj 529 467 vsl 15 60 -3000 3000 0 0 empty empty empty 0 -9 0 10
--204800 -1 -1 2950 1;
+-204800 -1 -1 0 1;
 #X obj 529 375 r \$1-\$2-angularRate;
 #X obj 670 1 r \$1-\$2-distance;
 #X obj 42 104 s \$1-\$2-angle2;
@@ -102,12 +102,12 @@
 #X obj 684 319 displacement \$1-\$2 angle1;
 #X obj 684 340 displacement \$1-\$2 angle2;
 #X obj 423 483 hsl 60 15 -180 180 0 0 empty empty empty -2 -8 0 10
--204800 -1 -1 2900 1;
+-204800 -1 -1 2950 1;
 #X text 499 435 -angle1;
 #X obj 440 325 r \$1-\$2-displacement-angle1;
 #X obj 509 345 r \$1-\$2-displacement-angle2;
 #X obj 509 467 vsl 15 60 -180 180 0 0 empty empty empty 0 -9 0 10 -204800
--1 -1 2921 1;
+-1 -1 2950 1;
 #X obj 81 262 change;
 #X obj 81 284 sel 1;
 #X obj 81 306 debounce 1000;
@@ -157,7 +157,7 @@
 #X obj 728 537 r \$1-trigger-hammer;
 #X msg 728 582 send /outputs/pulse/width/15 100;
 #X obj 728 559 sel \$2;
-#N canvas 371 78 309 586 OSC 0;
+#N canvas 70 157 309 586 OSC 1;
 #X obj 33 44 unpackOSC;
 #X floatatom 101 68 5 0 0 0 - - -, f 5;
 #X obj 33 89 routeOSC /inputs;
@@ -184,6 +184,7 @@
 #X obj 53 346 list prepend /velocity;
 #X obj 93 446 list prepend /azimuth;
 #X obj 113 496 list prepend /angularRate;
+#X obj 92 543 r fakeHarpSend-\$2;
 #X connect 0 0 5 0;
 #X connect 0 1 1 0;
 #X connect 0 1 5 1;
@@ -217,6 +218,7 @@
 #X connect 23 0 18 0;
 #X connect 24 0 21 0;
 #X connect 25 0 22 0;
+#X connect 26 0 17 0;
 #X restore 42 -2 pd OSC;
 #X obj 42 20 route /azimuth /elevation /angularRate /distance /velocity
 ;
