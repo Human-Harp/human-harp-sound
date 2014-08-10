@@ -1,0 +1,13 @@
+#N canvas 0 22 450 300 10;
+#X obj 41 47 inlet;
+#X obj 141 47 inlet;
+#X obj 41 117 outlet;
+#X text 38 12 any2string.pd : wrapper for any2bytes;
+#X text 30 169 WARNING: this abstraction will never be used if [pdstring]
+was built as a multi-object library \, rather than single-object externals.
+;
+#X text 142 263 Bryan Jurish <moocow@ling.uni-potsdam.de>;
+#X obj 41 83 flatspace/any2bytes \$1 \$2;
+#X connect 0 0 6 0;
+#X connect 1 0 6 1;
+#X connect 6 0 2 0;

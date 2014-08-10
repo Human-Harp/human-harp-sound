@@ -1,9 +1,12 @@
-#N canvas 182 443 412 278 10;
+#N canvas 25 402 412 278 10;
 #X declare -path abs;
 #X declare -path audio;
 #X declare -path libs/oscx;
 #X declare -path rj;
 #X declare -path abs/4T-Granulator;
+#X declare -path libs/mrpeach;
+#X declare -path libs/moocow;
+#X declare -path libs/pdstring;
 #N canvas 0 22 710 646 io 0;
 #X obj 58 36 catch~ \$0-LEFT;
 #X obj 158 36 catch~ \$0-RIGHT;
@@ -161,72 +164,18 @@
 #X connect 5 0 2 0;
 #X restore 18 49 pd timebase;
 #N canvas 0 22 454 172 init 0;
-#X obj 62 56 declare -path abs;
-#X obj 62 96 declare -path audio;
-#X obj 62 36 declare -path libs/oscx;
-#X obj 62 116 declare -path rj;
-#X obj 62 76 declare -path abs/4T-Granulator;
+#X obj 62 86 declare -path abs;
+#X obj 62 126 declare -path audio;
+#X obj 62 66 declare -path libs/oscx;
+#X obj 62 146 declare -path rj;
+#X obj 62 106 declare -path abs/4T-Granulator;
 #X obj 317 53 loadbang;
 #X msg 317 75 \; pd dsp 1 \;;
+#X obj 62 46 declare -path libs/mrpeach;
+#X obj 62 26 declare -path libs/moocow;
+#X obj 62 6 declare -path libs/pdstring;
 #X connect 5 0 6 0;
 #X restore 18 29 pd init;
-#N canvas 141 38 965 804 Players 0;
-#X obj 744 202 loadbang;
-#X obj 744 224 del 1000;
-#X obj 737 102 r forwardPlayerData;
-#X obj 737 298 sendOSC 9006;
-#X msg 812 217 disconnect;
-#X obj 737 174 spigot;
-#X obj 770 134 tgl 35 0 empty empty To_visualisations 37 17 0 10 -262144
--1 -1 0 1;
-#X msg 754 255 connect 255.255.255.255 9003;
-#X obj 742 508 sendOSC;
-#X msg 754 484 connect 255.255.255.255 9000;
-#X msg 750 411 send /inputs/mode/serial/1;
-#X msg 742 388 send /inputs/mode/analogue/1;
-#X obj 754 440 loadbang;
-#X obj 754 462 del 1000;
-#X obj 742 358 bng 15 250 50 0 empty empty ALL_OFF 17 7 0 10 -261234
--1 -1;
-#X obj 812 358 bng 15 250 50 0 empty empty ALL_ON 17 7 0 10 -204786
--1 -1;
-#X text 805 706 La Monte Young;
-#X text 805 726 Overtone Analyser;
-#X obj 13 160 player-input \$0 102;
-#X msg 744 275 connect 192.168.1.117 9003;
-#X obj 811 182 print;
-#X obj 363 452 player-input \$0 110;
-#X obj 364 306 player-input \$0 109;
-#X obj 364 598 player-input \$0 111;
-#X obj 364 160 player-input \$0 108;
-#X obj 13 14 player-input \$0 101;
-#X obj 364 14 player-input \$0 107;
-#X obj 13 306 player-input \$0 103;
-#X obj 13 598 player-input \$0 105;
-#X obj 13 744 player-input \$0 106;
-#X obj 13 452 player-input \$0 104;
-#X obj 364 744 player-input \$0 112;
-#X obj 737 42 s \$0-player-osc;
-#X obj 737 19 dumpOSC 9000;
-#X obj 817 19 dumpOSC 9002;
-#X connect 0 0 1 0;
-#X connect 1 0 19 0;
-#X connect 2 0 5 0;
-#X connect 4 0 3 0;
-#X connect 5 0 3 0;
-#X connect 6 0 5 1;
-#X connect 7 0 3 0;
-#X connect 9 0 8 0;
-#X connect 10 0 8 0;
-#X connect 11 0 8 0;
-#X connect 12 0 13 0;
-#X connect 13 0 9 0;
-#X connect 14 0 11 0;
-#X connect 15 0 10 0;
-#X connect 19 0 3 0;
-#X connect 33 0 32 0;
-#X connect 34 0 32 0;
-#X restore 18 154 pd Players;
 #N canvas 1063 186 438 954 Fake-Players 0;
 #X obj 92 816 r fakeHarpSend;
 #X obj 99 836 loadbang;
@@ -456,11 +405,11 @@
 #X msg 98 199 -5;
 #X msg 126 199 0;
 #X obj 105 244 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 -5 256;
+-262144 -1 -1 0 256;
 #X obj 98 221 f;
 #X obj 188 340 f;
 #X obj 225 140 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 -13.85 256;
+-262144 -1 -1 -0.91 256;
 #X obj 98 157 int;
 #X obj 188 643 throw~ \$0-LEFT;
 #X obj 207 664 throw~ \$0-RIGHT;
@@ -473,7 +422,7 @@
 #X obj 98 291 pipe 1000;
 #X msg 215 199 4;
 #X obj 98 115 m_scale -20 20 0 2;
-#X obj 754 41 tgl 35 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 754 41 tgl 35 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 265 59 78;
 #X floatatom 251 570 5 0 0 0 - - -, f 5;
@@ -498,7 +447,7 @@
 #X obj 596 388 hip~ 12000;
 #X msg 669 358 1 300 \, 0 300 300;
 #X obj 456 279 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 -1276.62 256;
+-262144 -1 -1 -1.77876 256;
 #X obj 495 518 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
 -262144 -1 -1 0 256;
 #X obj 104 453 delwrite~ \$0-donger-del 1000;
@@ -739,10 +688,10 @@
 #X connect 9 0 0 0;
 #X restore 223 263 pd tonality;
 #X obj 506 265 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 13.85 256;
+-262144 -1 -1 0.91 256;
 #X obj 605 161 m_scale 0 20 0 0.98;
 #X obj 506 307 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 0.67865 256;
+-262144 -1 -1 0.04459 256;
 #X msg 188 46 0;
 #X obj 199 669 e_pan;
 #X obj 255 610 loadbang;
@@ -849,7 +798,6 @@
 #X obj 198 811 throw~ \$0-PLATEREVERB-R;
 #X obj 168 767 throw~ \$0-drone-comp-sc;
 #X obj 363 85 m_speedlimit 10;
-#X obj 72 673 *~ 1.3;
 #X obj 72 326 min 1;
 #X obj 72 348 max 0;
 #X obj 72 650 hh_tremolo;
@@ -863,9 +811,9 @@
 #X obj 345 582 m_scale 0 90 0.1 1;
 #X floatatom 401 610 5 0 0 0 - - -, f 5;
 #X obj 385 39 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 0 256;
+-262144 -1 -1 -0.75 256;
 #X obj 204 185 nbx 2 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 0 256;
+-262144 -1 -1 -5 256;
 #X obj 306 63 unpack f f;
 #X floatatom 79 371 5 0 0 0 - - -, f 5;
 #X obj 171 136 sel 0 1 2 3;
@@ -891,7 +839,7 @@
 #X obj 203 549 m_scale -10 10 12 2;
 #X obj 521 231 bng 45 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 521 283 tgl 45 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 521 283 tgl 45 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 72 304 m_scale 0 40000 0 1 1;
 #X obj 28 18 inlet;
@@ -944,81 +892,82 @@
 #X restore 521 389 pd pluck-noise;
 #X obj 521 206 pluck 500;
 #X msg 41 224 0;
-#X obj 171 27 player-output \$0-103;
 #X floatatom 115 267 5 0 0 0 - - -, f 5;
-#X connect 0 0 52 0;
-#X connect 0 0 59 0;
+#X obj 171 27 player-output \$0-107;
+#X obj 72 673 *~ 2;
+#X connect 0 0 51 0;
+#X connect 0 0 57 0;
 #X connect 1 0 3 1;
 #X connect 2 0 3 1;
-#X connect 3 0 15 0;
-#X connect 3 1 15 0;
+#X connect 3 0 14 0;
+#X connect 3 1 14 0;
 #X connect 4 0 3 1;
 #X connect 5 0 4 0;
-#X connect 11 0 36 0;
-#X connect 12 0 10 0;
-#X connect 12 0 37 0;
-#X connect 13 0 14 0;
-#X connect 14 0 3 0;
-#X connect 14 0 28 0;
-#X connect 15 0 12 0;
-#X connect 16 0 19 0;
-#X connect 17 0 15 1;
-#X connect 18 0 16 0;
-#X connect 19 0 15 1;
-#X connect 20 0 21 0;
-#X connect 21 0 15 1;
+#X connect 11 0 35 0;
+#X connect 12 0 13 0;
+#X connect 13 0 3 0;
+#X connect 13 0 27 0;
+#X connect 14 0 59 0;
+#X connect 15 0 18 0;
+#X connect 16 0 14 1;
+#X connect 17 0 15 0;
+#X connect 18 0 14 1;
+#X connect 19 0 20 0;
+#X connect 20 0 14 1;
+#X connect 21 0 22 0;
+#X connect 22 0 19 0;
 #X connect 22 0 23 0;
-#X connect 23 0 20 0;
-#X connect 23 0 24 0;
-#X connect 27 1 11 0;
-#X connect 27 1 25 0;
-#X connect 29 0 30 0;
-#X connect 29 1 31 0;
-#X connect 29 2 35 0;
-#X connect 29 3 42 0;
-#X connect 30 0 32 0;
-#X connect 31 0 32 0;
-#X connect 32 0 44 0;
-#X connect 32 0 26 0;
-#X connect 33 0 29 0;
-#X connect 34 0 33 0;
-#X connect 35 0 32 0;
-#X connect 37 0 6 0;
-#X connect 37 0 8 0;
-#X connect 37 1 7 0;
-#X connect 37 1 9 0;
-#X connect 38 0 39 0;
-#X connect 39 0 37 1;
-#X connect 40 1 22 0;
-#X connect 40 1 49 0;
-#X connect 41 0 43 0;
-#X connect 42 0 32 0;
-#X connect 43 0 29 0;
-#X connect 44 0 2 0;
-#X connect 45 0 1 0;
-#X connect 46 0 19 0;
-#X connect 47 0 48 0;
-#X connect 48 0 17 0;
-#X connect 49 0 19 0;
-#X connect 50 0 51 0;
-#X connect 51 0 47 0;
-#X connect 51 0 55 0;
-#X connect 52 0 13 0;
-#X connect 53 0 54 0;
-#X connect 55 0 15 0;
-#X connect 56 0 50 0;
-#X connect 57 0 3 0;
-#X connect 58 0 41 0;
-#X connect 58 1 27 0;
-#X connect 58 1 40 0;
-#X connect 58 2 56 0;
+#X connect 26 1 11 0;
+#X connect 26 1 24 0;
+#X connect 28 0 29 0;
+#X connect 28 1 30 0;
+#X connect 28 2 34 0;
+#X connect 28 3 41 0;
+#X connect 29 0 31 0;
+#X connect 30 0 31 0;
+#X connect 31 0 43 0;
+#X connect 31 0 25 0;
+#X connect 32 0 28 0;
+#X connect 33 0 32 0;
+#X connect 34 0 31 0;
+#X connect 36 0 6 0;
+#X connect 36 0 8 0;
+#X connect 36 1 7 0;
+#X connect 36 1 9 0;
+#X connect 37 0 38 0;
+#X connect 38 0 36 1;
+#X connect 39 1 21 0;
+#X connect 39 1 48 0;
+#X connect 40 0 42 0;
+#X connect 41 0 31 0;
+#X connect 42 0 28 0;
+#X connect 43 0 2 0;
+#X connect 44 0 1 0;
+#X connect 45 0 18 0;
+#X connect 46 0 47 0;
+#X connect 47 0 16 0;
+#X connect 48 0 18 0;
+#X connect 49 0 50 0;
+#X connect 50 0 46 0;
+#X connect 50 0 54 0;
+#X connect 51 0 12 0;
+#X connect 52 0 53 0;
+#X connect 54 0 14 0;
+#X connect 55 0 49 0;
+#X connect 56 0 3 0;
+#X connect 58 0 40 0;
+#X connect 58 1 26 0;
+#X connect 58 1 39 0;
+#X connect 58 2 55 0;
 #X connect 58 3 0 0;
+#X connect 59 0 10 0;
+#X connect 59 0 36 0;
 #X restore 284 130 pd velocity;
-#X obj 284 16 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 284 16 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 284 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 284 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 284 110 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 284 110 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #N canvas 136 432 1193 661 drone 0;
 #X obj 48 329 hh_drone;
@@ -1070,15 +1019,15 @@
 #X obj 48 531 *~ 1;
 #X obj 255 190 m_scale -90 90 -9 8;
 #X obj 356 227 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 -38.63 256;
+-262144 -1 -1 -0.75 256;
 #X obj 356 277 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 -4.14839 256;
+-262144 -1 -1 -0.570833 256;
 #X obj 198 173 pow 2;
 #X obj 255 139 unpack f f;
 #X obj 461 375 unpack f;
 #X obj 461 418 m_scale 0 90 0.1 1;
 #X obj 50 198 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 1 256;
+-262144 -1 -1 0 256;
 #X obj 643 380 sig~;
 #X obj 643 307 mtof;
 #X obj 643 446 *~;
@@ -1090,14 +1039,14 @@
 #X obj 643 211 int;
 #X obj 643 233 change;
 #X obj 719 309 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 7 256;
+-262144 -1 -1 0 256;
 #X obj 643 329 pack f 250;
 #X obj 860 330 max 0;
 #X obj 860 352 min 1;
 #X obj 280 88 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 -28611 256;
+-262144 -1 -1 0 256;
 #X obj 911 341 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 1 256;
+-262144 -1 -1 0 256;
 #X obj 707 498 delwrite~ \$0-drone-melody 1000;
 #X floatatom 671 467 5 0 0 0 - - -, f 5;
 #X obj 643 281 notes 6 66 0 2 4 5 7 11;
@@ -1233,15 +1182,67 @@
 #X connect 96 3 69 0;
 #X connect 96 3 79 0;
 #X restore 284 177 pd drone;
-#X obj 284 156 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 284 156 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 284 201 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X text 345 37 1;
 #X text 340 177 10;
 #X text 327 84 1;
+#N canvas 404 22 965 804 Players 0;
+#X obj 744 202 loadbang;
+#X obj 744 224 del 1000;
+#X obj 737 102 r forwardPlayerData;
+#X obj 737 298 sendOSC 9006;
+#X msg 812 217 disconnect;
+#X obj 737 174 spigot;
+#X obj 770 134 tgl 35 0 empty empty To_visualisations 37 17 0 10 -262144
+-1 -1 0 1;
+#X msg 754 255 connect 255.255.255.255 9003;
+#X obj 742 508 sendOSC;
+#X msg 754 484 connect 255.255.255.255 9000;
+#X msg 750 411 send /inputs/mode/serial/1;
+#X msg 742 388 send /inputs/mode/analogue/1;
+#X obj 754 440 loadbang;
+#X obj 754 462 del 1000;
+#X obj 742 358 bng 15 250 50 0 empty empty ALL_OFF 17 7 0 10 -261234
+-1 -1;
+#X obj 812 358 bng 15 250 50 0 empty empty ALL_ON 17 7 0 10 -204786
+-1 -1;
+#X text 805 706 La Monte Young;
+#X text 805 726 Overtone Analyser;
+#X msg 744 275 connect 192.168.1.117 9003;
+#X obj 811 182 print;
+#X obj 13 13 player-input \$0 101 8001;
+#X obj 364 14 player-input \$0 107 8007;
+#X obj 13 160 player-input \$0 102 8002;
+#X obj 13 306 player-input \$0 103 8003;
+#X obj 13 452 player-input \$0 104 8004;
+#X obj 13 598 player-input \$0 105 8005;
+#X obj 13 744 player-input \$0 106 8006;
+#X obj 364 744 player-input \$0 112 8012;
+#X obj 364 598 player-input \$0 111 8011;
+#X obj 363 452 player-input \$0 110 8010;
+#X obj 364 306 player-input \$0 109 8009;
+#X obj 364 160 player-input \$0 108 8008;
+#X connect 0 0 1 0;
+#X connect 1 0 18 0;
+#X connect 2 0 5 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 0;
+#X connect 6 0 5 1;
+#X connect 7 0 3 0;
+#X connect 9 0 8 0;
+#X connect 10 0 8 0;
+#X connect 11 0 8 0;
+#X connect 12 0 13 0;
+#X connect 13 0 9 0;
+#X connect 14 0 11 0;
+#X connect 15 0 10 0;
+#X connect 18 0 3 0;
+#X restore 18 154 pd Players;
+#X connect 11 0 8 0;
 #X connect 12 0 9 0;
 #X connect 13 0 10 0;
-#X connect 14 0 11 0;
-#X connect 16 0 15 0;
-#X connect 17 0 8 0;
+#X connect 15 0 14 0;
+#X connect 16 0 7 0;
