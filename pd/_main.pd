@@ -1,4 +1,4 @@
-#N canvas 333 317 412 278 10;
+#N canvas 182 443 412 278 10;
 #X declare -path abs;
 #X declare -path audio;
 #X declare -path libs/oscx;
@@ -68,10 +68,17 @@
 #X obj 618 128 > 135;
 #X msg 223 119 1;
 #X obj 215 70 player-output \$0-10;
+#X obj 280 561 e_platereverb;
+#X msg 361 522 dry \$1;
+#X floatatom 356 492 5 0 0 0 - - -, f 5;
+#X obj 455 509 line;
+#X msg 497 520 0 10000;
+#X floatatom 455 531 5 0 0 0 - - -, f 5;
+#X msg 265 479;
 #X connect 0 0 9 0;
 #X connect 1 0 8 0;
-#X connect 3 0 2 0;
-#X connect 4 0 2 1;
+#X connect 3 0 59 0;
+#X connect 4 0 59 1;
 #X connect 5 0 4 1;
 #X connect 5 0 3 1;
 #X connect 6 0 5 0;
@@ -130,6 +137,13 @@
 #X connect 58 0 47 0;
 #X connect 58 1 48 0;
 #X connect 58 3 56 0;
+#X connect 59 0 2 0;
+#X connect 59 1 2 1;
+#X connect 60 0 59 2;
+#X connect 61 0 60 0;
+#X connect 62 0 60 0;
+#X connect 62 0 64 0;
+#X connect 63 0 62 0;
 #X restore 18 89 pd io;
 #N canvas 0 22 450 300 timebase 0;
 #X obj 106 52 loadbang;
@@ -156,7 +170,7 @@
 #X msg 317 75 \; pd dsp 1 \;;
 #X connect 5 0 6 0;
 #X restore 18 29 pd init;
-#N canvas 692 137 965 901 Players 0;
+#N canvas 141 38 965 804 Players 0;
 #X obj 744 202 loadbang;
 #X obj 744 224 del 1000;
 #X obj 737 102 r forwardPlayerData;
@@ -442,11 +456,11 @@
 #X msg 98 199 -5;
 #X msg 126 199 0;
 #X obj 105 244 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 0 256;
+-262144 -1 -1 -5 256;
 #X obj 98 221 f;
 #X obj 188 340 f;
 #X obj 225 140 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 0 256;
+-262144 -1 -1 -13.85 256;
 #X obj 98 157 int;
 #X obj 188 643 throw~ \$0-LEFT;
 #X obj 207 664 throw~ \$0-RIGHT;
@@ -459,7 +473,7 @@
 #X obj 98 291 pipe 1000;
 #X msg 215 199 4;
 #X obj 98 115 m_scale -20 20 0 2;
-#X obj 754 41 tgl 35 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 754 41 tgl 35 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X msg 265 59 78;
 #X floatatom 251 570 5 0 0 0 - - -, f 5;
@@ -484,14 +498,14 @@
 #X obj 596 388 hip~ 12000;
 #X msg 669 358 1 300 \, 0 300 300;
 #X obj 456 279 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 0 256;
+-262144 -1 -1 -1276.62 256;
 #X obj 495 518 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
 -262144 -1 -1 0 256;
 #X obj 104 453 delwrite~ \$0-donger-del 1000;
 #X obj 374 312 m_scale 0 30000 0 3;
 #X obj 104 475 delread~ \$0-donger-del 125;
 #X obj 580 229 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 0 256;
+-262144 -1 -1 32 256;
 #X obj 297 442 * 0.3;
 #X obj 297 464 pack f 1000;
 #X obj 297 486 line;
@@ -528,7 +542,7 @@
 -1 -1;
 #X obj 596 474 e_pan;
 #X floatatom 712 450 5 0 0 0 - - -, f 5;
-#X obj 83 39 player-output \$0-102;
+#X obj 83 39 player-output \$0-101;
 #X connect 0 0 56 0;
 #X connect 0 0 70 0;
 #X connect 0 1 56 0;
@@ -652,7 +666,7 @@
 #X connect 94 7 19 0;
 #X connect 94 7 32 0;
 #X restore 284 36 pd donger;
-#N canvas 1087 143 751 812 arp 0;
+#N canvas 574 81 751 812 arp 0;
 #X obj 149 91 - 78;
 #X obj 164 549 r play-hit;
 #X obj 164 593 vline~;
@@ -725,10 +739,10 @@
 #X connect 9 0 0 0;
 #X restore 223 263 pd tonality;
 #X obj 506 265 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 0 256;
+-262144 -1 -1 13.85 256;
 #X obj 605 161 m_scale 0 20 0 0.98;
 #X obj 506 307 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 0 256;
+-262144 -1 -1 0.67865 256;
 #X msg 188 46 0;
 #X obj 199 669 e_pan;
 #X obj 255 610 loadbang;
@@ -822,7 +836,7 @@
 #X connect 69 0 70 2;
 #X connect 70 0 32 0;
 #X restore 284 83 pd arp;
-#N canvas 446 31 932 856 velocity 0;
+#N canvas 793 75 932 856 velocity 0;
 #X obj 72 283 abs;
 #X msg 293 346 noise-burst 1;
 #X msg 171 231 interval \$1;
@@ -1000,9 +1014,9 @@
 #X connect 58 2 56 0;
 #X connect 58 3 0 0;
 #X restore 284 130 pd velocity;
-#X obj 284 16 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 284 16 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 284 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 284 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 284 110 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -1056,15 +1070,15 @@
 #X obj 48 531 *~ 1;
 #X obj 255 190 m_scale -90 90 -9 8;
 #X obj 356 227 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 0 256;
+-262144 -1 -1 -38.63 256;
 #X obj 356 277 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 0 256;
+-262144 -1 -1 -4.14839 256;
 #X obj 198 173 pow 2;
 #X obj 255 139 unpack f f;
 #X obj 461 375 unpack f;
 #X obj 461 418 m_scale 0 90 0.1 1;
 #X obj 50 198 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 0 256;
+-262144 -1 -1 1 256;
 #X obj 643 380 sig~;
 #X obj 643 307 mtof;
 #X obj 643 446 *~;
@@ -1076,14 +1090,14 @@
 #X obj 643 211 int;
 #X obj 643 233 change;
 #X obj 719 309 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 0 256;
+-262144 -1 -1 7 256;
 #X obj 643 329 pack f 250;
 #X obj 860 330 max 0;
 #X obj 860 352 min 1;
 #X obj 280 88 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 0 256;
+-262144 -1 -1 -28611 256;
 #X obj 911 341 nbx 5 40 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 40
--262144 -1 -1 0 256;
+-262144 -1 -1 1 256;
 #X obj 707 498 delwrite~ \$0-drone-melody 1000;
 #X floatatom 671 467 5 0 0 0 - - -, f 5;
 #X obj 643 281 notes 6 66 0 2 4 5 7 11;
@@ -1110,9 +1124,9 @@
 #X obj 637 550 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 448 177 hh_drone;
-#X obj 198 36 player-output \$0-104;
 #X obj 253 341 player-output \$0-106;
 #X msg 372 455 0;
+#X obj 198 36 player-output \$0-110;
 #X connect 0 0 1 0;
 #X connect 0 0 1 1;
 #X connect 1 0 42 0;
@@ -1208,24 +1222,24 @@
 #X connect 91 0 84 0;
 #X connect 92 0 91 1;
 #X connect 93 0 1 0;
-#X connect 94 0 31 0;
-#X connect 94 0 62 0;
-#X connect 94 1 51 0;
-#X connect 94 3 69 0;
-#X connect 94 3 79 0;
-#X connect 95 0 38 0;
-#X connect 95 0 40 0;
-#X connect 95 0 86 0;
-#X connect 95 1 52 0;
-#X connect 96 0 39 0;
+#X connect 94 0 38 0;
+#X connect 94 0 40 0;
+#X connect 94 0 86 0;
+#X connect 94 1 52 0;
+#X connect 95 0 39 0;
+#X connect 96 0 31 0;
+#X connect 96 0 62 0;
+#X connect 96 1 51 0;
+#X connect 96 3 69 0;
+#X connect 96 3 79 0;
 #X restore 284 177 pd drone;
-#X obj 284 156 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 284 156 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 284 201 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X text 327 84 101;
-#X text 345 37 102;
-#X text 340 177 104;
+#X text 345 37 1;
+#X text 340 177 10;
+#X text 327 84 1;
 #X connect 12 0 9 0;
 #X connect 13 0 10 0;
 #X connect 14 0 11 0;
