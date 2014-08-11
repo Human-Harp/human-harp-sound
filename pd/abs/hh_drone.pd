@@ -70,15 +70,15 @@
 #X obj 827 27 r \$0-interval;
 #X obj 228 61 r \$0-mix;
 #X obj 493 387 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 2596 1;
 #X obj 513 387 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 2206 1;
 #X obj 533 387 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 1816 1;
 #X obj 553 387 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 1426 1;
 #X obj 473 387 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 3376 1;
 #X obj 228 85 f;
 #X obj 95 46 change;
 #X obj 95 68 pack f 800;
@@ -94,7 +94,7 @@
 #X obj 857 114 pack f 1000;
 #X obj 857 136 line;
 #X obj 857 92 change;
-#X obj 95 380 *~ 0.5;
+#X obj 95 380 *~ 0.25;
 #X connect 0 0 67 0;
 #X connect 1 0 3 0;
 #X connect 2 0 0 0;

@@ -69,8 +69,6 @@
 #X floatatom 170 157 5 0 0 0 - - -, f 5;
 #X floatatom 185 253 5 0 0 0 - - -, f 5;
 #X obj 344 102 spigot;
-#X obj 410 78 t f f f;
-#X msg 426 98 0;
 #X connect 0 0 1 0;
 #X connect 1 0 13 0;
 #X connect 2 0 3 0;
@@ -113,7 +111,6 @@
 #X connect 30 0 31 0;
 #X connect 31 0 54 0;
 #X connect 32 0 24 1;
-#X connect 33 0 61 0;
 #X connect 33 0 59 1;
 #X connect 34 0 6 0;
 #X connect 36 0 53 0;
@@ -141,6 +138,3 @@
 #X connect 56 0 41 0;
 #X connect 56 0 58 0;
 #X connect 59 0 26 0;
-#X connect 60 0 22 1;
-#X connect 60 1 46 1;
-#X connect 61 0 60 0;
